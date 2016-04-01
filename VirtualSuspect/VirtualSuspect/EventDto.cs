@@ -1,6 +1,139 @@
-﻿namespace VirtualSuspect
+﻿using System.Collections.Generic;
+
+namespace VirtualSuspect
 {
-    public class EventDto
-    {
+    public class EventDto {
+
+        private ActionNode action;
+
+        public ActionNode Action
+        {
+            get
+            {
+                return action;
+            }
+        }
+
+        private EntityNode time;
+
+        public EntityNode Time
+        {
+            get
+            {
+                return time;
+            }
+        }
+
+        private EntityNode location;
+
+        public EntityNode Location
+        {
+            get
+            {
+                return location;
+            }
+        }
+
+        private List<EntityNode> agent;
+
+        public List<EntityNode> Agent
+        {
+            get
+            {
+                return agent;
+            }
+        }
+
+        private List<EntityNode> theme;
+
+        public List<EntityNode> Theme
+        {
+            get
+            {
+                return theme;
+            }
+        }
+
+        private List<EntityNode> manner;
+
+        public List<EntityNode> Manner
+        {
+            get
+            {
+                return manner;
+            }
+        }
+
+        private List<EntityNode> reason;
+
+        public List<EntityNode> Reason
+        {
+            get
+            {
+                return reason;
+            }
+        }
+
+        public EventDto(ActionNode action, EntityNode time, EntityNode location) {
+
+            this.action = action;
+            this.time = time;
+            this.location = location;
+
+            agent = new List<EntityNode>();
+            theme = new List<EntityNode>();
+            manner = new List<EntityNode>();
+            reason = new List<EntityNode>();
+
+        }
+
+        public void AddAgent(EntityNode agent) {
+
+            this.agent.Add(agent);
+
+        }
+
+        public void AddAgent(params EntityNode[] agents) {
+
+            this.agent.AddRange(agents);
+
+        }
+
+        public void AddTheme(EntityNode theme) {
+
+            this.theme.Add(theme);
+
+        }
+
+        public void AddTheme(params EntityNode[] themes) {
+
+            this.theme.AddRange(themes);
+
+        }
+
+        public void AddManner(EntityNode manner) {
+
+            this.manner.Add(manner);
+
+        }
+
+        public void AddManner(params EntityNode[] manners) {
+
+            this.manner.AddRange(manners);
+
+        }
+
+        public void AddReason(EntityNode reason) {
+
+            this.reason.Add(reason);
+
+        }
+
+        public void AddReason(params EntityNode[] reasons) {
+
+            this.reason.AddRange(reasons);
+
+        }
+
     }
 }

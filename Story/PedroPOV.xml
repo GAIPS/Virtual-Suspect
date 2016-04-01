@@ -1,0 +1,216 @@
+<story>
+	<entity>
+		<id>1</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 11:00</begin>
+		<end>1/03/2016 11:30</end>
+	</entity>
+	<entity>
+		<id>2</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 11:30</begin>
+		<end>1/03/2016 11:40</end>
+	</entity>
+	<entity>
+		<id>3</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 11:40</begin>
+		<end>1/03/2016 12:30</end>
+	</entity>
+	<entity>
+		<id>4</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 12:30</begin>
+		<end>1/03/2016 17:00</end>
+	</entity>
+	<entity>
+		<id>5</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 17:00</begin>
+		<end>1/03/2016 17:15</end>
+	</entity>
+	<entity>
+		<id>6</id>
+		<type>Data</type>
+		<value>Registos do Projecto Y</value>
+	</entity>
+	<entity>
+		<id>7</id>
+		<type>Workplace</type>
+		<value>EvilCorp</value>
+	</entity>
+	<entity>
+		<id>8</id>
+		<type>Work Tool</type>
+		<value>Computador do Pedro</value>
+	</entity>
+	<entity>
+		<id>9</id>
+		<type>Person</type>
+		<value>Pedro</value>
+	</entity>
+	<entity>
+		<id>10</id>
+		<type>Data</type>
+		<value>Registos do Projecto x</value>
+	</entity>
+	<entity>
+		<id>11</id>
+		<type>Work Tool</type>
+		<value>Computador do João</value>
+	</entity>
+	<entity>
+		<id>12</id>
+		<type>Workplace</type>
+		<value>Gabinete do Guilherme</value>
+	</entity>
+	<entity>
+		<id>13</id>
+		<type>Person</type>
+		<value>Guilherme</value>
+	</entity>
+	<entity>
+		<id>14</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 10:00</begin>
+		<end>1/03/2016 11:00</end>
+	</entity>
+	<entity>
+		<id>15</id>
+		<type>Restaurant</type>
+		<value>Café "O Discreto"</value>
+	</entity>
+
+
+	<episode>
+		<judgmental>
+			<factor>80</factor>
+			<alternative></alternative>
+		</judgmental>
+		<action>
+			<name>Access</name>
+			<association relation="Time">
+				<entity id="1"/>
+			</association>
+			<association relation="Location">
+				<entity id="7"/>
+			</association>
+			<association relation="Agent">
+				<entity id="9"/>
+			</association>
+			<association relation="Theme">
+				<entity id="6"/>
+			</association>
+			<association relation="Manner">
+				<entity id="8"/>
+			</association>
+		</action>
+	</episode>
+
+	<episode>
+		<action>
+			<name>Talk</name>
+			<association relation="Time">
+				<entity id="14"/>
+			</association>
+			<association relation="Location">
+				<entity id="15"/>
+			</association>
+			<association relation="Agent">
+				<entity id="9"/>
+			</association>
+			<association relation="Agent">
+				<entity id="13"/>
+			</association>
+			<association relation="Theme">
+				<entity id="10"/>
+			</association>
+		</action>
+	</episode>
+
+	<episode>
+		<judgmental>
+			<factor>100</factor>
+			<alternative></alternative>
+		</judgmental>
+		<action>
+			<name>Access</name>
+			<association relation="Time">
+				<entity id="2"/>
+			</association>
+			<association relation="Location">
+				<entity id="7"/>
+			</association>
+			<association relation="Agent">
+				<entity id="9"/>
+			</association>
+			<association relation="Theme">
+				<entity id="10"/>
+			</association>
+			<association relation="Manner">
+				<entity id="11"/>
+			</association>
+		</action>
+	</episode>
+
+	<episode>
+		<action>
+			<name>Eat</name>
+			<association relation="Time">
+				<entity id="3"/>
+			</association>
+			<association relation="Location">
+				<entity id="7"/>
+			</association>
+			<association relation="Agent">
+				<entity id="9"/>
+			</association>
+		</action>
+	</episode>
+
+	<episode>
+		<action>
+			<name>Access</name>
+			<association relation="Time">
+				<entity id="4"/>
+			</association>
+			<association relation="Location">
+				<entity id="7"/>
+			</association>
+			<association relation="Agent">
+				<entity id="9"/>
+			</association>
+			<association relation="Theme">
+				<entity id="10"/>
+			</association>
+			<association relation="Manner">
+				<entity id="11"/>
+			</association>
+		</action>
+	</episode>
+
+	<episode>
+		<judgmental>
+			<factor>80</factor>
+			<alternative></alternative>
+		</judgmental>
+		<action>
+			<name>Talk</name>
+			<association relation="Time">
+				<entity id="5"/>
+			</association>
+			<association relation="Location">
+				<entity id="12"/>
+			</association>
+			<association relation="Agent">
+				<entity id="9"/>
+			</association>
+			<association relation="Agent">
+				<entity id="13"/>
+			</association>
+			<association relation="Theme">
+				<entity id="10"/>
+			</association>
+		</action>
+	</episode>
+</story>

@@ -1,0 +1,163 @@
+<story>
+	<entity>
+		<id>1</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 10:00</begin>
+		<end>1/03/2016 11:00</end>
+	</entity>
+	<entity>
+		<id>2</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 11:00</begin>
+		<end>1/03/2016 13:45</end>
+	</entity>
+	<entity>
+		<id>3</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 13:45</begin>
+		<end>1/03/2016 17:00</end>
+	</entity>
+	<entity>
+		<id>4</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 17:00</begin>
+		<end>1/03/2016 17:15</end>
+	</entity>
+	<entity>
+		<id>5</id>
+		<type>Person</type>
+		<value>Guilherme</value>
+	</entity>
+	<entity>
+		<id>6</id>
+		<type>Person</type>
+		<value>Pedro</value>
+	</entity>
+	<entity>
+		<id>7</id>
+		<type>Person</type>
+		<value>João</value>
+	</entity>
+	<entity>
+		<id>8</id>
+		<type>Restaurant</type>
+		<value>Café "O Discreto"</value>
+	</entity>
+	<entity>
+		<id>9</id>
+		<type>Data</type>
+		<value>Registos Projecto X</value>
+	</entity>
+	<entity>
+		<id>10</id>
+		<type>Restaurant</type>
+		<value>Restaurante Amarelo</value>
+	</entity>
+	<entity>
+		<id>11</id>
+		<type>Workplace</type>
+		<value>Gabinete do Guilherme</value>
+	</entity>
+
+	<episode>
+		<compromising>
+			<factor>80</factor>
+			<alternative></alternative>
+		</compromising>
+		<action>
+			<name>Talk</name>
+			<association relation="Time">
+				<entity id="1"/>
+			</association>
+			<association relation="Location">
+				<entity id="8"/>
+			</association>
+			<association relation="Agent">
+				<entity id="5"/>
+			</association>
+			<association relation="Agent">
+				<entity id="6"/>
+			</association>
+			<association relation="Theme">
+				<entity id="9"/>
+			</association>
+		</action>
+	</episode>
+
+	<episode>
+		<action>
+			<name>Eat</name>
+			<association relation="Time">
+				<entity id="2"/>
+			</association>
+			<association relation="Location">
+				<entity id="10"/>
+			</association>
+			<association relation="Agent">
+				<entity id="5"/>
+			</association>
+			<association relation="Agent">
+				<entity id="7"/>
+			</association>
+		</action>
+		<action>
+			<name>Talk</name>
+			<association relation="Time">
+				<entity id="2"/>
+			</association>
+			<association relation="Location">
+				<entity id="10"/>
+			</association>
+			<association relation="Agent">
+				<entity id="5"/>
+			</association>
+			<association relation="Agent">
+				<entity id="7"/>
+			</association>
+			<association relation="Theme">
+				<entity id="9"/>
+			</association>
+		</action>
+	</episode>
+
+	<episode>
+		<action>
+			<name>Study</name>
+			<association relation="Time">
+				<entity id="3"/>
+			</association>
+			<association relation="Location">
+				<entity id="11"/>
+			</association>
+			<association relation="Agent">
+				<entity id="5"/>
+			</association>
+		</action>
+	</episode>
+
+	<episode>
+		<compromising>
+			<factor>80</factor>
+			<alternative></alternative>
+		</compromising>
+		<action>
+			<name>Talk</name>
+			<association relation="Time">
+				<entity id="4"/>
+			</association>
+			<association relation="Location">
+				<entity id="11"/>
+			</association>
+			<association relation="Agent">
+				<entity id="5"/>
+			</association>
+			<association relation="Agent">
+				<entity id="6"/>
+			</association>
+			<association relation="Theme">
+				<entity id="9"/>
+			</association>
+		</action>
+	</episode>
+
+</story>

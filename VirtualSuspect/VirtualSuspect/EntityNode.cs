@@ -34,7 +34,7 @@
 
         public EntityNode(uint _id, string _value, string _type){
 
-            id = _id
+            id = _id;
             value = _value;
             type = _type;
 

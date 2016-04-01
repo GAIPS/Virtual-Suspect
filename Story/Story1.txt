@@ -1,0 +1,45 @@
+======================================
+
+João Point of View:
+
+>Dia 1 de Março de 2016:
+
+Das 9 às 11 horas da manhã, o João acedeu aos registos confidenciais do projecto X usando o seu computador na EvilCorp. 
+Das 11 horas às 13:45 foi a um almoçou com o Guilherme no restaurante Amarelo. Conversaram sobre o projecto X. 
+Das 13:45 às 15h, voltou à EvilCorp para aceder a registos do project X. 
+Das 15h às 17h esteve numa reunião com a Vânia no gabinete dela.
+
+======================================
+
+Guilherme Point of View:
+
+>Dia 1 de Março de 2016:
+
+Das 10 às 11 horas falou com o Pedro, colega do João, a pedir para aceder aos registos do projecto X apartir do computador do João.
+Das 11 às 13:45 foi almoçar com o João ao restaurante Amarelo. Falaram sobre o Projecto X. 
+Das 13:45 às 17:00 esteve no seu gabinete a estudar o projecto Y.
+Das 17:00 às 17:15 falou no seu gabinete com o Pedro sobre os registos do projecto X.
+
+======================================
+
+Vânia Point of View:
+
+>Dia 1 de Março de 2016:
+
+Das 15h às 17h esteve numa reunião com o João no seu gabinete.
+Às 17:15 viu o Pedro a sair do gabinete do Guilherme
+
+======================================
+
+Pedro Point of View:
+
+>Dia 1 de Março de 2016:
+
+Das 10 às 11, falou com o Guilherme sobre o roubo dos registos do projecto X a partir do computador do João.
+Das 11 às 11.30, esteve a trabalhar no projecto Y usando o seu computador na EvilCorp.
+Das 11.30 às 11.40, esteve no computador do João a aceder aos registos confidencias do projecto X na EvilCorp.
+Das 11.40 às 12.30, foi almoçar à cantina da EvilCorp sozinho.
+Das 12.30 às 17, esteve a trabalhar no projecto Y usando o seu computador na EvilCorp.
+Das 17:00 às 17.15, falou no gabinete do Guilherme sobre os registos do projecto X.
+
+======================================

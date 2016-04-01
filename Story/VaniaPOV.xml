@@ -1,0 +1,67 @@
+<story>
+	<entity>
+		<id>1</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 15:00</begin>
+		<end>1/03/2016 17:00</end>
+	</entity>
+	<entity>
+		<id>2</id>
+		<type>Workplace</type>
+		<value>Gabinete da Vania</value>
+	</entity>
+	<entity>
+		<id>3</id>
+		<type>Person</type>
+		<value>Vania</value>
+	</entity>
+	<entity>
+		<id>4</id>
+		<type>Person</type>
+		<value>João</value>
+	</entity>
+	<entity>
+		<id>5</id>
+		<type>TimeInstant</type>
+		<value>1/03/2016 17:15</value>
+	</entity>
+	<entity>
+		<id>6</id>
+		<type>Action</type>
+		<value>Pedro saiu do gabinete do Guilherme</value>
+	</entity>
+
+	<episode>
+		<action>
+			<name>Talk</name>
+			<association relation="Time">
+				<entity id="1"/>
+			</association>
+			<association relation="Location">
+				<entity id="2"/>
+			</association>
+			<association relation="Agent">
+				<entity id="3"/>
+			</association>
+			<association relation="Agent">
+				<entity id="4"/>
+			</association>
+		</action>
+	</episode>
+
+	<episode>
+		<action>
+			<name>See</name>
+			<association relation="Time">
+				<entity id="5"/>
+			</association>
+			<association relation="Location">
+				<entity id="2"/>
+			</association>
+			<association relation="Theme">
+				<entity id="6"/>
+			</association>
+		</action>
+	</episode>
+
+</story>

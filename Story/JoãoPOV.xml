@@ -1,0 +1,156 @@
+<story>
+	<entity>
+		<id>1</id>
+		<type>Person</type>
+		<value>João</value>
+	</entity>
+	<entity>
+		<id>2</id>
+		<type>Person</type>
+		<value>Guilherme</value>
+	</entity>
+	<entity>
+		<id>3</id>
+		<type>Person</type>
+		<value>Vânia</value>
+	</entity>
+	<entity>
+		<id>4</id>
+		<type>Workplace</type>
+		<value>EvilCorp</value>
+	</entity>
+	<entity>
+		<id>5</id>
+		<type>Work Tool</type>
+		<value>Computador do João</value>
+	</entity>
+	<entity>
+		<id>6</id>
+		<type>Data</type>
+		<value>Registos Projecto X</value>
+	</entity>
+	<entity>
+		<id>7</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 9:00</begin>
+		<end>1/03/2016 11:00</end>
+	</entity>
+	<entity>
+		<id>8</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 11:00</begin>
+		<end>1/03/2016 13:45</end>
+	</entity>
+	<entity>
+		<id>9</id>
+		<type>Restaurant</type>
+		<value>Restaurante Amarelo</value>
+	</entity>
+	<entity>
+		<id>10</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 13:45</begin>
+		<end>1/03/2016 15:00</end>
+	</entity>
+	<entity>
+		<id>11</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 15:00</begin>
+		<end>1/03/2016 17:00</end>
+	</entity>
+	<entity>
+		<id>12</id>
+		<type>Workplace</type>
+		<value>Gabinete da Vania</value>
+	</entity>
+
+	<event>
+		<action>Access</action>
+		<association relation="Time">
+			<entity id="7"/>
+		</association>
+		<association relation="Location">
+			<entity id="4"/>
+		</association>
+		<association relation="Agent">
+			<entity id="1"/>
+		</association>
+		<association relation="Theme">
+			<entity id="6"/>
+		</association>
+		<association relation="Manner">
+			<entity id="5"/>
+		</association>
+	</event>
+
+	<event>
+		<action>Eat</action>
+		<association relation="Time">
+			<entity id="8"/>
+		</association>
+		<association relation="Location">
+			<entity id="9"/>
+		</association>
+		<association relation="Agent">
+			<entity id="1"/>
+		</association>
+		<association relation="Agent">
+			<entity id="2"/>
+		</association>
+	</event>
+
+	<event>
+		<action>Talk</action>
+		<association relation="Time">
+			<entity id="8"/>
+		</association>
+		<association relation="Location">
+			<entity id="9"/>
+		</association>
+		<association relation="Agent">
+			<entity id="1"/>
+		</association>
+		<association relation="Agent">
+			<entity id="2"/>
+		</association>
+		<association relation="Theme">
+			<entity id="6"/>
+		</association>
+	</event>
+
+	<event>
+		<action>Access</action>
+		<association relation="Time">
+			<entity id="10"/>
+		</association>
+		<association relation="Location">
+			<entity id="4"/>
+		</association>
+		<association relation="Agent">
+			<entity id="1"/>
+		</association>
+		<association relation="Theme">
+			<entity id="6"/>
+		</association>
+		<association relation="Manner">
+			<entity id="5"/>
+		</association>
+	</event>
+
+	<event>
+		<action>Talk</action>
+		<association relation="Time">
+			<entity id="11"/>
+		</association>
+		<association relation="Location">
+			<entity id="12"/>
+		</association>
+		<association relation="Agent">
+			<entity id="1"/>
+		</association>
+		<association relation="Agent">
+			<entity id="3"/>
+		</association>
+	</event>
+
+</story>
