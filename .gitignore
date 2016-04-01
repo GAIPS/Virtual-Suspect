@@ -233,4 +233,8 @@ _Pvt_Extensions
 .paket/paket.exe
 
 # FAKE - F# Make
+<<<<<<< HEAD
 .fake/
+=======
+.fake/
+>>>>>>> c3d0173afbcb1b0f31035e02d1ab6a910e7f9901
