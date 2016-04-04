@@ -10,11 +10,56 @@ namespace VirtualSuspect
     public class KnowledgeBase : IKnowledgeBase
     {
 
+        /// <summary>
+        /// List of available entities
+        /// </summary>
         private List<EntityNode> entities;
 
+        /// <summary>
+        /// List of available actions
+        /// </summary>
         private List<ActionNode> actions;
 
+        /// <summary>
+        /// List of available events
+        /// </summary>
         private List<EventNode> events;
+
+        /// <summary>
+        /// List of content that is changeable
+        /// </summary>
+        private List<ChangeableGroup> changeableGroups;
+
+        /// <summary>
+        /// Current Story
+        /// </summary>
+        private List<EventNode> story;
+
+        /// <summary>
+        /// Returns the next available id for an node
+        /// </summary>
+        /// <returns>Available Id for node</returns>
+        private uint getNextNodeId(String nodeType) {
+
+            if (nodeType == "action") {
+
+                return (uint)(actions.Count + 1);
+
+            }
+            else if (nodeType == "entity") {
+
+                return (uint)(entities.Count + 1);
+
+            }
+            else if (nodeType == "event") {
+
+                return (uint)(events.Count + 1);
+
+            }
+
+            return 0;
+
+        }
 
         public KnowledgeBase() {
 
@@ -23,6 +68,11 @@ namespace VirtualSuspect
             actions = new List<ActionNode>();
             
             events = new List<EventNode>();
+
+            changeableGroups = new List<ChangeableGroup>();
+
+            story = new List<EventNode>();
+
         }
 
 
@@ -109,28 +159,49 @@ namespace VirtualSuspect
             return nodeResult;
         }
 
+        public ChangeableGroup CreateNewChangeableGroup(ChangeableGroupDto cg) {
+             
+            //Test if dto is valid
+            //Test if domain are in the available list
+            foreach(IChangeableContent cc in cg.Domain) {
 
-        /// <summary>
-        /// Returns the next available id for an node
-        /// </summary>
-        /// <returns>Available Id for node</returns>
-        private uint getNextNodeId(String nodeType) {
+                if(cc is EntityNode) {
 
-            if(nodeType == "action") {
-                
-                return (uint)(actions.Count + 1);
+                    if (!entities.Exists(x => x == cc))
+                        throw new DtoFieldException("Changeable Content of type entity not found: " + cc);
 
-            }else if (nodeType == "entity") {
-                
-                return (uint)(entities.Count + 1);
-            
-            }else if (nodeType == "event") {
-                
-                return (uint)(events.Count + 1);
-            
+                } else if (cc is ActionNode) {
+
+                    if (!actions.Exists(x => x == cc))
+                        throw new DtoFieldException("Changeable Content of type action not found: " + cc);
+
+                }
+                else if (cc is EventNode) {
+
+                    if (!events.Exists(x => x == cc))
+                        throw new DtoFieldException("Changeable Content of type entity not found: " + cc);
+                }
+
             }
 
-            return 0;
+            //Create new Changeable Group
+            ChangeableGroup newChangeableGroup = new ChangeableGroup(cg.CurrentValue, cg.Domain);
+
+            //Add group to list of Changeable
+            changeableGroups.Add(newChangeableGroup);
+
+            return newChangeableGroup;
+
+        }
+
+        public void AddEventToStory(EventNode en) {
+
+            //Test if event exists
+            if (!events.Exists(x => x == en))
+                throw new DtoFieldException("Event Node not found: " + en);
+
+            //Add event to the story
+            story.Add(en);
 
         }
     }

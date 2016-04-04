@@ -42,11 +42,14 @@
   <ItemGroup>
     <Compile Include="ActionDto.cs" />
     <Compile Include="ActionNode.cs" />
+    <Compile Include="ChangeableGroup.cs" />
+    <Compile Include="ChangeableGroupDto.cs" />
     <Compile Include="EntityDto.cs" />
     <Compile Include="EntityNode.cs" />
     <Compile Include="EventDto.cs" />
     <Compile Include="EventNode.cs" />
     <Compile Include="Exception\DtoFieldException.cs" />
+    <Compile Include="IChangeableContent.cs" />
     <Compile Include="IKnowledgeBase.cs" />
     <Compile Include="KnowledgeBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
