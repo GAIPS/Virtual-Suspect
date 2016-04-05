@@ -4,11 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Exception;
+using VirtualSuspect.Query;
 
-namespace VirtualSuspect
-{
-    public class KnowledgeBase : IKnowledgeBase
-    {
+namespace VirtualSuspect{
+
+    public class KnowledgeBase : IKnowledgeBase{
+
+        #region Enumerates
+    
+        public enum DimentionsEnum { Action, Agent, Theme, Manner, Location, Time, Reason };
+        
+        #endregion
+
 
         /// <summary>
         /// List of available entities
@@ -74,7 +81,6 @@ namespace VirtualSuspect
             story = new List<EventNode>();
 
         }
-
 
         public ActionNode CreateNewAction(ActionDto ac) {
             
@@ -204,5 +210,42 @@ namespace VirtualSuspect
             story.Add(en);
 
         }
+
+        public QueryResult QueryDatabase(QueryDto query) {
+
+            QueryResult result = new QueryResult(query);
+
+            if(query.QueryType == QueryDto.QueryTypeEnum.YesOrNo) { //Test yes or no
+
+                        
+
+            } else if(query.QueryType == QueryDto.QueryTypeEnum.GetInformation) { //Test get information
+
+                List<EventNode> queryEvents = new List<EventNode>();
+
+                //Iterate all the conditions (Disjuctive filtering)
+                foreach(IConditionPredicate predicate in query.QueryConditions) {
+
+                    queryEvents.AddRange(story.FindAll(predicate.CreatePredicate()));
+
+                }
+
+                //Remove Duplicates
+                queryEvents.Distinct();
+
+                //Select entities from the dimension
+                foreach (IFocusPredicate focus in query.QueryFocus) {
+
+                    result.AddResults(queryEvents.Select(focus.CreateFunction()));
+                    
+
+                }
+
+                //Perform Cardinality Check
+            }
+
+            return result;
+        }
+
     }
 }
