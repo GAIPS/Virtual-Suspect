@@ -43,7 +43,7 @@ Each condition has:
 
 ```
 <question>
-	<speech>"Onde comeu no dia 21 de Janeiro de 2016?"<speech/>
+	<speech>"Onde comeu no dia 21 de Janeiro de 2016?"</speech>
 	<type>get-information</type>
 	<focus>
 		<dimension>location</dimension>
@@ -69,7 +69,7 @@ Each condition has:
 	
 ```
 <question>
-	<speech>"Com quem foi no dia 21 de Janeiro de 2016 ao Café Sol?"<speech/>
+	<speech>"Com quem foi no dia 21 de Janeiro de 2016 ao Café Sol?"</speech>
 	<type>get-information</type>
 	<focus>
 		<dimension>agent</dimension>
@@ -110,7 +110,7 @@ Each response contains:
 ```
 <answer>
 	<question>
-		<speech>"Onde comeu no dia 21 de Janeiro de 2016?"<speech/>
+		<speech>"Onde comeu no dia 21 de Janeiro de 2016?"</speech>
 		<type>get-information</type>
 		<focus>
 			<dimension>location</dimension>
@@ -146,7 +146,7 @@ Each response contains:
 ```
 <answer>
 	<question>
-		<speech>"Com quem foi no dia 21 de Janeiro de 2016 ao Café Sol?"<speech/>
+		<speech>"Com quem foi no dia 21 de Janeiro de 2016 ao Café Sol?"</speech>
 		<type>get-information</type>
 		<focus>
 			<dimension>agent</dimension>
