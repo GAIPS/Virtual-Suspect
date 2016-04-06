@@ -48,7 +48,7 @@ namespace VirtualSuspect
         /// </summary>
         /// <param name="query">The dto containing the query conditions</param>
         /// <returns></returns>
-        QueryResult QueryDatabase(QueryDto query);
+        QueryResult Query(QueryDto query);
 
 
     }

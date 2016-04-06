@@ -44,6 +44,11 @@
     <Compile Include="ActionNode.cs" />
     <Compile Include="ChangeableGroup.cs" />
     <Compile Include="ChangeableGroupDto.cs" />
+    <Compile Include="Query\ThemeEqualConditionPredicate.cs" />
+    <Compile Include="Query\ReasonEqualConditionPredicate.cs" />
+    <Compile Include="Query\MannerEqualConditionPredicate.cs" />
+    <Compile Include="Query\AgentEqualConditionPredicate.cs" />
+    <Compile Include="Query\TimeEqualConditionPredicate.cs" />
     <Compile Include="Query\ConditionPredicate.cs" />
     <Compile Include="EntityDto.cs" />
     <Compile Include="EntityNode.cs" />
@@ -56,10 +61,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\GetLocationFocusPredicate.cs" />
     <Compile Include="Query\IFocusPredicate.cs" />
+    <Compile Include="Query\ActionEqualConditionPredicate.cs" />
     <Compile Include="Query\LocationEqualConditionPredicate.cs" />
     <Compile Include="Query\QueryDto.cs" />
     <Compile Include="Query\QueryResult.cs" />
     <Compile Include="Utils\KnowledgeBaseParser.cs" />
+    <Compile Include="Query\MessageFieldException.cs" />
     <Compile Include="Utils\QuestionParser.cs" />
   </ItemGroup>
   <ItemGroup />

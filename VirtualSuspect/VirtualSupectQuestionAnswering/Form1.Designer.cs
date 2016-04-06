@@ -239,7 +239,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QuestionAnswerForm";
             this.Text = "Virtual Suspect - Question Answer";
-            this.Load += new System.EventHandler(this.QuestionAnswerForm_Load);
             this.gpQuestion.ResumeLayout(false);
             this.gpQuestion.PerformLayout();
             this.gpAnswer.ResumeLayout(false);

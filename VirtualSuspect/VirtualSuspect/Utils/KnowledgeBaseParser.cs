@@ -106,8 +106,9 @@ namespace VirtualSuspect.Utils
 
                 }
 
-                kb.CreateNewEvent(eventDto);
+                EventNode newEventNode = kb.CreateNewEvent(eventDto);
 
+                kb.AddEventToStory(newEventNode);
             }
 
 

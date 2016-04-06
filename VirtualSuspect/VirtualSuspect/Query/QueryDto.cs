@@ -12,6 +12,7 @@ namespace VirtualSuspect.Query
 
         public enum QueryTypeEnum { YesOrNo, GetInformation };
 
+        public enum OperatorEnum { Equal, Between};
         #endregion
 
         /// <summary>

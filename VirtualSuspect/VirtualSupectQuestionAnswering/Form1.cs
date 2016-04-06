@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using VirtualSuspect;
+using VirtualSuspect.Query;
 using VirtualSuspect.Utils;
 
 namespace VirtualSupectQuestionAnswering
@@ -19,12 +21,6 @@ namespace VirtualSupectQuestionAnswering
         public QuestionAnswerForm() {
             
             InitializeComponent();
-
-        }
-
-        private void QuestionAnswerForm_Load(object sender, EventArgs e) {
-
- 
 
         }
 
@@ -55,6 +51,14 @@ namespace VirtualSupectQuestionAnswering
 
         private void btAskQuestion_Click(object sender, EventArgs e) {
 
+            XmlDocument questionXml = new XmlDocument();
+            questionXml.LoadXml(tbQuestionStructure.Text);
+
+            QueryDto newQuery = QuestionParser.ExtractFromXml(questionXml);
+
+            QueryResult result = virtualSuspectKb.Query(newQuery);
+
         }
+
     }
 }

@@ -12,6 +12,7 @@ namespace VirtualSuspect.Query
             return delegate (EventNode node) {
                 
                 return new QueryResult.Result(node.Location.Value, 1 , KnowledgeBase.DimentionsEnum.Location);
+
             };
         }
     }

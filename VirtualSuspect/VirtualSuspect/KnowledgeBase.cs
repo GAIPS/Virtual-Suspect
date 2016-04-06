@@ -211,7 +211,7 @@ namespace VirtualSuspect{
 
         }
 
-        public QueryResult QueryDatabase(QueryDto query) {
+        public QueryResult Query(QueryDto query) {
 
             QueryResult result = new QueryResult(query);
 
@@ -241,7 +241,7 @@ namespace VirtualSuspect{
 
                 }
 
-                //Perform Cardinality Check
+                //TODO: Perform Cardinality Check
             }
 
             return result;

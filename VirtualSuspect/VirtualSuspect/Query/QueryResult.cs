@@ -17,6 +17,7 @@ namespace VirtualSuspect.Query
 
         public QueryResult(QueryDto query) {
             this.query = query;
+            results = new List<Result>();
         }
 
         internal void AddResults(IEnumerable<Result> results) {
