@@ -41,25 +41,25 @@ namespace VirtualSuspect.Utils{
                 //Parse the focus according to the dimension
                 switch (focusDimension) {
                     case KnowledgeBase.DimentionsEnum.Action:
-                        //TODO: newQueryDto.AddFocus(new GetActionFocusPredicate());
+                        newQueryDto.AddFocus(new GetActionFocusPredicate());
                         break;
                     case KnowledgeBase.DimentionsEnum.Manner:
-                        //TODO: newQueryDto.AddFocus(new GetMannerFocusPredicate());
+                        newQueryDto.AddFocus(new GetMannerFocusPredicate());
                         break;
                     case KnowledgeBase.DimentionsEnum.Agent:
-                        //TODO: newQueryDto.AddFocus(new GetAgentFocusPredicate());
+                        newQueryDto.AddFocus(new GetAgentFocusPredicate());
                         break;
                     case KnowledgeBase.DimentionsEnum.Location:
                         newQueryDto.AddFocus(new GetLocationFocusPredicate());
                         break;
                     case KnowledgeBase.DimentionsEnum.Time:
-                        //TODO: newQueryDto.AddFocus(new GetTimeFocusPredicate());
+                        newQueryDto.AddFocus(new GetTimeFocusPredicate());
                         break;
                     case KnowledgeBase.DimentionsEnum.Reason:
-                        //TODO: newQueryDto.AddFocus(new GetReasonFocusPredicate());
+                        newQueryDto.AddFocus(new GetReasonFocusPredicate());
                         break;
                     case KnowledgeBase.DimentionsEnum.Theme:
-                        //TODO: newQueryDto.AddFocus(new GetThemeFocusPredicate());
+                        newQueryDto.AddFocus(new GetThemeFocusPredicate());
                         break;
                 }
 
@@ -145,9 +145,9 @@ namespace VirtualSuspect.Utils{
 
                             case QueryDto.OperatorEnum.Equal:
 
-                                string action = conditionNode.SelectSingleNode("value").InnerText;
+                                string location = conditionNode.SelectSingleNode("value").InnerText;
 
-                                newQueryDto.AddCondition(new LocationEqualConditionPredicate(action));
+                                newQueryDto.AddCondition(new LocationEqualConditionPredicate(location));
 
                                 break;
 
@@ -161,14 +161,25 @@ namespace VirtualSuspect.Utils{
 
                         switch (conditionOperator) {
                             case QueryDto.OperatorEnum.Equal:
-                                //return QueryDto.OperatorEnum.Equal;
+
+                                string time = conditionNode.SelectSingleNode("value").InnerText;
+
+                                newQueryDto.AddCondition(new TimeEqualConditionPredicate(time));
+
                                 break;
 
                             case QueryDto.OperatorEnum.Between:
-                                //return QueryDto.OperatorEnum.Between;
+
+                                string begin = conditionNode.SelectSingleNode("begin").InnerText;
+
+                                string end = conditionNode.SelectSingleNode("end").InnerText;
+
+                                newQueryDto.AddCondition(new TimeBetweenConditionPredicate(begin, end));
+
                                 break;
 
                             default:
+
                                 //nothing to do
                                 break;
                         }
@@ -242,7 +253,7 @@ namespace VirtualSuspect.Utils{
                 case "location":
                     return KnowledgeBase.DimentionsEnum.Location;
                 case "agent":
-                    return KnowledgeBase.DimentionsEnum.Location;
+                    return KnowledgeBase.DimentionsEnum.Agent;
                 case "theme":
                     return KnowledgeBase.DimentionsEnum.Theme;
                 case "manner":

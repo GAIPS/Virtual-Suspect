@@ -222,12 +222,16 @@ namespace VirtualSuspect{
             } else if(query.QueryType == QueryDto.QueryTypeEnum.GetInformation) { //Test get information
 
                 List<EventNode> queryEvents = new List<EventNode>();
+                bool conditionTested = false;
 
                 //Iterate all the conditions (Disjuctive filtering)
                 foreach(IConditionPredicate predicate in query.QueryConditions) {
-
-                    queryEvents.AddRange(story.FindAll(predicate.CreatePredicate()));
-
+                    
+                    if(!conditionTested) {
+                        queryEvents.AddRange(story.FindAll(predicate.CreatePredicate()));
+                        conditionTested = true;
+                    }else
+                        queryEvents = queryEvents.FindAll(predicate.CreatePredicate());
                 }
 
                 //Remove Duplicates
@@ -237,7 +241,6 @@ namespace VirtualSuspect{
                 foreach (IFocusPredicate focus in query.QueryFocus) {
 
                     result.AddResults(queryEvents.Select(focus.CreateFunction()));
-                    
 
                 }
 

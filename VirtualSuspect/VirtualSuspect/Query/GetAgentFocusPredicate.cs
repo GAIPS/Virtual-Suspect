@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace VirtualSuspect.Query
 {
-    public class GetLocationFocusPredicate : IFocusPredicate{
+    public class GetAgentFocusPredicate : IFocusPredicate{
 
         public Func<EventNode, QueryResult.Result> CreateFunction() {
             return delegate (EventNode node) {    
 
-                return new QueryResult.Result(node.Location.Value, 1 , KnowledgeBase.DimentionsEnum.Location);
+                return new QueryResult.Result(node.Agent.Select(x => x.Value), node.Agent.Count , KnowledgeBase.DimentionsEnum.Agent);
 
             };
         }

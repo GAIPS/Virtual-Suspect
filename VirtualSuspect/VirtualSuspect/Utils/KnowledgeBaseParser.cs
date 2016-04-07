@@ -34,18 +34,18 @@ namespace VirtualSuspect.Utils
 
                 string type = entityNode.SelectSingleNode("type").InnerText;
 
-                if (type == "TimeSpan") {
+                if (type == "TimeSpan") {//Example: dd/MM/yyyyTHH:mm:ss>dd/MM/yyyyTHH:mm:ss
 
                     string beginTime = entityNode.SelectSingleNode("begin").InnerText;
 
                     string endTime = entityNode.SelectSingleNode("end").InnerText;
 
-                    EntityDto newEntityDto = new EntityDto(beginTime + ":TO:" + endTime, "TimePeriod");
+                    EntityDto newEntityDto = new EntityDto(beginTime + ">" + endTime, "TimeSpan");
 
                     entities.Add(id, kb.CreateNewEntity(newEntityDto)); //Source of Polymorphism problems
 
                 }
-                else if (type == "TimeInstant") {
+                else if (type == "TimeInstant") {//Example: dd/MM/yyyyTHH:mm:ss
 
                     string time = entityNode.SelectSingleNode("value").InnerText;
 

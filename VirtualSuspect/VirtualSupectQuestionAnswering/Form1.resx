@@ -119,20 +119,26 @@
   </resheader>
   <data name="tbQuestionStructure.Text" xml:space="preserve">
     <value>&lt;question&gt;
-	&lt;speech&gt;"Onde comeu no dia 21 de Janeiro de 2016?"&lt;/speech&gt;
-	&lt;type&gt;get-information&lt;/type&gt;
-	&lt;focus&gt;
-		&lt;dimension&gt;location&lt;/dimension&gt;
-		&lt;speech&gt;"Onde"&lt;/speech&gt;
-	&lt;/focus&gt;
-	&lt;condition&gt;
-		&lt;dimension&gt;action&lt;/dimension&gt;
-		&lt;operator&gt;equal&lt;/operator&gt;
-		&lt;value&gt;Comer&lt;/value&gt;
-		&lt;speech&gt;"comeu"&lt;/speech&gt;
-	&lt;/condition&gt;
-&lt;/question&gt;
-</value>
+ &lt;speech&gt;"Onde comeu no dia 21 de Janeiro de 2016?"&lt;/speech&gt;
+ &lt;type&gt;get-information&lt;/type&gt;
+ &lt;focus&gt;
+  &lt;dimension&gt;location&lt;/dimension&gt;
+  &lt;speech&gt;"Onde"&lt;/speech&gt;
+ &lt;/focus&gt;
+ &lt;condition&gt;
+  &lt;dimension&gt;action&lt;/dimension&gt;
+  &lt;operator&gt;equal&lt;/operator&gt;
+  &lt;value&gt;Comer&lt;/value&gt;
+  &lt;speech&gt;"comeu"&lt;/speech&gt;
+ &lt;/condition&gt; 
+ &lt;condition&gt;
+  &lt;dimension&gt;time&lt;/dimension&gt;
+  &lt;operator&gt;between&lt;/operator&gt;
+  &lt;begin&gt;21/01/2016T00:00:00&lt;/begin&gt;
+  &lt;end&gt;21/01/2016T23:59:59&lt;/end&gt;
+  &lt;speech&gt;"no dia 21 de Janeiro de 2016"&lt;/speech&gt;
+ &lt;/condition&gt;
+&lt;/question&gt;</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

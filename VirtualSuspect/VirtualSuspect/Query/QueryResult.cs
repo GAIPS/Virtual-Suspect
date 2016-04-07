@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VirtualSuspect.Query
 {
@@ -28,14 +29,24 @@ namespace VirtualSuspect.Query
 
         public class Result {
 
-            public string value;
+            public List<string> values;
 
             public int cardinality;
 
             public KnowledgeBase.DimentionsEnum dimension;
 
+            public Result(IEnumerable<string> values, int cardinality, KnowledgeBase.DimentionsEnum dimension) {
+                this.values = values.ToList();
+                this.cardinality = cardinality;
+                this.dimension = dimension;
+            }
+
             public Result(string value, int cardinality, KnowledgeBase.DimentionsEnum dimension) {
-                this.value = value;
+                
+                List<string> values = new List<string>();
+                values.Add(value); 
+
+                this.values = values;
                 this.cardinality = cardinality;
                 this.dimension = dimension;
             }

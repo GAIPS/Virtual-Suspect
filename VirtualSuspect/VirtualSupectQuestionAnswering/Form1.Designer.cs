@@ -68,6 +68,7 @@
             // 
             // tbQuestionStructure
             // 
+            this.tbQuestionStructure.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbQuestionStructure.Location = new System.Drawing.Point(6, 90);
             this.tbQuestionStructure.Multiline = true;
             this.tbQuestionStructure.Name = "tbQuestionStructure";
