@@ -63,6 +63,11 @@
 		<type>Workplace</type>
 		<value>Gabinete da Vania</value>
 	</entity>
+	<entity>
+		<id>13</id>
+		<type>Food</type>
+		<value>Salpicão</value>
+	</entity>
 
 	<event>
 		<action>Aceder</action>
@@ -96,6 +101,9 @@
 		</association>
 		<association relation="Agent">
 			<entity id="2"/>
+		</association>
+		<association relation="Theme">
+			<entity id="13"/>
 		</association>
 	</event>
 

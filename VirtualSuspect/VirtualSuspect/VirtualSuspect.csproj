@@ -44,6 +44,7 @@
     <Compile Include="ActionNode.cs" />
     <Compile Include="ChangeableGroup.cs" />
     <Compile Include="ChangeableGroupDto.cs" />
+    <Compile Include="Exception\DimensionParseException.cs" />
     <Compile Include="Query\GetTimeFocusPredicate.cs" />
     <Compile Include="Query\GetReasonFocusPredicate.cs" />
     <Compile Include="Query\GetMannerFocusPredicate.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Query\LocationEqualConditionPredicate.cs" />
     <Compile Include="Query\QueryDto.cs" />
     <Compile Include="Query\QueryResult.cs" />
+    <Compile Include="Utils\AnswerGenerator.cs" />
     <Compile Include="Utils\KnowledgeBaseParser.cs" />
     <Compile Include="Exception\MessageFieldException.cs" />
     <Compile Include="Utils\QuestionParser.cs" />

@@ -14,8 +14,51 @@ namespace VirtualSuspect{
     
         public enum DimentionsEnum { Action, Agent, Theme, Manner, Location, Time, Reason };
         
-        #endregion
+        public static DimentionsEnum convertToDimentions(string dimension) {
 
+            switch (dimension) {
+                case "action":
+                    return KnowledgeBase.DimentionsEnum.Action;
+                case "location":
+                    return KnowledgeBase.DimentionsEnum.Location;
+                case "agent":
+                    return KnowledgeBase.DimentionsEnum.Agent;
+                case "theme":
+                    return KnowledgeBase.DimentionsEnum.Theme;
+                case "manner":
+                    return KnowledgeBase.DimentionsEnum.Manner;
+                case "reason":
+                    return KnowledgeBase.DimentionsEnum.Reason;
+                case "time":
+                    return KnowledgeBase.DimentionsEnum.Time;
+                default:
+                    throw new DimensionParseException("Wrong dimension: " + dimension);
+            }
+        }
+
+        public static String convertToString(DimentionsEnum dimension) {
+
+            switch (dimension) {
+                case DimentionsEnum.Action:
+                    return "action";
+                case DimentionsEnum.Agent:
+                    return "agent";
+                case DimentionsEnum.Location:
+                    return "location";
+                case DimentionsEnum.Manner:
+                    return "manner";
+                case DimentionsEnum.Reason:
+                    return "reason";
+                case DimentionsEnum.Theme:
+                    return "theme";
+                case DimentionsEnum.Time:
+                    return "time";
+                default:
+                    throw new DimensionParseException("Wrong dimension: " + dimension);
+            }
+        }
+
+        #endregion
 
         /// <summary>
         /// List of available entities

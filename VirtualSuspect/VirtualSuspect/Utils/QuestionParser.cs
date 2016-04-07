@@ -36,7 +36,7 @@ namespace VirtualSuspect.Utils{
 
             foreach(XmlNode focusNode in focusNodeList) {
 
-                KnowledgeBase.DimentionsEnum focusDimension = parseDimension(focusNode.SelectSingleNode("dimension").InnerText);
+                KnowledgeBase.DimentionsEnum focusDimension = KnowledgeBase.convertToDimentions(focusNode.SelectSingleNode("dimension").InnerText);
 
                 //Parse the focus according to the dimension
                 switch (focusDimension) {
@@ -69,7 +69,7 @@ namespace VirtualSuspect.Utils{
             XmlNodeList conditionsNodeList = question.SelectNodes("/question/condition");
             foreach(XmlNode conditionNode in conditionsNodeList) {
                 
-                KnowledgeBase.DimentionsEnum conditionDimension = parseDimension(conditionNode.SelectSingleNode("dimension").InnerText);
+                KnowledgeBase.DimentionsEnum conditionDimension = KnowledgeBase.convertToDimentions(conditionNode.SelectSingleNode("dimension").InnerText);
 
                 QueryDto.OperatorEnum conditionOperator = parseOperator(conditionDimension, conditionNode.SelectSingleNode("operator").InnerText);
 
@@ -238,34 +238,6 @@ namespace VirtualSuspect.Utils{
                 }
 
             return newQueryDto;
-        }
-
-        /// <summary>
-        /// Helper method to map string dimensions to dimensions in the enum
-        /// </summary>
-        /// <param name="dimensionToParse">dimension to parse</param>
-        /// <returns></returns>
-        private static KnowledgeBase.DimentionsEnum parseDimension(String dimensionToParse) {
-
-            switch(dimensionToParse) {
-                case "action":
-                    return KnowledgeBase.DimentionsEnum.Action;
-                case "location":
-                    return KnowledgeBase.DimentionsEnum.Location;
-                case "agent":
-                    return KnowledgeBase.DimentionsEnum.Agent;
-                case "theme":
-                    return KnowledgeBase.DimentionsEnum.Theme;
-                case "manner":
-                    return KnowledgeBase.DimentionsEnum.Manner;
-                case "reason":
-                    return KnowledgeBase.DimentionsEnum.Reason;
-                case "time":
-                    return KnowledgeBase.DimentionsEnum.Time;
-                default:
-                    throw new MessageFieldException("Invalid dimension: " + dimensionToParse);
-            }
-            
         }
 
         /// <summary>
