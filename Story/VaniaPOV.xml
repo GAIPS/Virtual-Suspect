@@ -31,37 +31,33 @@
 		<value>Pedro saiu do gabinete do Guilherme</value>
 	</entity>
 
-	<episode>
-		<action>
-			<name>Talk</name>
-			<association relation="Time">
-				<entity id="1"/>
-			</association>
-			<association relation="Location">
-				<entity id="2"/>
-			</association>
-			<association relation="Agent">
-				<entity id="3"/>
-			</association>
-			<association relation="Agent">
-				<entity id="4"/>
-			</association>
-		</action>
-	</episode>
-
-	<episode>
-		<action>
-			<name>See</name>
-			<association relation="Time">
-				<entity id="5"/>
-			</association>
-			<association relation="Location">
-				<entity id="2"/>
-			</association>
-			<association relation="Theme">
-				<entity id="6"/>
-			</association>
-		</action>
-	</episode>
+	<action>
+		<name>Talk</name>
+		<association relation="Time">
+			<entity id="1"/>
+		</association>
+		<association relation="Location">
+			<entity id="2"/>
+		</association>
+		<association relation="Agent">
+			<entity id="3"/>
+		</association>
+		<association relation="Agent">
+			<entity id="4"/>
+		</association>
+	</action>
+	
+	<action>
+		<name>See</name>
+		<association relation="Time">
+			<entity id="5"/>
+		</association>
+		<association relation="Location">
+			<entity id="2"/>
+		</association>
+		<association relation="Theme">
+			<entity id="6"/>
+		</association>
+	</action>
 
 </story>

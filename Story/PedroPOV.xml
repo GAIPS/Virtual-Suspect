@@ -81,136 +81,112 @@
 		<value>Café "O Discreto"</value>
 	</entity>
 
+	<action>
+		<name>Access</name>
+		<association relation="Time">
+			<entity id="1"/>
+		</association>
+		<association relation="Location">
+			<entity id="7"/>
+		</association>
+		<association relation="Agent">
+			<entity id="9"/>
+		</association>
+		<association relation="Theme">
+			<entity id="6"/>
+		</association>
+		<association relation="Manner">
+			<entity id="8"/>
+		</association>
+	</action>
 
-	<episode>
-		<judgmental>
-			<factor>80</factor>
-			<alternative></alternative>
-		</judgmental>
-		<action>
-			<name>Access</name>
-			<association relation="Time">
-				<entity id="1"/>
-			</association>
-			<association relation="Location">
-				<entity id="7"/>
-			</association>
-			<association relation="Agent">
-				<entity id="9"/>
-			</association>
-			<association relation="Theme">
-				<entity id="6"/>
-			</association>
-			<association relation="Manner">
-				<entity id="8"/>
-			</association>
-		</action>
-	</episode>
+	<action>
+		<name>Talk</name>
+		<association relation="Time">
+			<entity id="14"/>
+		</association>
+		<association relation="Location">
+			<entity id="15"/>
+		</association>
+		<association relation="Agent">
+			<entity id="9"/>
+		</association>
+		<association relation="Agent">
+			<entity id="13"/>
+		</association>
+		<association relation="Theme">
+			<entity id="10"/>
+		</association>
+	</action>
 
-	<episode>
-		<action>
-			<name>Talk</name>
-			<association relation="Time">
-				<entity id="14"/>
-			</association>
-			<association relation="Location">
-				<entity id="15"/>
-			</association>
-			<association relation="Agent">
-				<entity id="9"/>
-			</association>
-			<association relation="Agent">
-				<entity id="13"/>
-			</association>
-			<association relation="Theme">
-				<entity id="10"/>
-			</association>
-		</action>
-	</episode>
+	<action>
+		<name>Access</name>
+		<association relation="Time">
+			<entity id="2"/>
+		</association>
+		<association relation="Location">
+			<entity id="7"/>
+		</association>
+		<association relation="Agent">
+			<entity id="9"/>
+		</association>
+		<association relation="Theme">
+			<entity id="10"/>
+		</association>
+		<association relation="Manner">
+			<entity id="11"/>
+		</association>
+	</action>
 
-	<episode>
-		<judgmental>
-			<factor>100</factor>
-			<alternative></alternative>
-		</judgmental>
-		<action>
-			<name>Access</name>
-			<association relation="Time">
-				<entity id="2"/>
-			</association>
-			<association relation="Location">
-				<entity id="7"/>
-			</association>
-			<association relation="Agent">
-				<entity id="9"/>
-			</association>
-			<association relation="Theme">
-				<entity id="10"/>
-			</association>
-			<association relation="Manner">
-				<entity id="11"/>
-			</association>
-		</action>
-	</episode>
+	<action>
+		<name>Eat</name>
+		<association relation="Time">
+			<entity id="3"/>
+		</association>
+		<association relation="Location">
+			<entity id="7"/>
+		</association>
+		<association relation="Agent">
+			<entity id="9"/>
+		</association>
+	</action>
 
-	<episode>
-		<action>
-			<name>Eat</name>
-			<association relation="Time">
-				<entity id="3"/>
-			</association>
-			<association relation="Location">
-				<entity id="7"/>
-			</association>
-			<association relation="Agent">
-				<entity id="9"/>
-			</association>
-		</action>
-	</episode>
+	<action>
+		<name>Access</name>
+		<association relation="Time">
+			<entity id="4"/>
+		</association>
+		<association relation="Location">
+			<entity id="7"/>
+		</association>
+		<association relation="Agent">
+			<entity id="9"/>
+		</association>
+		<association relation="Theme">
+			<entity id="10"/>
+		</association>
+		<association relation="Manner">
+			<entity id="11"/>
+		</association>
+	</action>
 
-	<episode>
-		<action>
-			<name>Access</name>
-			<association relation="Time">
-				<entity id="4"/>
-			</association>
-			<association relation="Location">
-				<entity id="7"/>
-			</association>
-			<association relation="Agent">
-				<entity id="9"/>
-			</association>
-			<association relation="Theme">
-				<entity id="10"/>
-			</association>
-			<association relation="Manner">
-				<entity id="11"/>
-			</association>
-		</action>
-	</episode>
 
-	<episode>
-		<judgmental>
-			<factor>80</factor>
-			<alternative></alternative>
-		</judgmental>
-		<action>
-			<name>Talk</name>
-			<association relation="Time">
-				<entity id="5"/>
-			</association>
-			<association relation="Location">
-				<entity id="12"/>
-			</association>
-			<association relation="Agent">
-				<entity id="9"/>
-			</association>
-			<association relation="Agent">
-				<entity id="13"/>
-			</association>
-			<association relation="Theme">
-				<entity id="10"/>
-			</association>
-		</action>
-	</episode>
+	<action>
+		<name>Talk</name>
+		<association relation="Time">
+			<entity id="5"/>
+		</association>
+		<association relation="Location">
+			<entity id="12"/>
+		</association>
+		<association relation="Agent">
+			<entity id="9"/>
+		</association>
+		<association relation="Agent">
+			<entity id="13"/>
+		</association>
+		<association relation="Theme">
+			<entity id="10"/>
+		</association>
+	</action>
 </story>

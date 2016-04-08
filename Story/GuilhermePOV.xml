@@ -9,7 +9,7 @@
 		<id>2</id>
 		<type>TimeSpan</type>
 		<begin>1/03/2016 11:00</begin>
-		<end>1/03/2016 13:45</end>
+		<end>1/03/2016 12:15</end>
 	</entity>
 	<entity>
 		<id>3</id>
@@ -58,106 +58,96 @@
 		<type>Workplace</type>
 		<value>Gabinete do Guilherme</value>
 	</entity>
+	<entity>
+		<id>12</id>
+		<type>TimeSpan</type>
+		<begin>1/03/2016 12:15</begin>
+		<end>1/03/2016 13:45</end>
+	</entity>
 
-	<episode>
-		<compromising>
-			<factor>80</factor>
-			<alternative></alternative>
-		</compromising>
-		<action>
-			<name>Talk</name>
-			<association relation="Time">
-				<entity id="1"/>
-			</association>
-			<association relation="Location">
-				<entity id="8"/>
-			</association>
-			<association relation="Agent">
-				<entity id="5"/>
-			</association>
-			<association relation="Agent">
-				<entity id="6"/>
-			</association>
-			<association relation="Theme">
-				<entity id="9"/>
-			</association>
-		</action>
-	</episode>
+	<action >
+		<name>Talk</name>
+		<association relation="Time">
+			<entity id="1"/>
+		</association>
+		<association relation="Location">
+			<entity id="8"/>
+		</association>
+		<association relation="Agent">
+			<entity id="5"/>
+		</association>
+		<association relation="Agent">
+			<entity id="6"/>
+		</association>
+		<association relation="Theme">
+			<entity id="9"/>
+		</association>
+	</action>
 
-	<episode>
-		<action>
-			<name>Eat</name>
-			<association relation="Time">
-				<entity id="2"/>
-			</association>
-			<association relation="Location">
-				<entity id="10"/>
-			</association>
-			<association relation="Agent">
-				<entity id="5"/>
-			</association>
-			<association relation="Agent">
-				<entity id="7"/>
-			</association>
-		</action>
-		<action>
-			<name>Talk</name>
-			<association relation="Time">
-				<entity id="2"/>
-			</association>
-			<association relation="Location">
-				<entity id="10"/>
-			</association>
-			<association relation="Agent">
-				<entity id="5"/>
-			</association>
-			<association relation="Agent">
-				<entity id="7"/>
-			</association>
-			<association relation="Theme">
-				<entity id="9"/>
-			</association>
-		</action>
-	</episode>
+	<action>
+		<name>Eat</name>
+		<association relation="Time">
+			<entity id="2"/>
+		</association>
+		<association relation="Location">
+			<entity id="10"/>
+		</association>
+		<association relation="Agent">
+			<entity id="5"/>
+		</association>
+		<association relation="Agent">
+			<entity id="7"/>
+		</association>
+	</action>
+	<action>
+		<name>Talk</name>
+		<association relation="Time">
+			<entity id="12"/>
+		</association>
+		<association relation="Location">
+			<entity id="10"/>
+		</association>
+		<association relation="Agent">
+			<entity id="5"/>
+		</association>
+		<association relation="Agent">
+			<entity id="7"/>
+		</association>
+		<association relation="Theme">
+			<entity id="9"/>
+		</association>
+	</action>
 
-	<episode>
-		<action>
-			<name>Study</name>
-			<association relation="Time">
-				<entity id="3"/>
-			</association>
-			<association relation="Location">
-				<entity id="11"/>
-			</association>
-			<association relation="Agent">
-				<entity id="5"/>
-			</association>
-		</action>
-	</episode>
+	<action>
+		<name>Study</name>
+		<association relation="Time">
+			<entity id="3"/>
+		</association>
+		<association relation="Location">
+			<entity id="11"/>
+		</association>
+		<association relation="Agent">
+			<entity id="5"/>
+		</association>
+	</action>
 
-	<episode>
-		<compromising>
-			<factor>80</factor>
-			<alternative></alternative>
-		</compromising>
-		<action>
-			<name>Talk</name>
-			<association relation="Time">
-				<entity id="4"/>
-			</association>
-			<association relation="Location">
-				<entity id="11"/>
-			</association>
-			<association relation="Agent">
-				<entity id="5"/>
-			</association>
-			<association relation="Agent">
-				<entity id="6"/>
-			</association>
-			<association relation="Theme">
-				<entity id="9"/>
-			</association>
-		</action>
-	</episode>
+	<action>
+		<name>Talk</name>
+		<association relation="Time">
+			<entity id="4"/>
+		</association>
+		<association relation="Location">
+			<entity id="11"/>
+		</association>
+		<association relation="Agent">
+			<entity id="5"/>
+		</association>
+		<association relation="Agent">
+			<entity id="6"/>
+		</association>
+		<association relation="Theme">
+			<entity id="9"/>
+		</association>
+	</action>
 
 </story>

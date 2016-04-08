@@ -66,11 +66,14 @@
 	<entity>
 		<id>13</id>
 		<type>Food</type>
-		<value>Salpicão</value>
+		<value>Bitoque</value>
 	</entity>
 
 	<event>
-		<action>Aceder</action>
+		<id>1</id>
+		<real>true</real>
+		<accusatory>0</accusatory>
+		<action>Access</action>
 		<association relation="Time">
 			<entity id="7"/>
 		</association>
@@ -89,7 +92,10 @@
 	</event>
 
 	<event>
-		<action>Comer</action>
+		<id>2</id>
+		<real>true</real>
+		<accusatory>0</accusatory>
+		<action>Eat</action>
 		<association relation="Time">
 			<entity id="8"/>
 		</association>
@@ -108,7 +114,10 @@
 	</event>
 
 	<event>
-		<action>Falar</action>
+		<id>3</id>
+		<real>true</real>
+		<accusatory>0</accusatory>
+		<action>Talk</action>
 		<association relation="Time">
 			<entity id="8"/>
 		</association>
@@ -127,7 +136,10 @@
 	</event>
 
 	<event>
-		<action>Aceder</action>
+		<id>4</id>
+		<real>true</real>
+		<accusatory>0</accusatory>
+		<action>Access</action>
 		<association relation="Time">
 			<entity id="10"/>
 		</association>
@@ -146,7 +158,10 @@
 	</event>
 
 	<event>
-		<action>Falar</action>
+		<id>5</id>
+		<real>true</real>
+		<accusatory>0</accusatory>
+		<action>Speak</action>
 		<association relation="Time">
 			<entity id="11"/>
 		</association>
@@ -160,5 +175,4 @@
 			<entity id="3"/>
 		</association>
 	</event>
-
 </story>
