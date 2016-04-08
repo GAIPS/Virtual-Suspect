@@ -51,7 +51,7 @@
             // 
             // btProcessSentence
             // 
-            this.btProcessSentence.Location = new System.Drawing.Point(158, 58);
+            this.btProcessSentence.Location = new System.Drawing.Point(285, 61);
             this.btProcessSentence.Name = "btProcessSentence";
             this.btProcessSentence.Size = new System.Drawing.Size(107, 23);
             this.btProcessSentence.TabIndex = 0;
@@ -63,22 +63,26 @@
             this.tbQuestionSentence.Location = new System.Drawing.Point(6, 32);
             this.tbQuestionSentence.Multiline = true;
             this.tbQuestionSentence.Name = "tbQuestionSentence";
-            this.tbQuestionSentence.Size = new System.Drawing.Size(259, 20);
+            this.tbQuestionSentence.Size = new System.Drawing.Size(386, 20);
             this.tbQuestionSentence.TabIndex = 1;
             // 
             // tbQuestionStructure
             // 
+            this.tbQuestionStructure.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.tbQuestionStructure.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbQuestionStructure.Location = new System.Drawing.Point(6, 90);
             this.tbQuestionStructure.Multiline = true;
             this.tbQuestionStructure.Name = "tbQuestionStructure";
             this.tbQuestionStructure.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbQuestionStructure.Size = new System.Drawing.Size(259, 148);
+            this.tbQuestionStructure.Size = new System.Drawing.Size(386, 148);
             this.tbQuestionStructure.TabIndex = 2;
             this.tbQuestionStructure.Text = resources.GetString("tbQuestionStructure.Text");
             // 
             // gpQuestion
             // 
+            this.gpQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.gpQuestion.Controls.Add(this.btAskQuestion);
             this.gpQuestion.Controls.Add(this.label2);
             this.gpQuestion.Controls.Add(this.btProcessSentence);
@@ -88,14 +92,15 @@
             this.gpQuestion.Enabled = false;
             this.gpQuestion.Location = new System.Drawing.Point(12, 103);
             this.gpQuestion.Name = "gpQuestion";
-            this.gpQuestion.Size = new System.Drawing.Size(271, 281);
+            this.gpQuestion.Size = new System.Drawing.Size(398, 281);
             this.gpQuestion.TabIndex = 3;
             this.gpQuestion.TabStop = false;
             this.gpQuestion.Text = "Question";
             // 
             // btAskQuestion
             // 
-            this.btAskQuestion.Location = new System.Drawing.Point(158, 244);
+            this.btAskQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btAskQuestion.Location = new System.Drawing.Point(285, 244);
             this.btAskQuestion.Name = "btAskQuestion";
             this.btAskQuestion.Size = new System.Drawing.Size(107, 23);
             this.btAskQuestion.TabIndex = 4;
@@ -123,22 +128,25 @@
             // 
             // gpAnswer
             // 
+            this.gpAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.gpAnswer.Controls.Add(this.btGenerateAnswer);
             this.gpAnswer.Controls.Add(this.tbAnswerSentence);
             this.gpAnswer.Controls.Add(this.label4);
             this.gpAnswer.Controls.Add(this.label3);
             this.gpAnswer.Controls.Add(this.tbAnswerStructure);
             this.gpAnswer.Enabled = false;
-            this.gpAnswer.Location = new System.Drawing.Point(289, 12);
+            this.gpAnswer.Location = new System.Drawing.Point(416, 12);
             this.gpAnswer.Name = "gpAnswer";
-            this.gpAnswer.Size = new System.Drawing.Size(274, 372);
+            this.gpAnswer.Size = new System.Drawing.Size(383, 372);
             this.gpAnswer.TabIndex = 4;
             this.gpAnswer.TabStop = false;
             this.gpAnswer.Text = "Answer";
             // 
             // btGenerateAnswer
             // 
-            this.btGenerateAnswer.Location = new System.Drawing.Point(161, 306);
+            this.btGenerateAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btGenerateAnswer.Location = new System.Drawing.Point(270, 306);
             this.btGenerateAnswer.Name = "btGenerateAnswer";
             this.btGenerateAnswer.Size = new System.Drawing.Size(107, 23);
             this.btGenerateAnswer.TabIndex = 5;
@@ -147,14 +155,17 @@
             // 
             // tbAnswerSentence
             // 
+            this.tbAnswerSentence.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tbAnswerSentence.Location = new System.Drawing.Point(6, 346);
             this.tbAnswerSentence.Multiline = true;
             this.tbAnswerSentence.Name = "tbAnswerSentence";
-            this.tbAnswerSentence.Size = new System.Drawing.Size(262, 20);
+            this.tbAnswerSentence.ReadOnly = true;
+            this.tbAnswerSentence.Size = new System.Drawing.Size(371, 20);
             this.tbAnswerSentence.TabIndex = 5;
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 330);
             this.label4.Name = "label4";
@@ -173,10 +184,12 @@
             // 
             // tbAnswerStructure
             // 
+            this.tbAnswerStructure.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.tbAnswerStructure.Location = new System.Drawing.Point(6, 32);
             this.tbAnswerStructure.Multiline = true;
             this.tbAnswerStructure.Name = "tbAnswerStructure";
-            this.tbAnswerStructure.Size = new System.Drawing.Size(262, 268);
+            this.tbAnswerStructure.Size = new System.Drawing.Size(371, 268);
             this.tbAnswerStructure.TabIndex = 5;
             // 
             // groupBox3
@@ -187,7 +200,7 @@
             this.groupBox3.Controls.Add(this.btLoadStory);
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(271, 85);
+            this.groupBox3.Size = new System.Drawing.Size(398, 85);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Story";
@@ -215,13 +228,13 @@
             this.lFilePath.AutoEllipsis = true;
             this.lFilePath.Location = new System.Drawing.Point(6, 24);
             this.lFilePath.Name = "lFilePath";
-            this.lFilePath.Size = new System.Drawing.Size(178, 18);
+            this.lFilePath.Size = new System.Drawing.Size(305, 18);
             this.lFilePath.TabIndex = 1;
             this.lFilePath.Text = "No file path selected";
             // 
             // btLoadStory
             // 
-            this.btLoadStory.Location = new System.Drawing.Point(190, 19);
+            this.btLoadStory.Location = new System.Drawing.Point(317, 19);
             this.btLoadStory.Name = "btLoadStory";
             this.btLoadStory.Size = new System.Drawing.Size(75, 23);
             this.btLoadStory.TabIndex = 0;
@@ -233,7 +246,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 396);
+            this.ClientSize = new System.Drawing.Size(811, 396);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpAnswer);
             this.Controls.Add(this.gpQuestion);

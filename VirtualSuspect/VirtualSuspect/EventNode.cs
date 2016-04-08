@@ -14,6 +14,14 @@ namespace VirtualSuspect
             }
         }
 
+        private uint accusatory;
+
+        public uint Accusatory {
+            get {
+                return accusatory;
+            }
+        }
+
         private ActionNode action;
 
         public ActionNode Action
@@ -84,9 +92,10 @@ namespace VirtualSuspect
             }
         }
 
-        public EventNode(uint id, ActionNode action, EntityNode time, EntityNode location) {
+        public EventNode(uint id, uint accusatory, ActionNode action, EntityNode time, EntityNode location) {
 
             this.id = id;
+            this.accusatory = accusatory;
             this.action = action;
             this.time = time;
             this.location = location;

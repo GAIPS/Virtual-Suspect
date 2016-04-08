@@ -180,7 +180,7 @@ namespace VirtualSuspect{
             uint newEventNodeId = getNextNodeId("event");
 
             //Create a new node with the default fields
-            EventNode newEventNode = new EventNode(newEventNodeId, ev.Action, ev.Time, ev.Location);
+            EventNode newEventNode = new EventNode(ev.Accusatory, newEventNodeId, ev.Action, ev.Time, ev.Location);
 
             //Add other fields
             newEventNode.AddAgent(ev.Agent);
@@ -264,16 +264,11 @@ namespace VirtualSuspect{
 
             } else if(query.QueryType == QueryDto.QueryTypeEnum.GetInformation) { //Test get information
 
-                List<EventNode> queryEvents = new List<EventNode>();
-                bool conditionTested = false;
+                List<EventNode> queryEvents = story;
 
                 //Iterate all the conditions (Disjuctive filtering)
                 foreach(IConditionPredicate predicate in query.QueryConditions) {
-                    
-                    if(!conditionTested) {
-                        queryEvents.AddRange(story.FindAll(predicate.CreatePredicate()));
-                        conditionTested = true;
-                    }else
+                  
                         queryEvents = queryEvents.FindAll(predicate.CreatePredicate());
                 }
 

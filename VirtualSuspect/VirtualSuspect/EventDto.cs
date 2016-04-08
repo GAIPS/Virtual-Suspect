@@ -4,6 +4,24 @@ namespace VirtualSuspect
 {
     public class EventDto {
 
+        private bool real;
+
+        public bool Real
+        {
+            get
+            {
+                return real;
+            }
+        }
+
+        private uint accusatory;
+
+        public uint Accusatory {
+            get {
+                return accusatory;
+            }
+        }
+
         private ActionNode action;
 
         public ActionNode Action
@@ -74,11 +92,13 @@ namespace VirtualSuspect
             }
         }
 
-        public EventDto(ActionNode action, EntityNode time, EntityNode location) {
-
+        public EventDto(uint accusatory, ActionNode action, EntityNode time, EntityNode location, bool real) {
+            
+            this.accusatory = accusatory;
             this.action = action;
             this.time = time;
             this.location = location;
+            this.real = real;
 
             agent = new List<EntityNode>();
             theme = new List<EntityNode>();
