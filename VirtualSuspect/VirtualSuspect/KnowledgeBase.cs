@@ -279,9 +279,6 @@ namespace VirtualSuspect{
                         queryEvents = queryEvents.FindAll(predicate.CreatePredicate());
                 }
 
-                //Remove Duplicates
-                queryEvents.Distinct();
-
                 //Select entities from the dimension
                 foreach (IFocusPredicate focus in query.QueryFocus) {
 
@@ -289,7 +286,11 @@ namespace VirtualSuspect{
 
                 }
 
-                //TODO: Perform Cardinality Check
+                //Count Cardinality
+                result.CountResult();
+
+
+
             }
 
             return result;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -70,6 +71,37 @@ namespace VirtualSuspect.Query
                 this.values = values;
                 this.cardinality = cardinality;
                 this.dimension = dimension;
+            }
+        }
+
+        internal void CountResult() {
+
+            List<Result> newUniqueResults = new List<Result>();
+
+            IEqualityComparer<Result> comparer = new GroupByComparer();
+            newUniqueResults.AddRange(results.GroupBy(x => x, comparer).Select(x => x.First()));
+
+            foreach(Result result in newUniqueResults) {
+            
+                result.cardinality = results.Count(x => comparer.Equals(x ,result));
+
+            }
+
+            results = newUniqueResults;
+        }
+
+        private class GroupByComparer : IEqualityComparer<Result>
+        {
+            public bool Equals(Result x, Result y) {
+
+                return x.dimension == y.dimension && Enumerable.SequenceEqual(x.values.OrderBy(t=>t), y.values.OrderBy(t => t));
+
+            }
+
+            public int GetHashCode(Result obj) {
+                int test1=obj.dimension.GetHashCode();
+                int test2 = obj.values.Sum(x => x.GetHashCode());
+                return obj.dimension.GetHashCode() + obj.values.Sum(x => x.GetHashCode());
             }
         }
     }
