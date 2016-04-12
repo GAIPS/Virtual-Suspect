@@ -42,6 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbAnswerStructure = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btViewData = new System.Windows.Forms.Button();
             this.lStoryStatus = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lFilePath = new System.Windows.Forms.Label();
@@ -223,6 +224,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btViewData);
             this.groupBox3.Controls.Add(this.lStoryStatus);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.lFilePath);
@@ -234,6 +236,18 @@
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Story";
+            // 
+            // btViewData
+            // 
+            this.btViewData.Enabled = false;
+            this.btViewData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btViewData.Location = new System.Drawing.Point(317, 50);
+            this.btViewData.Name = "btViewData";
+            this.btViewData.Size = new System.Drawing.Size(75, 23);
+            this.btViewData.TabIndex = 4;
+            this.btViewData.Text = "View Data";
+            this.btViewData.UseVisualStyleBackColor = true;
+            this.btViewData.Click += new System.EventHandler(this.button1_Click);
             // 
             // lStoryStatus
             // 
@@ -317,6 +331,7 @@
         private System.Windows.Forms.Label lStoryStatus;
         private System.Windows.Forms.ComboBox cbQuestionTemplate;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btViewData;
     }
 }
 

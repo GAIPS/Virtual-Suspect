@@ -49,6 +49,7 @@ namespace VirtualSupectQuestionAnswering
 
             gpAnswer.Enabled = true;
             gpQuestion.Enabled = true;
+            btViewData.Enabled = true;
 
         }
 
@@ -155,6 +156,12 @@ namespace VirtualSupectQuestionAnswering
         private void cbQuestionTemplate_SelectedIndexChanged(object sender, EventArgs e) {
 
             tbQuestionStructure.Text = ((QuestionTemplate)cbQuestionTemplate.SelectedItem).TemplateContent;
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+
+            DataVisualizer dv = new DataVisualizer(virtualSuspectKb);
+            dv.Show();
         }
     }
 }

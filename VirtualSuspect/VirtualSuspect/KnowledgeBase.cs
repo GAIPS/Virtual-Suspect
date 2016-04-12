@@ -65,16 +65,38 @@ namespace VirtualSuspect{
         /// </summary>
         private List<EntityNode> entities;
 
+        public List<EntityNode> Entities {
+            get {
+                return entities;
+            }
+        }
+
         /// <summary>
         /// List of available actions
         /// </summary>
         private List<ActionNode> actions;
+
+        public List<ActionNode> Actions
+        {
+            get
+            {
+                return actions;
+            }
+        }
 
         /// <summary>
         /// List of available events
         /// </summary>
         private List<EventNode> events;
 
+        public List<EventNode> Events
+        {
+            get
+            {
+                return events;
+            }
+        }
+        
         /// <summary>
         /// List of content that is changeable
         /// </summary>
@@ -180,7 +202,7 @@ namespace VirtualSuspect{
             uint newEventNodeId = getNextNodeId("event");
 
             //Create a new node with the default fields
-            EventNode newEventNode = new EventNode(ev.Accusatory, newEventNodeId, ev.Action, ev.Time, ev.Location);
+            EventNode newEventNode = new EventNode(newEventNodeId, ev.Accusatory, ev.Action, ev.Time, ev.Location);
 
             //Add other fields
             newEventNode.AddAgent(ev.Agent);

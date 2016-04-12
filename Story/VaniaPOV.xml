@@ -31,8 +31,11 @@
 		<value>Pedro saiu do gabinete do Guilherme</value>
 	</entity>
 
-	<action>
-		<name>Talk</name>
+	<event>
+		<id>2</id>
+		<action>Talk</action>
+		<real>true</real>
+		<accusatory>0</accusatory>
 		<association relation="Time">
 			<entity id="1"/>
 		</association>
@@ -45,10 +48,13 @@
 		<association relation="Agent">
 			<entity id="4"/>
 		</association>
-	</action>
+	</event>
 	
-	<action>
-		<name>See</name>
+	<event>
+		<id>1</id>
+		<action>See</action>
+		<real>true</real>
+		<accusatory>0</accusatory>
 		<association relation="Time">
 			<entity id="5"/>
 		</association>
@@ -58,6 +64,6 @@
 		<association relation="Theme">
 			<entity id="6"/>
 		</association>
-	</action>
+	</event>
 
 </story>
