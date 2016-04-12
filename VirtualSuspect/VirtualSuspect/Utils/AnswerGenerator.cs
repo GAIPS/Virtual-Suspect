@@ -15,30 +15,44 @@ namespace VirtualSuspect.Utils
             XmlDocument newAnswer = new XmlDocument();
             newAnswer.AppendChild(newAnswer.CreateElement("answer"));
 
-            foreach(QueryResult.Result result in queryResult.Results) {
+            if(queryResult.Query.QueryType == QueryDto.QueryTypeEnum.YesOrNo) {
 
-                XmlElement newResponseXml = newAnswer.CreateElement("response");
-
-                XmlElement newDimensionNode = newAnswer.CreateElement("dimension");
-                newDimensionNode.InnerText = KnowledgeBase.convertToString(result.dimension);
-
-                XmlElement newCardinalityNode = newAnswer.CreateElement("cardinality");
-                newCardinalityNode.InnerText = "" + result.cardinality;
-
-                newResponseXml.AppendChild(newDimensionNode);
-                newResponseXml.AppendChild(newCardinalityNode);
-                
-                foreach(string value in result.values) {
-
-                    XmlElement newValueNode = newAnswer.CreateElement("value");
-                    newValueNode.InnerText = value;
-
-                    newResponseXml.AppendChild(newValueNode);
-                }
+                XmlElement newBooleanResponse = newAnswer.CreateElement("YesOrNoResult");
+                newBooleanResponse.InnerText = "" + queryResult.YesNoResult;
 
                 XmlNode refElem = newAnswer.DocumentElement.LastChild;
 
-                newAnswer.DocumentElement.InsertAfter(newResponseXml,refElem);
+                newAnswer.DocumentElement.InsertAfter(newBooleanResponse, refElem);
+
+            }
+            else if (queryResult.Query.QueryType == QueryDto.QueryTypeEnum.GetInformation) {
+
+                foreach (QueryResult.Result result in queryResult.Results) {
+
+                    XmlElement newResponseXml = newAnswer.CreateElement("response");
+
+                    XmlElement newDimensionNode = newAnswer.CreateElement("dimension");
+                    newDimensionNode.InnerText = KnowledgeBase.convertToString(result.dimension);
+
+                    XmlElement newCardinalityNode = newAnswer.CreateElement("cardinality");
+                    newCardinalityNode.InnerText = "" + result.cardinality;
+
+                    newResponseXml.AppendChild(newDimensionNode);
+                    newResponseXml.AppendChild(newCardinalityNode);
+
+                    foreach (string value in result.values) {
+
+                        XmlElement newValueNode = newAnswer.CreateElement("value");
+                        newValueNode.InnerText = value;
+
+                        newResponseXml.AppendChild(newValueNode);
+                    }
+
+                    XmlNode refElem = newAnswer.DocumentElement.LastChild;
+
+                    newAnswer.DocumentElement.InsertAfter(newResponseXml, refElem);
+
+                }
 
             }
 

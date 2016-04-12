@@ -260,7 +260,14 @@ namespace VirtualSuspect{
 
             if(query.QueryType == QueryDto.QueryTypeEnum.YesOrNo) { //Test yes or no
 
-                        
+                List<EventNode> queryEvents = story;
+                //Select entities from the dimension
+                foreach (IConditionPredicate predicate in query.QueryConditions) {
+
+                    queryEvents = queryEvents.FindAll(predicate.CreatePredicate());
+                }
+
+                result.AddBooleanResult(queryEvents.Count != 0);
 
             } else if(query.QueryType == QueryDto.QueryTypeEnum.GetInformation) { //Test get information
 

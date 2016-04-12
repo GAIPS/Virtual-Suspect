@@ -23,13 +23,13 @@ namespace VirtualSuspect.Query
                     if (manners.Count == 1) {
                         //if there is only one manner in the list to match we find if any of the node's manners is a match
 
-                        return node.Agent.Any(x => x.Value == manners[0]);
+                        return node.Manner.Any(x => x.Value == manners[0]);
 
                     }
                     else {
                         //otherwise, we look if every manner in our list to match are in the nodes manners list
                         //TODO: Test this mambo
-                        return !manners.Except(node.Agent.Select(x => x.Value)).Any();
+                        return !manners.Except(node.Manner.Select(x => x.Value)).Any();
                     }
 
                 };

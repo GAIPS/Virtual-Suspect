@@ -6,7 +6,22 @@ namespace VirtualSuspect.Query
 {
     public class QueryResult
     {
+
+        private bool yesNoResult;
+
+        public bool YesNoResult {
+            get {
+                return yesNoResult;
+            }
+        }
+
         private QueryDto query;
+
+        public QueryDto Query {
+            get {
+                return query;
+            }
+        }
 
         private List<Result> results;
 
@@ -24,6 +39,12 @@ namespace VirtualSuspect.Query
         internal void AddResults(IEnumerable<Result> results) {
 
             this.results.AddRange(results);
+
+        }
+
+        internal void AddBooleanResult(bool result) {
+
+            yesNoResult = result;
 
         }
 
