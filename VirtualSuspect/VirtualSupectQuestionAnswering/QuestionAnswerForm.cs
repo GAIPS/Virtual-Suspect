@@ -18,38 +18,13 @@ namespace VirtualSupectQuestionAnswering
 
         KnowledgeBase virtualSuspectKb;
 
-        public QuestionAnswerForm() {
+        public QuestionAnswerForm(KnowledgeBase kb) {
             
             InitializeComponent();
 
             PopulateQuestionTemplate();
 
-            
-        }
-
-        private void btLoadStory_Click(object sender, EventArgs e) {
-
-            // Create an instance of the open file dialog box.
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-            // Set filter options and filter index.
-            openFileDialog1.Filter = "XML Files(.xml)|*.xml|All Files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 1;
-            openFileDialog1.Multiselect = false;
-
-            // Process input if the user clicked OK.
-            if (openFileDialog1.ShowDialog() == DialogResult.OK) {
-
-                lFilePath.Text = openFileDialog1.FileName;
-                
-                virtualSuspectKb = KnowledgeBaseParser.parseFromFile(openFileDialog1.FileName);
-
-                lStoryStatus.Text = "Story Loaded";    
-            }
-
-            gpAnswer.Enabled = true;
-            gpQuestion.Enabled = true;
-            btViewData.Enabled = true;
+            virtualSuspectKb = kb;
 
         }
 
@@ -157,11 +132,20 @@ namespace VirtualSupectQuestionAnswering
 
             tbQuestionStructure.Text = ((QuestionTemplate)cbQuestionTemplate.SelectedItem).TemplateContent;
         }
+        
 
-        private void button1_Click(object sender, EventArgs e) {
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e) {
 
             DataVisualizer dv = new DataVisualizer(virtualSuspectKb);
             dv.Show();
+        }
+
+        private void loadStoryToolStripMenuItem_Click(object sender, EventArgs e) {
+
+            SetupForm form = new SetupForm();
+
+            form.Show();    
+
         }
     }
 }

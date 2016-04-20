@@ -30,7 +30,7 @@ namespace VirtualSupectQuestionAnswering
             dgvEntities.Columns.Add("action","Action");
 
             dgvEvents.Columns.Add("id", "ID");
-            dgvEvents.Columns.Add("accusatory", "Accusatory (%)");
+            dgvEvents.Columns.Add("incriminatory", "incriminatory");
             dgvEvents.Columns.Add("action", "Action");
             dgvEvents.Columns.Add("time", "Time");
             dgvEvents.Columns.Add("location", "Location");
@@ -53,7 +53,7 @@ namespace VirtualSupectQuestionAnswering
             foreach (EventNode eventNode in suspectKB.Events) {
                 dgvEvents.Rows.Add(new string[] {
                     "" + eventNode.ID,
-                    "" + eventNode.Accusatory,
+                    "" + eventNode.Incriminatory,
                     "' " +eventNode.Action.Action + " ' ( " + eventNode.Action.ID + " )",
                     "' " +eventNode.Time.Value+ " ' ( " + eventNode.Time.ID + " )",
                     "' " + eventNode.Location.Value+ " ' ( " + eventNode.Location.ID + " )",

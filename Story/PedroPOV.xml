@@ -81,8 +81,11 @@
 		<value>Café "O Discreto"</value>
 	</entity>
 
-	<action>
-		<name>Access</name>
+	<event>
+		<id>1</id>
+		<action>Access</action>
+		<real>true</real>
+		<incriminatory>0</incriminatory>
 		<association relation="Time">
 			<entity id="1"/>
 		</association>
@@ -98,10 +101,13 @@
 		<association relation="Manner">
 			<entity id="8"/>
 		</association>
-	</action>
+	</event>
 
-	<action>
-		<name>Talk</name>
+	<event>
+		<id>2</id>
+		<action>Talk</action>
+		<real>true</real>
+		<incriminatory>25</incriminatory>
 		<association relation="Time">
 			<entity id="14"/>
 		</association>
@@ -117,10 +123,13 @@
 		<association relation="Theme">
 			<entity id="10"/>
 		</association>
-	</action>
+	</event>
 
-	<action>
-		<name>Access</name>
+	<event>
+		<id>3</id>
+		<action>Access</action>
+		<real>true</real>
+		<incriminatory>0</incriminatory>
 		<association relation="Time">
 			<entity id="2"/>
 		</association>
@@ -136,10 +145,13 @@
 		<association relation="Manner">
 			<entity id="11"/>
 		</association>
-	</action>
+	</event>
 
-	<action>
-		<name>Eat</name>
+	<event>
+		<id>4</id>
+		<action>Eat</action>
+		<real>true</real>
+		<incriminatory>0</incriminatory>
 		<association relation="Time">
 			<entity id="3"/>
 		</association>
@@ -149,10 +161,13 @@
 		<association relation="Agent">
 			<entity id="9"/>
 		</association>
-	</action>
+	</event>
 
-	<action>
-		<name>Access</name>
+	<event>
+		<id>5</id>
+		<action>Access</action>
+		<real>true</real>
+		<incriminatory>100</incriminatory>
 		<association relation="Time">
 			<entity id="4"/>
 		</association>
@@ -168,11 +183,14 @@
 		<association relation="Manner">
 			<entity id="11"/>
 		</association>
-	</action>
+	</event>
 
 
-	<action>
-		<name>Talk</name>
+	<event>
+		<id>6</id>
+		<action>Talk</action>
+		<real>true</real>
+		<incriminatory>20</incriminatory>
 		<association relation="Time">
 			<entity id="5"/>
 		</association>
@@ -188,5 +206,5 @@
 		<association relation="Theme">
 			<entity id="10"/>
 		</association>
-	</action>
+	</event>
 </story>

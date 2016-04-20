@@ -58,8 +58,8 @@ Each condition has:
 	<condition>
 		<dimension>time</dimension>
 		<operator>between</operator>
-		<begin>21/01/2016 00:00:00</begin>
-		<end>21/01/2016 23:59:59</end>
+		<begin>21/01/2016T00:00:00</begin>
+		<end>21/01/2016T23:59:59</end>
 		<speech>"no dia 21 de Janeiro de 2016"</speech>
 	</condition>
 </question>
@@ -84,8 +84,8 @@ Each condition has:
 	<condition>
 		<dimension>time</dimension>
 		<operator>between</operator>
-		<begin>21/01/2016 00:00:00</begin>
-		<end>21/01/2016 23:59:59</end>
+		<begin>21/01/2016T00:00:00</begin>
+		<end>21/01/2016T23:59:59</end>
 		<speech>"no dia 21 de Janeiro de 2016"</speech>
 	</condition>
 	<condition>
@@ -125,8 +125,8 @@ Each response contains:
 		<condition>
 			<dimension>time</dimension>
 			<operator>between</operator>
-			<begin>21/01/2016 00:00:00</begin>
-			<end>21/01/2016 23:59:59</end>
+			<begin>21/01/2016T00:00:00</begin>
+			<end>21/01/2016T23:59:59</end>
 			<speech>"no dia 21 de Janeiro de 2016"</speech>
 		</condition>
 	</question>	
@@ -161,8 +161,8 @@ Each response contains:
 		<condition>
 			<dimension>time</dimension>
 			<operator>between</operator>
-			<begin>21/01/2016 00:00:00</begin>
-			<end>21/01/2016 23:59:59</end>
+			<begin>21/01/2016T00:00:00</begin>
+			<end>21/01/2016T23:59:59</end>
 			<speech>"no dia 21 de Janeiro de 2016"</speech>
 		</condition>
 		<condition>

@@ -65,8 +65,11 @@
 		<end>1/03/2016 13:45</end>
 	</entity>
 
-	<action >
-		<name>Talk</name>
+	<event>
+		<id>1</id>
+		<action>Talk</action>
+		<real>true</real>
+		<incriminatory>0</incriminatory>
 		<association relation="Time">
 			<entity id="1"/>
 		</association>
@@ -82,10 +85,13 @@
 		<association relation="Theme">
 			<entity id="9"/>
 		</association>
-	</action>
+	</event>
 
-	<action>
-		<name>Eat</name>
+	<event>
+		<id>2</id>
+		<action>Eat</action>
+		<real>true</real>
+		<incriminatory>0</incriminatory>
 		<association relation="Time">
 			<entity id="2"/>
 		</association>
@@ -98,9 +104,12 @@
 		<association relation="Agent">
 			<entity id="7"/>
 		</association>
-	</action>
-	<action>
-		<name>Talk</name>
+	</event>
+	<event>
+		<id>3</id>
+		<action>Talk</action>
+		<real>true</real>
+		<incriminatory>0</incriminatory>
 		<association relation="Time">
 			<entity id="12"/>
 		</association>
@@ -116,10 +125,13 @@
 		<association relation="Theme">
 			<entity id="9"/>
 		</association>
-	</action>
+	</event>
 
-	<action>
-		<name>Study</name>
+	<event>
+		<id>4</id>
+		<action>Study</action>
+		<real>true</real>
+		<incriminatory>0</incriminatory>
 		<association relation="Time">
 			<entity id="3"/>
 		</association>
@@ -129,10 +141,13 @@
 		<association relation="Agent">
 			<entity id="5"/>
 		</association>
-	</action>
+	</event>
 
-	<action>
-		<name>Talk</name>
+	<event>
+		<id>5</id>
+		<action>Talk</action>
+		<real>true</real>
+		<incriminatory>0</incriminatory>
 		<association relation="Time">
 			<entity id="4"/>
 		</association>
@@ -148,6 +163,6 @@
 		<association relation="Theme">
 			<entity id="9"/>
 		</association>
-	</action>
+	</event>
 
 </story>

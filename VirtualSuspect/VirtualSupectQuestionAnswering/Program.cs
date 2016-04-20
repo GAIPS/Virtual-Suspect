@@ -15,7 +15,7 @@ namespace VirtualSupectQuestionAnswering
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QuestionAnswerForm());
+            Application.Run(new SetupForm());
         }
     }
 }

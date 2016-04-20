@@ -32,7 +32,7 @@
 	</entity>
 
 	<event>
-		<id>2</id>
+		<id>1</id>
 		<action>Talk</action>
 		<real>true</real>
 		<accusatory>0</accusatory>
@@ -51,7 +51,7 @@
 	</event>
 	
 	<event>
-		<id>1</id>
+		<id>2</id>
 		<action>See</action>
 		<real>true</real>
 		<accusatory>0</accusatory>

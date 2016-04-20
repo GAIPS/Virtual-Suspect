@@ -41,15 +41,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tbAnswerStructure = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btViewData = new System.Windows.Forms.Button();
-            this.lStoryStatus = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lFilePath = new System.Windows.Forms.Label();
-            this.btLoadStory = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadStoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gpQuestion.SuspendLayout();
             this.gpAnswer.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btProcessSentence
@@ -81,7 +80,7 @@
             this.tbQuestionStructure.Multiline = true;
             this.tbQuestionStructure.Name = "tbQuestionStructure";
             this.tbQuestionStructure.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbQuestionStructure.Size = new System.Drawing.Size(386, 273);
+            this.tbQuestionStructure.Size = new System.Drawing.Size(386, 345);
             this.tbQuestionStructure.TabIndex = 2;
             this.tbQuestionStructure.Text = resources.GetString("tbQuestionStructure.Text");
             // 
@@ -97,10 +96,9 @@
             this.gpQuestion.Controls.Add(this.tbQuestionStructure);
             this.gpQuestion.Controls.Add(this.label1);
             this.gpQuestion.Controls.Add(this.tbQuestionSentence);
-            this.gpQuestion.Enabled = false;
-            this.gpQuestion.Location = new System.Drawing.Point(12, 99);
+            this.gpQuestion.Location = new System.Drawing.Point(12, 27);
             this.gpQuestion.Name = "gpQuestion";
-            this.gpQuestion.Size = new System.Drawing.Size(398, 432);
+            this.gpQuestion.Size = new System.Drawing.Size(398, 504);
             this.gpQuestion.TabIndex = 3;
             this.gpQuestion.TabStop = false;
             this.gpQuestion.Text = "Question";
@@ -129,7 +127,7 @@
             // 
             this.btAskQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btAskQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAskQuestion.Location = new System.Drawing.Point(285, 395);
+            this.btAskQuestion.Location = new System.Drawing.Point(285, 467);
             this.btAskQuestion.Name = "btAskQuestion";
             this.btAskQuestion.Size = new System.Drawing.Size(107, 23);
             this.btAskQuestion.TabIndex = 4;
@@ -164,10 +162,9 @@
             this.gpAnswer.Controls.Add(this.label4);
             this.gpAnswer.Controls.Add(this.label3);
             this.gpAnswer.Controls.Add(this.tbAnswerStructure);
-            this.gpAnswer.Enabled = false;
-            this.gpAnswer.Location = new System.Drawing.Point(416, 12);
+            this.gpAnswer.Location = new System.Drawing.Point(416, 27);
             this.gpAnswer.Name = "gpAnswer";
-            this.gpAnswer.Size = new System.Drawing.Size(383, 519);
+            this.gpAnswer.Size = new System.Drawing.Size(383, 504);
             this.gpAnswer.TabIndex = 4;
             this.gpAnswer.TabStop = false;
             this.gpAnswer.Text = "Answer";
@@ -176,7 +173,7 @@
             // 
             this.btGenerateAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btGenerateAnswer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btGenerateAnswer.Location = new System.Drawing.Point(270, 453);
+            this.btGenerateAnswer.Location = new System.Drawing.Point(270, 438);
             this.btGenerateAnswer.Name = "btGenerateAnswer";
             this.btGenerateAnswer.Size = new System.Drawing.Size(107, 23);
             this.btGenerateAnswer.TabIndex = 5;
@@ -186,7 +183,7 @@
             // tbAnswerSentence
             // 
             this.tbAnswerSentence.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tbAnswerSentence.Location = new System.Drawing.Point(6, 493);
+            this.tbAnswerSentence.Location = new System.Drawing.Point(6, 478);
             this.tbAnswerSentence.Multiline = true;
             this.tbAnswerSentence.Name = "tbAnswerSentence";
             this.tbAnswerSentence.ReadOnly = true;
@@ -197,7 +194,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 477);
+            this.label4.Location = new System.Drawing.Point(6, 462);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 5;
@@ -219,93 +216,70 @@
             this.tbAnswerStructure.Location = new System.Drawing.Point(6, 32);
             this.tbAnswerStructure.Multiline = true;
             this.tbAnswerStructure.Name = "tbAnswerStructure";
-            this.tbAnswerStructure.Size = new System.Drawing.Size(371, 415);
+            this.tbAnswerStructure.Size = new System.Drawing.Size(371, 400);
             this.tbAnswerStructure.TabIndex = 5;
             // 
-            // groupBox3
+            // menuStrip1
             // 
-            this.groupBox3.Controls.Add(this.btViewData);
-            this.groupBox3.Controls.Add(this.lStoryStatus);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.lFilePath);
-            this.groupBox3.Controls.Add(this.btLoadStory);
-            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox3.Location = new System.Drawing.Point(12, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(398, 81);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Story";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.dataToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(811, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // btViewData
+            // fileToolStripMenuItem
             // 
-            this.btViewData.Enabled = false;
-            this.btViewData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btViewData.Location = new System.Drawing.Point(317, 50);
-            this.btViewData.Name = "btViewData";
-            this.btViewData.Size = new System.Drawing.Size(75, 23);
-            this.btViewData.TabIndex = 4;
-            this.btViewData.Text = "View Data";
-            this.btViewData.UseVisualStyleBackColor = true;
-            this.btViewData.Click += new System.EventHandler(this.button1_Click);
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadStoryToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
             // 
-            // lStoryStatus
+            // dataToolStripMenuItem
             // 
-            this.lStoryStatus.AutoSize = true;
-            this.lStoryStatus.Location = new System.Drawing.Point(79, 55);
-            this.lStoryStatus.Name = "lStoryStatus";
-            this.lStoryStatus.Size = new System.Drawing.Size(63, 13);
-            this.lStoryStatus.TabIndex = 3;
-            this.lStoryStatus.Text = "Not Loaded";
+            this.dataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewToolStripMenuItem});
+            this.dataToolStripMenuItem.Name = "dataToolStripMenuItem";
+            this.dataToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.dataToolStripMenuItem.Text = "Data";
             // 
-            // label6
+            // viewToolStripMenuItem
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 55);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Story Status:";
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
-            // lFilePath
+            // loadStoryToolStripMenuItem
             // 
-            this.lFilePath.AutoEllipsis = true;
-            this.lFilePath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lFilePath.Location = new System.Drawing.Point(6, 24);
-            this.lFilePath.Name = "lFilePath";
-            this.lFilePath.Size = new System.Drawing.Size(305, 18);
-            this.lFilePath.TabIndex = 1;
-            this.lFilePath.Text = "No file path selected";
-            // 
-            // btLoadStory
-            // 
-            this.btLoadStory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btLoadStory.Location = new System.Drawing.Point(317, 19);
-            this.btLoadStory.Name = "btLoadStory";
-            this.btLoadStory.Size = new System.Drawing.Size(75, 23);
-            this.btLoadStory.TabIndex = 0;
-            this.btLoadStory.Text = "Load Story";
-            this.btLoadStory.UseVisualStyleBackColor = true;
-            this.btLoadStory.Click += new System.EventHandler(this.btLoadStory_Click);
+            this.loadStoryToolStripMenuItem.Name = "loadStoryToolStripMenuItem";
+            this.loadStoryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadStoryToolStripMenuItem.Text = "Load Story";
+            this.loadStoryToolStripMenuItem.Click += new System.EventHandler(this.loadStoryToolStripMenuItem_Click);
             // 
             // QuestionAnswerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(811, 543);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpAnswer);
             this.Controls.Add(this.gpQuestion);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "QuestionAnswerForm";
             this.Text = "Virtual Suspect - Question Answer";
             this.gpQuestion.ResumeLayout(false);
             this.gpQuestion.PerformLayout();
             this.gpAnswer.ResumeLayout(false);
             this.gpAnswer.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -324,14 +298,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbAnswerStructure;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lFilePath;
-        private System.Windows.Forms.Button btLoadStory;
-        private System.Windows.Forms.Label lStoryStatus;
         private System.Windows.Forms.ComboBox cbQuestionTemplate;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btViewData;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadStoryToolStripMenuItem;
     }
 }
 

@@ -14,11 +14,11 @@ namespace VirtualSuspect
             }
         }
 
-        private uint accusatory;
+        private uint incriminatory;
 
-        public uint Accusatory {
+        public uint Incriminatory {
             get {
-                return accusatory;
+                return incriminatory;
             }
         }
 
@@ -92,9 +92,9 @@ namespace VirtualSuspect
             }
         }
 
-        public EventDto(uint accusatory, ActionNode action, EntityNode time, EntityNode location, bool real) {
+        public EventDto(uint incriminatory, ActionNode action, EntityNode time, EntityNode location, bool real) {
             
-            this.accusatory = accusatory;
+            this.incriminatory = incriminatory;
             this.action = action;
             this.time = time;
             this.location = location;

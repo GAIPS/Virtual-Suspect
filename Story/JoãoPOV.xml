@@ -72,7 +72,7 @@
 	<event>
 		<id>1</id>
 		<real>true</real>
-		<accusatory>0</accusatory>
+		<incriminatory>0</incriminatory>
 		<action>Access</action>
 		<association relation="Time">
 			<entity id="7"/>
@@ -94,7 +94,7 @@
 	<event>
 		<id>2</id>
 		<real>true</real>
-		<accusatory>0</accusatory>
+		<incriminatory>0</incriminatory>
 		<action>Eat</action>
 		<association relation="Time">
 			<entity id="8"/>
@@ -116,7 +116,7 @@
 	<event>
 		<id>3</id>
 		<real>true</real>
-		<accusatory>0</accusatory>
+		<incriminatory>0</incriminatory>
 		<action>Talk</action>
 		<association relation="Time">
 			<entity id="8"/>
@@ -138,7 +138,7 @@
 	<event>
 		<id>4</id>
 		<real>true</real>
-		<accusatory>0</accusatory>
+		<incriminatory>0</incriminatory>
 		<action>Access</action>
 		<association relation="Time">
 			<entity id="10"/>
@@ -160,7 +160,7 @@
 	<event>
 		<id>5</id>
 		<real>true</real>
-		<accusatory>0</accusatory>
+		<incriminatory>0</incriminatory>
 		<action>Speak</action>
 		<association relation="Time">
 			<entity id="11"/>

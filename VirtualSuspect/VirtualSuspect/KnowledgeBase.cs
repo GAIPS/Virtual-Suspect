@@ -202,7 +202,7 @@ namespace VirtualSuspect{
             uint newEventNodeId = getNextNodeId("event");
 
             //Create a new node with the default fields
-            EventNode newEventNode = new EventNode(newEventNodeId, ev.Accusatory, ev.Action, ev.Time, ev.Location);
+            EventNode newEventNode = new EventNode(newEventNodeId, ev.Incriminatory, ev.Action, ev.Time, ev.Location);
 
             //Add other fields
             newEventNode.AddAgent(ev.Agent);

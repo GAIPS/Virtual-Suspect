@@ -83,13 +83,13 @@ namespace VirtualSuspect.Utils
                 EntityNode locationNode = entities[UInt32.Parse(locationXmlNode.SelectSingleNode("entity").Attributes["id"].Value)];
 
                 //Get accusatory factor
-                uint accusatoryValue = UInt32.Parse(eventXmlNode.SelectSingleNode("accusatory").InnerText);
+                uint incriminatoryValue = UInt32.Parse(eventXmlNode.SelectSingleNode("incriminatory").InnerText);
 
                 //Get real flag
                 bool realFlag = eventXmlNode.SelectSingleNode("real").InnerText == "true";
 
                 //Make new EventNode
-                EventDto eventDto = new EventDto(accusatoryValue, newActionNode, timeNode, locationNode, realFlag);
+                EventDto eventDto = new EventDto(incriminatoryValue, newActionNode, timeNode, locationNode, realFlag);
 
                 //Make associations
                 XmlNodeList associationNodesList = eventXmlNode.SelectNodes("association");
