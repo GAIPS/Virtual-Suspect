@@ -50,6 +50,5 @@ namespace VirtualSuspect
         /// <returns></returns>
         QueryResult Query(QueryDto query);
 
-
     }
 }

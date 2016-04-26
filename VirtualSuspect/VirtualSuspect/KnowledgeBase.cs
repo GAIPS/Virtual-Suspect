@@ -318,5 +318,62 @@ namespace VirtualSuspect{
             return result;
         }
 
+        internal void PropagateIncriminaotryValues() {
+
+            Dictionary<EntityNode, List<EventNode>> entityToEvent = new Dictionary<EntityNode, List<EventNode>>();
+
+            foreach(EntityNode entity in entities) {
+
+                entityToEvent.Add(entity, new List<EventNode>());    
+
+            }
+
+            foreach(EventNode eventNode in events) {
+
+                //Time
+                entityToEvent[eventNode.Time].Add(eventNode);
+
+                //Location
+                entityToEvent[eventNode.Location].Add(eventNode);
+
+                //Agent
+                foreach (EntityNode agent in eventNode.Agent) {
+                    entityToEvent[agent].Add(eventNode);
+                }
+
+                //Manner
+                foreach (EntityNode manner in eventNode.Manner) {
+                    entityToEvent[manner].Add(eventNode);
+                }
+
+                //Theme
+                foreach (EntityNode theme in eventNode.Theme) {
+                    entityToEvent[theme].Add(eventNode);
+                }
+
+                //Reason
+                foreach (EntityNode reason in eventNode.Reason) {
+                    entityToEvent[reason].Add(eventNode);
+                }
+
+            }
+
+            foreach(KeyValuePair<EntityNode,List<EventNode>> pair in entityToEvent) {
+
+                float incriminatory = 0;
+                int numEvents = pair.Value.Count;
+
+                foreach(EventNode eventNode in pair.Value) {
+
+                    incriminatory += eventNode.Incriminatory / numEvents;
+
+                }
+
+                pair.Key.Incriminatory = incriminatory;
+
+            }
+            
+        }
+        
     }
 }

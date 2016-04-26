@@ -26,32 +26,32 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataVisualizer));
-            this.dgvActions = new System.Windows.Forms.DataGridView();
-            this.dgvEvents = new System.Windows.Forms.DataGridView();
             this.dgvEntities = new System.Windows.Forms.DataGridView();
+            this.dgvEvents = new System.Windows.Forms.DataGridView();
+            this.dgvActions = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvActions)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEvents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntities)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEvents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActions)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgvActions
+            // dgvEntities
             // 
-            this.dgvActions.AllowUserToAddRows = false;
-            this.dgvActions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvActions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvActions.Location = new System.Drawing.Point(3, 3);
-            this.dgvActions.Name = "dgvActions";
-            this.dgvActions.Size = new System.Drawing.Size(765, 552);
-            this.dgvActions.TabIndex = 0;
+            this.dgvEntities.AllowUserToAddRows = false;
+            this.dgvEntities.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvEntities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEntities.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvEntities.Location = new System.Drawing.Point(3, 3);
+            this.dgvEntities.Name = "dgvEntities";
+            this.dgvEntities.Size = new System.Drawing.Size(765, 552);
+            this.dgvEntities.TabIndex = 0;
             // 
             // dgvEvents
             // 
@@ -64,16 +64,16 @@
             this.dgvEvents.Size = new System.Drawing.Size(765, 552);
             this.dgvEvents.TabIndex = 3;
             // 
-            // dgvEntities
+            // dgvActions
             // 
-            this.dgvEntities.AllowUserToAddRows = false;
-            this.dgvEntities.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvEntities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEntities.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvEntities.Location = new System.Drawing.Point(3, 3);
-            this.dgvEntities.Name = "dgvEntities";
-            this.dgvEntities.Size = new System.Drawing.Size(765, 552);
-            this.dgvEntities.TabIndex = 4;
+            this.dgvActions.AllowUserToAddRows = false;
+            this.dgvActions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvActions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvActions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvActions.Location = new System.Drawing.Point(3, 3);
+            this.dgvActions.Name = "dgvActions";
+            this.dgvActions.Size = new System.Drawing.Size(765, 552);
+            this.dgvActions.TabIndex = 4;
             // 
             // tabControl1
             // 
@@ -89,7 +89,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dgvActions);
+            this.tabPage1.Controls.Add(this.dgvEntities);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -100,7 +100,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dgvEntities);
+            this.tabPage2.Controls.Add(this.dgvActions);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -132,9 +132,9 @@
             this.Text = "Data Visualizer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DataVisualizer_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvActions)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEvents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntities)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEvents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActions)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -145,9 +145,9 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvActions;
-        private System.Windows.Forms.DataGridView dgvEvents;
         private System.Windows.Forms.DataGridView dgvEntities;
+        private System.Windows.Forms.DataGridView dgvEvents;
+        private System.Windows.Forms.DataGridView dgvActions;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;

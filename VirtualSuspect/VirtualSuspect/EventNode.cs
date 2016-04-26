@@ -14,9 +14,9 @@ namespace VirtualSuspect
             }
         }
 
-        private uint incriminatory;
+        private int incriminatory;
 
-        public uint Incriminatory
+        public int Incriminatory
         {
             get {
                 return incriminatory;
@@ -93,7 +93,50 @@ namespace VirtualSuspect
             }
         }
 
-        public EventNode(uint id, uint incriminatory, ActionNode action, EntityNode time, EntityNode location) {
+        public float Know {
+
+            get {
+
+                int totalNumEntities = 0;
+                int numKnownEntities = 0;
+
+                //Time
+                numKnownEntities += Time.Known ? 1 : 0;
+                totalNumEntities++;
+
+                //Location
+                numKnownEntities += Location.Known ? 1 : 0;
+                totalNumEntities++;
+
+                //Agent
+                foreach(EntityNode agent in Agent) {
+                    numKnownEntities += agent.Known ? 1 : 0;
+                    totalNumEntities++;
+                }
+
+                //Manner
+                foreach (EntityNode manner in Manner) {
+                    numKnownEntities += manner.Known ? 1 : 0;
+                    totalNumEntities++;
+                }
+
+                //Theme
+                foreach (EntityNode theme in Theme) {
+                    numKnownEntities += theme.Known ? 1 : 0;
+                    totalNumEntities++;
+                }
+
+                //Reason
+                foreach (EntityNode reason in Reason) {
+                    numKnownEntities += reason.Known ? 1 : 0;
+                    totalNumEntities++;
+                }
+
+                return numKnownEntities / totalNumEntities;
+            }
+        }
+
+        public EventNode(uint id, int incriminatory, ActionNode action, EntityNode time, EntityNode location) {
 
             this.id = id;
             this.incriminatory = incriminatory;

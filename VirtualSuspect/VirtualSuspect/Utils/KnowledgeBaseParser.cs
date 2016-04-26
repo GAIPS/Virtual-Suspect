@@ -83,7 +83,7 @@ namespace VirtualSuspect.Utils
                 EntityNode locationNode = entities[UInt32.Parse(locationXmlNode.SelectSingleNode("entity").Attributes["id"].Value)];
 
                 //Get accusatory factor
-                uint incriminatoryValue = UInt32.Parse(eventXmlNode.SelectSingleNode("incriminatory").InnerText);
+                int incriminatoryValue = Int32.Parse(eventXmlNode.SelectSingleNode("incriminatory").InnerText);
 
                 //Get real flag
                 bool realFlag = eventXmlNode.SelectSingleNode("real").InnerText == "true";
@@ -120,6 +120,7 @@ namespace VirtualSuspect.Utils
 
             }
 
+            kb.PropagateIncriminaotryValues();
 
             return kb;
 

@@ -22,15 +22,17 @@ namespace VirtualSupectQuestionAnswering
 
         private void DataVisualizer_Load(object sender, EventArgs e) {
 
-            dgvActions.Columns.Add("id", "ID");
-            dgvActions.Columns.Add("type", "Type");
-            dgvActions.Columns.Add("value", "Value");
+            dgvEntities.Columns.Add("id", "ID");
+            dgvEntities.Columns.Add("type", "Type");
+            dgvEntities.Columns.Add("value", "Value");
+            dgvEntities.Columns.Add("incriminatory", "Incriminatory");
+            dgvEntities.Columns.Add("known", "Known");
 
-            dgvEntities.Columns.Add("id","ID");
-            dgvEntities.Columns.Add("action","Action");
+            dgvActions.Columns.Add("id","ID");
+            dgvActions.Columns.Add("action","Action");
 
             dgvEvents.Columns.Add("id", "ID");
-            dgvEvents.Columns.Add("incriminatory", "incriminatory");
+            dgvEvents.Columns.Add("incriminatory", "Incriminatory");
             dgvEvents.Columns.Add("action", "Action");
             dgvEvents.Columns.Add("time", "Time");
             dgvEvents.Columns.Add("location", "Location");
@@ -41,12 +43,12 @@ namespace VirtualSupectQuestionAnswering
 
             //Get Actions
             foreach(ActionNode action in suspectKB.Actions) {
-                dgvEntities.Rows.Add( new string[] { "" + action.ID , action.Action});
+                dgvActions.Rows.Add( new string[] { "" + action.ID , action.Action});
             }
 
             //Get Entities
             foreach (EntityNode entity in suspectKB.Entities) {
-                dgvActions.Rows.Add(new string[] { "" + entity.ID, entity.Type, entity.Value});
+                dgvEntities.Rows.Add(new string[] { "" + entity.ID, entity.Type, entity.Value, "" + entity.Incriminatory, "" + entity.Known});
             }
 
             //Get Actions

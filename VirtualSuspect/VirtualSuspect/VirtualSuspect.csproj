@@ -40,10 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionDto.cs" />
+    <Compile Include="Dtos\ActionDto.cs" />
     <Compile Include="ActionNode.cs" />
     <Compile Include="ChangeableGroup.cs" />
-    <Compile Include="ChangeableGroupDto.cs" />
+    <Compile Include="Dtos\ChangeableGroupDto.cs" />
     <Compile Include="Exception\DimensionParseException.cs" />
     <Compile Include="Query\GetTimeFocusPredicate.cs" />
     <Compile Include="Query\GetReasonFocusPredicate.cs" />
@@ -58,9 +58,9 @@
     <Compile Include="Query\TimeBetweenConditionPredicate.cs" />
     <Compile Include="Query\TimeEqualConditionPredicate.cs" />
     <Compile Include="Query\ConditionPredicate.cs" />
-    <Compile Include="EntityDto.cs" />
+    <Compile Include="Dtos\EntityDto.cs" />
     <Compile Include="EntityNode.cs" />
-    <Compile Include="EventDto.cs" />
+    <Compile Include="Dtos\EventDto.cs" />
     <Compile Include="EventNode.cs" />
     <Compile Include="Exception\DtoFieldException.cs" />
     <Compile Include="IChangeableContent.cs" />

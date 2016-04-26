@@ -12,6 +12,20 @@
             }
         }
 
+        private float incriminatory;
+
+        public float Incriminatory {
+
+            get {
+                return incriminatory;
+            }
+
+            set { 
+                incriminatory = value;
+            }
+        
+        }
+
         private string value;
 
         public string Value
@@ -32,6 +46,19 @@
             }
         }
 
+        private bool known;
+
+        public bool Known {
+
+            get {
+                return known;
+            }
+
+            set {
+                known = value;
+            }
+        }
+
         public EntityNode(uint _id, string _value, string _type){
 
             id = _id;
@@ -39,6 +66,6 @@
             type = _type;
 
         }
-
+        
     }
 }
