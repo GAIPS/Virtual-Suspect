@@ -37,5 +37,23 @@ namespace VirtualSuspect.Query
                     return datetime.Equals(value);
                 };
         }
+
+        public string GetSemanticRole() {
+
+            return "TimeInstant";
+
+        }
+
+        public List<string> GetValues() {
+
+            List<string> entities = new List<string>();
+
+            String date = "" + datetime.ToString("dd/MM/yyyyTHH:mm:ss");
+
+            entities.Add(date);
+
+            return entities;
+
+        }
     }
 }

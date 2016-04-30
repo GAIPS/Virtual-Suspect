@@ -57,7 +57,7 @@
     <Compile Include="Query\AgentEqualConditionPredicate.cs" />
     <Compile Include="Query\TimeBetweenConditionPredicate.cs" />
     <Compile Include="Query\TimeEqualConditionPredicate.cs" />
-    <Compile Include="Query\ConditionPredicate.cs" />
+    <Compile Include="Query\IConditionPredicate.cs" />
     <Compile Include="Dtos\EntityDto.cs" />
     <Compile Include="EntityNode.cs" />
     <Compile Include="Dtos\EventDto.cs" />
@@ -73,6 +73,8 @@
     <Compile Include="Query\LocationEqualConditionPredicate.cs" />
     <Compile Include="Query\QueryDto.cs" />
     <Compile Include="Query\QueryResult.cs" />
+    <Compile Include="TheoryofMindModule.cs" />
+    <Compile Include="UpdateModule.cs" />
     <Compile Include="Utils\AnswerGenerator.cs" />
     <Compile Include="Utils\KnowledgeBaseParser.cs" />
     <Compile Include="Exception\MessageFieldException.cs" />

@@ -46,19 +46,6 @@
             }
         }
 
-        private bool known;
-
-        public bool Known {
-
-            get {
-                return known;
-            }
-
-            set {
-                known = value;
-            }
-        }
-
         public EntityNode(uint _id, string _value, string _type){
 
             id = _id;
@@ -67,5 +54,26 @@
 
         }
         
+        public float EvaluateKnowledge(KnowledgeBase kb) {
+
+            float total = 0;
+            float known = 0;
+
+            foreach(EventNode node in kb.Story) {
+
+                if(node.ContainsEntity(this)) {
+
+                    total++;
+                    if (node.IsKnown(this))
+                        known++;
+
+                }
+
+            }
+
+            return known / total * 100;
+
+        }
+    
     }
 }

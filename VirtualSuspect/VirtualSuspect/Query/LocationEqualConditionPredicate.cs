@@ -22,5 +22,21 @@ namespace VirtualSuspect.Query
                     return node.Location.Value == location;
                 };
         }
+
+        public string GetSemanticRole() {
+
+            return "Location";
+
+        }
+
+        public List<string> GetValues() {
+
+            List<string> result = new List<string>();
+
+            result.Add(location);
+
+            return result;
+
+        }
     }
 }

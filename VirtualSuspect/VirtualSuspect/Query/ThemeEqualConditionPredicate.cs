@@ -33,5 +33,18 @@ namespace VirtualSuspect.Query
 
                 };
         }
+
+        public string GetSemanticRole() {
+
+            return "Theme";
+
+        }
+
+        public List<string> GetValues() {
+
+            return themes;
+
+        }
+
     }
 }

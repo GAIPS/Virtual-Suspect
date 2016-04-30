@@ -60,6 +60,8 @@ namespace VirtualSuspect{
 
         #endregion
 
+        private List<UpdateHandler> modifiers;
+
         /// <summary>
         /// List of available entities
         /// </summary>
@@ -107,6 +109,12 @@ namespace VirtualSuspect{
         /// </summary>
         private List<EventNode> story;
 
+        public List<EventNode> Story {
+            get {
+                return story;
+            }
+        }
+
         /// <summary>
         /// Returns the next available id for an node
         /// </summary>
@@ -144,6 +152,12 @@ namespace VirtualSuspect{
             changeableGroups = new List<ChangeableGroup>();
 
             story = new List<EventNode>();
+
+            //Add handlers to be used
+
+            modifiers = new List<UpdateHandler>();
+
+            modifiers.Add(new TheoryofMindHandler());
 
         }
 
@@ -278,6 +292,13 @@ namespace VirtualSuspect{
 
         public QueryResult Query(QueryDto query) {
 
+            //Update the KnowledgeBase with all the modifiers defined
+            foreach(UpdateHandler module in modifiers) {
+
+                module.Update(this, query);
+
+            }
+
             QueryResult result = new QueryResult(query);
 
             if(query.QueryType == QueryDto.QueryTypeEnum.YesOrNo) { //Test yes or no
@@ -361,12 +382,12 @@ namespace VirtualSuspect{
             foreach(KeyValuePair<EntityNode,List<EventNode>> pair in entityToEvent) {
 
                 float incriminatory = 0;
-                int numEvents = pair.Value.Count;
 
-                foreach(EventNode eventNode in pair.Value) {
+                int numIncriminaotryEvents = pair.Value.Count(x => x.Incriminatory != 0);
 
-                    incriminatory += eventNode.Incriminatory / numEvents;
+                foreach(EventNode eventNode in pair.Value.FindAll(x => x.Incriminatory!=0)) {
 
+                    incriminatory += eventNode.Incriminatory / numIncriminaotryEvents;
                 }
 
                 pair.Key.Incriminatory = incriminatory;

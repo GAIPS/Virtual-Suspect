@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace VirtualSuspect
 {
@@ -97,44 +99,14 @@ namespace VirtualSuspect
 
             get {
 
-                int totalNumEntities = 0;
-                int numKnownEntities = 0;
+                int totalNumEntities = ToMTable.Count;
+                int numKnownEntities = ToMTable.Count( x=> x.Value == true);
 
-                //Time
-                numKnownEntities += Time.Known ? 1 : 0;
-                totalNumEntities++;
-
-                //Location
-                numKnownEntities += Location.Known ? 1 : 0;
-                totalNumEntities++;
-
-                //Agent
-                foreach(EntityNode agent in Agent) {
-                    numKnownEntities += agent.Known ? 1 : 0;
-                    totalNumEntities++;
-                }
-
-                //Manner
-                foreach (EntityNode manner in Manner) {
-                    numKnownEntities += manner.Known ? 1 : 0;
-                    totalNumEntities++;
-                }
-
-                //Theme
-                foreach (EntityNode theme in Theme) {
-                    numKnownEntities += theme.Known ? 1 : 0;
-                    totalNumEntities++;
-                }
-
-                //Reason
-                foreach (EntityNode reason in Reason) {
-                    numKnownEntities += reason.Known ? 1 : 0;
-                    totalNumEntities++;
-                }
-
-                return numKnownEntities / totalNumEntities;
+                return 100.0f * numKnownEntities / totalNumEntities ;
             }
         }
+
+        private Dictionary<EntityNode, bool> ToMTable;
 
         public EventNode(uint id, int incriminatory, ActionNode action, EntityNode time, EntityNode location) {
 
@@ -149,79 +121,159 @@ namespace VirtualSuspect
             manner = new List<EntityNode>();
             reason = new List<EntityNode>();
 
+            ToMTable = new Dictionary<EntityNode, bool>();
+
+            ToMTable.Add(time, false);
+            ToMTable.Add(location, false);
+
         }
 
         public void AddAgent(EntityNode agent) {
 
             this.agent.Add(agent);
+            ToMTable.Add(agent, false);
 
         }
 
         public void AddAgent(params EntityNode[] agents) {
 
             this.agent.AddRange(agents);
-
+            foreach(EntityNode agent in agents) {
+                ToMTable.Add(agent, false);
+            }
         }
 
         public void AddAgent(List<EntityNode> agents) {
 
             this.agent.AddRange(agents);
-
+            foreach (EntityNode agent in agents) {
+                ToMTable.Add(agent, false);
+            }
         }
 
         public void AddTheme(EntityNode theme) {
 
             this.theme.Add(theme);
-
+            ToMTable.Add(theme, false);
         }
 
         public void AddTheme(params EntityNode[] themes) {
 
             this.theme.AddRange(themes);
-
+            foreach (EntityNode theme in themes) {
+                ToMTable.Add(theme, false);
+            }
         }
 
         public void AddTheme(List<EntityNode> themes) {
 
             this.theme.AddRange(themes);
-
+            foreach (EntityNode theme in themes) {
+                ToMTable.Add(theme, false);
+            }
         }
 
         public void AddManner(EntityNode manner) {
 
             this.manner.Add(manner);
-
+            ToMTable.Add(manner, false);
         }
 
         public void AddManner(params EntityNode[] manners) {
 
             this.manner.AddRange(manners);
-
+            foreach (EntityNode manner in manners) {
+                ToMTable.Add(manner, false);
+            }
         }
 
         public void AddManner(List<EntityNode> manners) {
 
             this.manner.AddRange(manners);
-
+            foreach (EntityNode manner in manners) {
+                ToMTable.Add(manner, false);
+            }
         }
 
         public void AddReason(EntityNode reason) {
 
             this.reason.Add(reason);
-
+            ToMTable.Add(reason, false);
         }
 
         public void AddReason(params EntityNode[] reasons) {
 
             this.reason.AddRange(reasons);
-
+            foreach (EntityNode reason in reasons) {
+                ToMTable.Add(reason, false);
+            }
         }
 
         public void AddReason(List<EntityNode> reasons) {
 
             this.reason.AddRange(reasons);
-
+            foreach (EntityNode reason in reasons) {
+                ToMTable.Add(reason, false);
+            }
         }
 
+        /// <summary>
+        /// Filters all entities in this event by semantic role and value
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
+        /// <returns>returns the entity if there is a match or null otherwise</returns>
+        /// 
+        public EntityNode FindEntity(string type, string value) {
+
+            switch(type) {
+                case "Time":
+                    if (Time.Value == value)
+                        return time;
+                    break;
+                case "Location":
+                    if (Location.Value == value)
+                        return location;
+                    break;
+                case "Agent":
+                    return Agent.Find(x => x.Value == value);
+                case "Theme":
+                    return Theme.Find(x => x.Value == value);
+                case "Reason":
+                    return Reason.Find(x => x.Value == value);
+                case "Manner":
+                    return Manner.Find(x => x.Value == value);
+                default:
+                    return null;
+
+            }
+
+            return null;
+        }
+        
+        /// <summary>
+        /// Marks an entitiy Node as known by the user
+        /// </summary>
+        /// <param name="node"></param>
+        public void TagAsKnwon(EntityNode node) {
+
+            ToMTable[node] = true;
+        }
+
+        public bool IsKnown(EntityNode node) {
+
+            return ToMTable[node];
+        }
+
+        public bool ContainsEntity(EntityNode node) {
+
+            return Time == node ||
+                    Location == node ||
+                    Theme.Contains(node) ||
+                    Agent.Contains(node) ||
+                    Reason.Contains(node) ||
+                    Manner.Contains(node);
+
+        }
     }
 }

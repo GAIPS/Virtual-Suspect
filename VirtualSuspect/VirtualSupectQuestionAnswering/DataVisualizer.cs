@@ -33,6 +33,7 @@ namespace VirtualSupectQuestionAnswering
 
             dgvEvents.Columns.Add("id", "ID");
             dgvEvents.Columns.Add("incriminatory", "Incriminatory");
+            dgvEvents.Columns.Add("known", "Known");
             dgvEvents.Columns.Add("action", "Action");
             dgvEvents.Columns.Add("time", "Time");
             dgvEvents.Columns.Add("location", "Location");
@@ -48,7 +49,7 @@ namespace VirtualSupectQuestionAnswering
 
             //Get Entities
             foreach (EntityNode entity in suspectKB.Entities) {
-                dgvEntities.Rows.Add(new string[] { "" + entity.ID, entity.Type, entity.Value, "" + entity.Incriminatory, "" + entity.Known});
+                dgvEntities.Rows.Add(new string[] { "" + entity.ID, entity.Type, entity.Value, "" + entity.Incriminatory, "" + entity.EvaluateKnowledge(suspectKB)});
             }
 
             //Get Actions
@@ -56,6 +57,7 @@ namespace VirtualSupectQuestionAnswering
                 dgvEvents.Rows.Add(new string[] {
                     "" + eventNode.ID,
                     "" + eventNode.Incriminatory,
+                    "" + eventNode.Know,
                     "' " +eventNode.Action.Action + " ' ( " + eventNode.Action.ID + " )",
                     "' " +eventNode.Time.Value+ " ' ( " + eventNode.Time.ID + " )",
                     "' " + eventNode.Location.Value+ " ' ( " + eventNode.Location.ID + " )",

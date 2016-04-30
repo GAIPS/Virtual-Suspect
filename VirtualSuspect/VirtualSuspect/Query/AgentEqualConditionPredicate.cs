@@ -33,5 +33,17 @@ namespace VirtualSuspect.Query
 
                 };
         }
+
+        public string GetSemanticRole() {
+
+            return "Agent";
+
+        }
+
+        public List<string> GetValues() {
+
+            return agents;
+
+        }
     }
 }

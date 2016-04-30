@@ -22,5 +22,21 @@ namespace VirtualSuspect.Query
                     return node.Action.Action == action;
                 };
         }
+
+        public string GetSemanticRole() {
+
+            return "Action";
+
+        }
+
+        public List<string> GetValues() {
+
+            List<string> result = new List<string>();
+
+            result.Add(action);
+
+            return result;
+
+        }
     }
 }

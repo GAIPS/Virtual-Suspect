@@ -46,5 +46,27 @@ namespace VirtualSuspect.Query
                     return false;
                 };
         }
+        
+        public string GetSemanticRole() {
+
+            return "TimeSpan";
+
+        }
+
+        public List<string> GetValues() {
+
+            List<string> entities = new List<string>();
+
+            String date = "" + beginTime.ToString("dd/MM/yyyyTHH:mm:ss");
+
+            date += ">";
+
+            date += endTime.ToString("dd/MM/yyyyTHH:mm:ss");
+
+            entities.Add(date);
+
+            return entities;
+
+        }
     }
 }
