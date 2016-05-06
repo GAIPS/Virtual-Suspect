@@ -1,6 +1,6 @@
 ﻿namespace VirtualSuspect
 {
-    public class EntityNode : IChangeableContent{
+    public class EntityNode{
 
         private uint id;
 

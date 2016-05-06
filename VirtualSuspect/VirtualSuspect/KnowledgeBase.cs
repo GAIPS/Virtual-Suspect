@@ -60,7 +60,7 @@ namespace VirtualSuspect{
 
         #endregion
 
-        private List<UpdateHandler> modifiers;
+        private List<IUpdateHandler> modifiers;
 
         /// <summary>
         /// List of available entities
@@ -98,11 +98,6 @@ namespace VirtualSuspect{
                 return events;
             }
         }
-        
-        /// <summary>
-        /// List of content that is changeable
-        /// </summary>
-        private List<ChangeableGroup> changeableGroups;
 
         /// <summary>
         /// Current Story
@@ -149,13 +144,11 @@ namespace VirtualSuspect{
             
             events = new List<EventNode>();
 
-            changeableGroups = new List<ChangeableGroup>();
-
             story = new List<EventNode>();
 
             //Add handlers to be used
 
-            modifiers = new List<UpdateHandler>();
+            modifiers = new List<IUpdateHandler>();
 
             modifiers.Add(new TheoryofMindHandler());
 
@@ -244,41 +237,6 @@ namespace VirtualSuspect{
             return nodeResult;
         }
 
-        public ChangeableGroup CreateNewChangeableGroup(ChangeableGroupDto cg) {
-             
-            //Test if dto is valid
-            //Test if domain are in the available list
-            foreach(IChangeableContent cc in cg.Domain) {
-
-                if(cc is EntityNode) {
-
-                    if (!entities.Exists(x => x == cc))
-                        throw new DtoFieldException("Changeable Content of type entity not found: " + cc);
-
-                } else if (cc is ActionNode) {
-
-                    if (!actions.Exists(x => x == cc))
-                        throw new DtoFieldException("Changeable Content of type action not found: " + cc);
-
-                }
-                else if (cc is EventNode) {
-
-                    if (!events.Exists(x => x == cc))
-                        throw new DtoFieldException("Changeable Content of type entity not found: " + cc);
-                }
-
-            }
-
-            //Create new Changeable Group
-            ChangeableGroup newChangeableGroup = new ChangeableGroup(cg.CurrentValue, cg.Domain);
-
-            //Add group to list of Changeable
-            changeableGroups.Add(newChangeableGroup);
-
-            return newChangeableGroup;
-
-        }
-
         public void AddEventToStory(EventNode en) {
 
             //Test if event exists
@@ -293,7 +251,7 @@ namespace VirtualSuspect{
         public QueryResult Query(QueryDto query) {
 
             //Update the KnowledgeBase with all the modifiers defined
-            foreach(UpdateHandler module in modifiers) {
+            foreach(IUpdateHandler module in modifiers) {
 
                 module.Update(this, query);
 

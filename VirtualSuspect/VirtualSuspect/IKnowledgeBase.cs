@@ -31,13 +31,6 @@ namespace VirtualSuspect
         EventNode CreateNewEvent(EventDto ev);
 
         /// <summary>
-        /// Creates a new Changeable Group using the fields in the cg dto
-        /// </summary>
-        /// <param name="cg">Contains the fileds to be changeable and other paramenters</param>
-        /// <returns></returns>
-        ChangeableGroup CreateNewChangeableGroup(ChangeableGroupDto cg);
-
-        /// <summary>
         /// Adds this Event Node to the story
         /// </summary>
         /// <param name="en">The event Node to be added to the story</param>

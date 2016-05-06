@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using VirtualSuspect.Query;
 
 namespace VirtualSuspect {
-    internal class TheoryofMindHandler : UpdateHandler {
+    internal class TheoryofMindHandler : IUpdateHandler {
 
         internal TheoryofMindHandler() {
 
