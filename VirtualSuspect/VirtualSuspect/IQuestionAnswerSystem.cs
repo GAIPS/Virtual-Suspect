@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Query;
 
 namespace VirtualSuspect {
 
     public interface IQuestionAnswerSystem {
 
-        KnowledgeBase KnowledgeBase { get; }
+        KnowledgeBaseManager KnowledgeBase { get; }
 
         /// <summary>
         /// Query the knowledge with the condition of the query

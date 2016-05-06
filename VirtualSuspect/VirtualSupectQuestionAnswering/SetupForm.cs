@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VirtualSuspect;
+using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Utils;
 
 namespace VirtualSupectQuestionAnswering
@@ -20,7 +21,7 @@ namespace VirtualSupectQuestionAnswering
 
         private void button2_Click(object sender, EventArgs e) {
 
-            KnowledgeBase suspectKB;
+            KnowledgeBaseManager suspectKB;
 
             // Create an instance of the open file dialog box.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();

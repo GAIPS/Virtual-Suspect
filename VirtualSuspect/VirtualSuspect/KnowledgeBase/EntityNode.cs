@@ -1,5 +1,4 @@
-﻿namespace VirtualSuspect
-{
+﻿namespace VirtualSuspect.KnowledgeBase {
     public class EntityNode{
 
         private uint id;
@@ -54,7 +53,7 @@
 
         }
         
-        public float EvaluateKnowledge(KnowledgeBase kb) {
+        public float EvaluateKnowledge(KnowledgeBaseManager kb) {
 
             float total = 0;
             float known = 0;

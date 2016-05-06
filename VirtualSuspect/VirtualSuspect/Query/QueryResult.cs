@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Query
 {
@@ -55,15 +56,15 @@ namespace VirtualSuspect.Query
 
             public int cardinality;
 
-            public KnowledgeBase.DimentionsEnum dimension;
+            public KnowledgeBaseManager.DimentionsEnum dimension;
 
-            public Result(IEnumerable<string> values, int cardinality, KnowledgeBase.DimentionsEnum dimension) {
+            public Result(IEnumerable<string> values, int cardinality, KnowledgeBaseManager.DimentionsEnum dimension) {
                 this.values = values.ToList();
                 this.cardinality = cardinality;
                 this.dimension = dimension;
             }
 
-            public Result(string value, int cardinality, KnowledgeBase.DimentionsEnum dimension) {
+            public Result(string value, int cardinality, KnowledgeBaseManager.DimentionsEnum dimension) {
                 
                 List<string> values = new List<string>();
                 values.Add(value); 

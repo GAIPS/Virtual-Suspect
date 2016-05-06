@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Query;
+using VirtualSuspect.KnowledgeBase;
 
-namespace VirtualSuspect {
+namespace VirtualSuspect.Handlers {
 
-    internal class ReceiverTheoryofMindHandler : IPreHandler {
+    internal class ReceiverTheoryOfMindHandler : IPreHandler {
 
         IQuestionAnswerSystem questionAnswer;
 
-        internal ReceiverTheoryofMindHandler(IQuestionAnswerSystem questionAnswer) {
+        internal ReceiverTheoryOfMindHandler(IQuestionAnswerSystem questionAnswer) {
 
             this.questionAnswer = questionAnswer;
 

@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Query;
 
-namespace VirtualSuspect
-{
+namespace VirtualSuspect.KnowledgeBase {
     interface IKnowledgeBase{
 
         /// <summary>

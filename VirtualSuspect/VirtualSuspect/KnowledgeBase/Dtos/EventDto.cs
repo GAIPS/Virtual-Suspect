@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace VirtualSuspect
-{
+namespace VirtualSuspect.KnowledgeBase {
     public class EventDto {
 
         private bool real;

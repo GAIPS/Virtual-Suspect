@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using VirtualSuspect;
+using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Query;
 using VirtualSuspect.Utils;
 
@@ -19,7 +20,7 @@ namespace VirtualSupectQuestionAnswering
         private VirtualSuspectQuestionAnswer VirtualSuspect;
 
         
-        public QuestionAnswerForm(KnowledgeBase kb) {
+        public QuestionAnswerForm(KnowledgeBaseManager kb) {
             
             InitializeComponent();
 

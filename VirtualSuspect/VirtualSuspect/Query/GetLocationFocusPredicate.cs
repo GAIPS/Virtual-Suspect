@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using VirtualSuspect.KnowledgeBase;
 namespace VirtualSuspect.Query
 {
     public class GetLocationFocusPredicate : IFocusPredicate{
@@ -11,7 +11,7 @@ namespace VirtualSuspect.Query
         public Func<EventNode, QueryResult.Result> CreateFunction() {
             return delegate (EventNode node) {    
 
-                return new QueryResult.Result(node.Location.Value, 1 , KnowledgeBase.DimentionsEnum.Location);
+                return new QueryResult.Result(node.Location.Value, 1 , KnowledgeBaseManager.DimentionsEnum.Location);
 
             };
         }

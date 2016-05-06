@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect;
 using VirtualSuspect.Utils;
+using VirtualSuspect.KnowledgeBase;
 
 namespace Interpreter
 {
@@ -14,7 +15,7 @@ namespace Interpreter
 
             string filepath = Console.ReadLine();
 
-            KnowledgeBase kb = KnowledgeBaseParser.parseFromFile("../../../../Story/JoãoPOV.xml");
+            KnowledgeBaseManager kb = KnowledgeBaseParser.parseFromFile("../../../../Story/JoãoPOV.xml");
             
         }
     }

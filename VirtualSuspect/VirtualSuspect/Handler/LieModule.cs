@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Query;
+using VirtualSuspect.KnowledgeBase;
 
-namespace VirtualSuspect {
+namespace VirtualSuspect.Handlers {
 
     internal class LieModule : IUpdateHandler {
 
@@ -16,7 +17,7 @@ namespace VirtualSuspect {
 
         }
 
-        public void Update(KnowledgeBase kb, QueryDto query) {
+        public void Update(KnowledgeBaseManager kb, QueryDto query) {
 
             List<EventNode> queryEvents = kb.Events;
 

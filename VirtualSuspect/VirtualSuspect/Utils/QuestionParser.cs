@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using VirtualSuspect.Query;
 using VirtualSuspect.Exception;
+using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Utils{
 
@@ -36,29 +37,29 @@ namespace VirtualSuspect.Utils{
 
             foreach(XmlNode focusNode in focusNodeList) {
 
-                KnowledgeBase.DimentionsEnum focusDimension = KnowledgeBase.convertToDimentions(focusNode.SelectSingleNode("dimension").InnerText);
+                KnowledgeBaseManager.DimentionsEnum focusDimension = KnowledgeBaseManager.convertToDimentions(focusNode.SelectSingleNode("dimension").InnerText);
 
                 //Parse the focus according to the dimension
                 switch (focusDimension) {
-                    case KnowledgeBase.DimentionsEnum.Action:
+                    case KnowledgeBaseManager.DimentionsEnum.Action:
                         newQueryDto.AddFocus(new GetActionFocusPredicate());
                         break;
-                    case KnowledgeBase.DimentionsEnum.Manner:
+                    case KnowledgeBaseManager.DimentionsEnum.Manner:
                         newQueryDto.AddFocus(new GetMannerFocusPredicate());
                         break;
-                    case KnowledgeBase.DimentionsEnum.Agent:
+                    case KnowledgeBaseManager.DimentionsEnum.Agent:
                         newQueryDto.AddFocus(new GetAgentFocusPredicate());
                         break;
-                    case KnowledgeBase.DimentionsEnum.Location:
+                    case KnowledgeBaseManager.DimentionsEnum.Location:
                         newQueryDto.AddFocus(new GetLocationFocusPredicate());
                         break;
-                    case KnowledgeBase.DimentionsEnum.Time:
+                    case KnowledgeBaseManager.DimentionsEnum.Time:
                         newQueryDto.AddFocus(new GetTimeFocusPredicate());
                         break;
-                    case KnowledgeBase.DimentionsEnum.Reason:
+                    case KnowledgeBaseManager.DimentionsEnum.Reason:
                         newQueryDto.AddFocus(new GetReasonFocusPredicate());
                         break;
-                    case KnowledgeBase.DimentionsEnum.Theme:
+                    case KnowledgeBaseManager.DimentionsEnum.Theme:
                         newQueryDto.AddFocus(new GetThemeFocusPredicate());
                         break;
                 }
@@ -68,13 +69,13 @@ namespace VirtualSuspect.Utils{
             //Get Conditions Predicate
             XmlNodeList conditionsNodeList = question.SelectNodes("/question/condition");
             foreach(XmlNode conditionNode in conditionsNodeList) {
-                
-                KnowledgeBase.DimentionsEnum conditionDimension = KnowledgeBase.convertToDimentions(conditionNode.SelectSingleNode("dimension").InnerText);
+
+                KnowledgeBaseManager.DimentionsEnum conditionDimension = KnowledgeBaseManager.convertToDimentions(conditionNode.SelectSingleNode("dimension").InnerText);
 
                 QueryDto.OperatorEnum conditionOperator = parseOperator(conditionDimension, conditionNode.SelectSingleNode("operator").InnerText);
 
                 switch (conditionDimension) {
-                    case KnowledgeBase.DimentionsEnum.Action:
+                    case KnowledgeBaseManager.DimentionsEnum.Action:
 
                         switch (conditionOperator) {
                             case QueryDto.OperatorEnum.Equal:
@@ -92,7 +93,7 @@ namespace VirtualSuspect.Utils{
 
                         break;
 
-                    case KnowledgeBase.DimentionsEnum.Manner:
+                    case KnowledgeBaseManager.DimentionsEnum.Manner:
 
                         switch (conditionOperator) {
                             case QueryDto.OperatorEnum.Equal:
@@ -115,7 +116,7 @@ namespace VirtualSuspect.Utils{
                         }
 
                         break;
-                    case KnowledgeBase.DimentionsEnum.Agent:
+                    case KnowledgeBaseManager.DimentionsEnum.Agent:
 
                         switch (conditionOperator) {
                             case QueryDto.OperatorEnum.Equal:
@@ -139,7 +140,7 @@ namespace VirtualSuspect.Utils{
 
                         break;
 
-                    case KnowledgeBase.DimentionsEnum.Location:
+                    case KnowledgeBaseManager.DimentionsEnum.Location:
 
                         switch (conditionOperator) {
 
@@ -157,7 +158,7 @@ namespace VirtualSuspect.Utils{
                         }
 
                         break;
-                    case KnowledgeBase.DimentionsEnum.Time:
+                    case KnowledgeBaseManager.DimentionsEnum.Time:
 
                         switch (conditionOperator) {
                             case QueryDto.OperatorEnum.Equal:
@@ -185,7 +186,7 @@ namespace VirtualSuspect.Utils{
                         }
                         break;
 
-                    case KnowledgeBase.DimentionsEnum.Reason:
+                    case KnowledgeBaseManager.DimentionsEnum.Reason:
 
                         switch (conditionOperator) {
                             case QueryDto.OperatorEnum.Equal:
@@ -209,7 +210,7 @@ namespace VirtualSuspect.Utils{
 
                         break;
 
-                    case KnowledgeBase.DimentionsEnum.Theme:
+                    case KnowledgeBaseManager.DimentionsEnum.Theme:
 
                         switch (conditionOperator) {
                             case QueryDto.OperatorEnum.Equal:
@@ -247,38 +248,38 @@ namespace VirtualSuspect.Utils{
         /// <param name="dimension">test availability of operator in this dimension</param>
         /// <param name="operatorToParse">operator to be parsed</param>
         /// <returns></returns>
-        private static QueryDto.OperatorEnum parseOperator(KnowledgeBase.DimentionsEnum dimension, string operatorToParse) {
+        private static QueryDto.OperatorEnum parseOperator(KnowledgeBaseManager.DimentionsEnum dimension, string operatorToParse) {
 
             switch (dimension) {
-                case KnowledgeBase.DimentionsEnum.Action:
+                case KnowledgeBaseManager.DimentionsEnum.Action:
                     switch(operatorToParse) {
                         case "equal":
                             return QueryDto.OperatorEnum.Equal;
                         default:
                             throw new MessageFieldException("Invalid operator for dimension Action: " + operatorToParse);
                     }
-                case KnowledgeBase.DimentionsEnum.Manner:
+                case KnowledgeBaseManager.DimentionsEnum.Manner:
                     switch (operatorToParse) {
                         case "equal":
                             return QueryDto.OperatorEnum.Equal;
                         default:
                             throw new MessageFieldException("Invalid operator for dimension Manner: " + operatorToParse);
                     }
-                case KnowledgeBase.DimentionsEnum.Agent:
+                case KnowledgeBaseManager.DimentionsEnum.Agent:
                     switch (operatorToParse) {
                         case "equal":
                             return QueryDto.OperatorEnum.Equal;
                         default:
                             throw new MessageFieldException("Invalid operator for dimension Agent: " + operatorToParse);
                     }
-                case KnowledgeBase.DimentionsEnum.Location:
+                case KnowledgeBaseManager.DimentionsEnum.Location:
                     switch (operatorToParse) {
                         case "equal":
                             return QueryDto.OperatorEnum.Equal;
                         default:
                             throw new MessageFieldException("Invalid operator for dimension Location: " + operatorToParse);
                     }
-                case KnowledgeBase.DimentionsEnum.Time:
+                case KnowledgeBaseManager.DimentionsEnum.Time:
                     switch (operatorToParse) {
                         case "equal":
                             return QueryDto.OperatorEnum.Equal;
@@ -287,14 +288,14 @@ namespace VirtualSuspect.Utils{
                         default:
                             throw new MessageFieldException("Invalid operator for dimension Time: " + operatorToParse);
                     }
-                case KnowledgeBase.DimentionsEnum.Reason:
+                case KnowledgeBaseManager.DimentionsEnum.Reason:
                     switch (operatorToParse) {
                         case "equal":
                             return QueryDto.OperatorEnum.Equal;
                         default:
                             throw new MessageFieldException("Invalid operator for dimension Reason: " + operatorToParse);
                     }
-                case KnowledgeBase.DimentionsEnum.Theme:
+                case KnowledgeBaseManager.DimentionsEnum.Theme:
                     switch (operatorToParse) {
                         case "equal":
                             return QueryDto.OperatorEnum.Equal;

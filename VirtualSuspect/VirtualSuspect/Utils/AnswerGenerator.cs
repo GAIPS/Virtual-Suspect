@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using VirtualSuspect.Query;
+using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Utils
 {
@@ -32,7 +33,7 @@ namespace VirtualSuspect.Utils
                     XmlElement newResponseXml = newAnswer.CreateElement("response");
 
                     XmlElement newDimensionNode = newAnswer.CreateElement("dimension");
-                    newDimensionNode.InnerText = KnowledgeBase.convertToString(result.dimension);
+                    newDimensionNode.InnerText = KnowledgeBaseManager.convertToString(result.dimension);
 
                     XmlElement newCardinalityNode = newAnswer.CreateElement("cardinality");
                     newCardinalityNode.InnerText = "" + result.cardinality;

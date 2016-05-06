@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VirtualSuspect.Query;
 
-namespace VirtualSuspect {
+namespace VirtualSuspect.Handlers {
 
-    interface KnowledgeBaseModifier {
+    interface IPosHandler {
 
-        void ModifyKnowledgeBase(KnowledgeBase kb, EventNode ev);
+        QueryResult Modify(QueryResult result);
 
     }
 

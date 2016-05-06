@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VirtualSuspect
-{
+namespace VirtualSuspect.KnowledgeBase {
     public class EventNode {
 
         private uint id;

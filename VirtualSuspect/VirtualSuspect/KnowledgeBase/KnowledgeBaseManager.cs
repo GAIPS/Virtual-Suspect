@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using VirtualSuspect.Exception;
 using VirtualSuspect.Query;
 
-namespace VirtualSuspect{
+namespace VirtualSuspect.KnowledgeBase {
 
-    public class KnowledgeBase : IKnowledgeBase{
+    public class KnowledgeBaseManager : IKnowledgeBase{
 
         #region Enumerates
     
@@ -18,19 +18,19 @@ namespace VirtualSuspect{
 
             switch (dimension) {
                 case "action":
-                    return KnowledgeBase.DimentionsEnum.Action;
+                    return KnowledgeBaseManager.DimentionsEnum.Action;
                 case "location":
-                    return KnowledgeBase.DimentionsEnum.Location;
+                    return KnowledgeBaseManager.DimentionsEnum.Location;
                 case "agent":
-                    return KnowledgeBase.DimentionsEnum.Agent;
+                    return KnowledgeBaseManager.DimentionsEnum.Agent;
                 case "theme":
-                    return KnowledgeBase.DimentionsEnum.Theme;
+                    return KnowledgeBaseManager.DimentionsEnum.Theme;
                 case "manner":
-                    return KnowledgeBase.DimentionsEnum.Manner;
+                    return KnowledgeBaseManager.DimentionsEnum.Manner;
                 case "reason":
-                    return KnowledgeBase.DimentionsEnum.Reason;
+                    return KnowledgeBaseManager.DimentionsEnum.Reason;
                 case "time":
-                    return KnowledgeBase.DimentionsEnum.Time;
+                    return KnowledgeBaseManager.DimentionsEnum.Time;
                 default:
                     throw new DimensionParseException("Wrong dimension: " + dimension);
             }
@@ -134,7 +134,7 @@ namespace VirtualSuspect{
 
         }
 
-        public KnowledgeBase() {
+        public KnowledgeBaseManager() {
 
             entities = new List<EntityNode>();
 

@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Utils
 {
     public static class KnowledgeBaseParser{
 
-        public static KnowledgeBase parseFromFile(string filePath) {
+        public static KnowledgeBaseManager parseFromFile(string filePath) {
 
             XmlDocument xmlFile = new XmlDocument();
 
@@ -19,9 +20,9 @@ namespace VirtualSuspect.Utils
 
         }
 
-        public static KnowledgeBase parseFromXml(XmlNode xmlRoot) {
+        public static KnowledgeBaseManager parseFromXml(XmlNode xmlRoot) {
 
-            KnowledgeBase kb = new KnowledgeBase();
+            KnowledgeBaseManager kb = new KnowledgeBaseManager();
 
             Dictionary<uint, EntityNode> entities = new Dictionary<uint, EntityNode>();
 

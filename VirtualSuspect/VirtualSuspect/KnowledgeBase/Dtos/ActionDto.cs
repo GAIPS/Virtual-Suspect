@@ -1,5 +1,4 @@
-﻿namespace VirtualSuspect
-{
+﻿namespace VirtualSuspect.KnowledgeBase {
     public class ActionDto{
 
         private string action;

@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Query;
+using VirtualSuspect.KnowledgeBase;
+using VirtualSuspect.Handlers;
+
 
 namespace VirtualSuspect {
 
     public class VirtualSuspectQuestionAnswer : IQuestionAnswerSystem {
 
-        private KnowledgeBase knowledgeBase;
+        private KnowledgeBaseManager knowledgeBase;
 
-        public KnowledgeBase KnowledgeBase {
+        public KnowledgeBaseManager KnowledgeBase {
 
             get {
                     return knowledgeBase;
@@ -23,7 +26,7 @@ namespace VirtualSuspect {
 
         private List<IPosHandler> posHandlers;
 
-        public VirtualSuspectQuestionAnswer(KnowledgeBase kb) {
+        public VirtualSuspectQuestionAnswer(KnowledgeBaseManager kb) {
 
             knowledgeBase = kb;
 
@@ -32,11 +35,13 @@ namespace VirtualSuspect {
             posHandlers = new List<IPosHandler>();
 
             //Setup Theory of Mind to Handle the query received
-            preHandlers.Add(new ReceiverTheoryofMindHandler(this));
+            preHandlers.Add(new ReceiverTheoryOfMindHandler(this));
 
             //Setup Theory of Mind to Handle the results of the query
             //   We assume that the answer is known by the user
             posHandlers.Add(new SenderTheoryOfMindHandler(this, true));
+
+
 
         }
 

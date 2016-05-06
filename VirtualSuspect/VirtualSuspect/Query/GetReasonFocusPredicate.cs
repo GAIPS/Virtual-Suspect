@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Query
 {
@@ -11,7 +12,7 @@ namespace VirtualSuspect.Query
         public Func<EventNode, QueryResult.Result> CreateFunction() {
             return delegate (EventNode node) {    
 
-                return new QueryResult.Result(node.Reason.Select(x => x.Value), node.Reason.Count , KnowledgeBase.DimentionsEnum.Reason);
+                return new QueryResult.Result(node.Reason.Select(x => x.Value), node.Reason.Count , KnowledgeBaseManager.DimentionsEnum.Reason);
 
             };
         }

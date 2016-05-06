@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Query;
+using VirtualSuspect.KnowledgeBase;
 
-namespace VirtualSuspect {
+namespace VirtualSuspect.Handlers {
 
     class SenderTheoryOfMindHandler : IPosHandler {
 

@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VirtualSuspect;
+using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSupectQuestionAnswering
 {
     public partial class DataVisualizer : Form{
 
-        KnowledgeBase suspectKB;
+        KnowledgeBaseManager suspectKB;
 
-        public DataVisualizer(KnowledgeBase kb) {
+        public DataVisualizer(KnowledgeBaseManager kb) {
             InitializeComponent();
             this.suspectKB = kb;
         }

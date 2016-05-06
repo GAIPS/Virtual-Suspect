@@ -1,5 +1,4 @@
-﻿namespace VirtualSuspect
-{
+﻿namespace VirtualSuspect.KnowledgeBase {
     public class EntityDto{
 
         private string value;

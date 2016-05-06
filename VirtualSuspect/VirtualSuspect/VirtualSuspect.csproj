@@ -40,14 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\ActionDto.cs" />
-    <Compile Include="IPosHandler.cs" />
-    <Compile Include="IPreHandler.cs" />
+    <Compile Include="KnowledgeBase\Dtos\ActionDto.cs" />
+    <Compile Include="Handler\IPosHandler.cs" />
+    <Compile Include="Handler\IPreHandler.cs" />
     <Compile Include="KnowledgeBase\ActionNode.cs" />
     <Compile Include="Exception\DimensionParseException.cs" />
     <Compile Include="IQuestionAnswerSystem.cs" />
-    <Compile Include="KnowledgeBase\KnowledgeBaseModifier.cs" />
-    <Compile Include="LieModule.cs" />
+    <Compile Include="Handler\LieModule.cs" />
     <Compile Include="Query\GetTimeFocusPredicate.cs" />
     <Compile Include="Query\GetReasonFocusPredicate.cs" />
     <Compile Include="Query\GetMannerFocusPredicate.cs" />
@@ -61,13 +60,13 @@
     <Compile Include="Query\TimeBetweenConditionPredicate.cs" />
     <Compile Include="Query\TimeEqualConditionPredicate.cs" />
     <Compile Include="Query\IConditionPredicate.cs" />
-    <Compile Include="Dtos\EntityDto.cs" />
+    <Compile Include="KnowledgeBase\Dtos\EntityDto.cs" />
     <Compile Include="KnowledgeBase\EntityNode.cs" />
-    <Compile Include="Dtos\EventDto.cs" />
+    <Compile Include="KnowledgeBase\Dtos\EventDto.cs" />
     <Compile Include="KnowledgeBase\EventNode.cs" />
     <Compile Include="Exception\DtoFieldException.cs" />
     <Compile Include="KnowledgeBase\IKnowledgeBase.cs" />
-    <Compile Include="KnowledgeBase\KnowledgeBase.cs" />
+    <Compile Include="KnowledgeBase\KnowledgeBaseManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\GetLocationFocusPredicate.cs" />
     <Compile Include="Query\IFocusPredicate.cs" />
@@ -75,9 +74,8 @@
     <Compile Include="Query\LocationEqualConditionPredicate.cs" />
     <Compile Include="Query\QueryDto.cs" />
     <Compile Include="Query\QueryResult.cs" />
-    <Compile Include="ReceiverTheoryofMindHandler.cs" />
-    <Compile Include="SenderTheoryOfMindHandler.cs" />
-    <Compile Include="UpdateModule.cs" />
+    <Compile Include="Handler\ReceiverTheoryOfMindHandler.cs" />
+    <Compile Include="Handler\SenderTheoryOfMindHandler.cs" />
     <Compile Include="Utils\AnswerGenerator.cs" />
     <Compile Include="Utils\KnowledgeBaseParser.cs" />
     <Compile Include="Exception\MessageFieldException.cs" />

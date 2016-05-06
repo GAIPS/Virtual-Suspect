@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Exception;
+using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Query
 {
