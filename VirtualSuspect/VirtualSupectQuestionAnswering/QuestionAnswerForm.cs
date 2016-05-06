@@ -16,15 +16,16 @@ namespace VirtualSupectQuestionAnswering
 {
     public partial class QuestionAnswerForm : Form {
 
-        KnowledgeBase virtualSuspectKb;
+        private VirtualSuspectQuestionAnswer VirtualSuspect;
 
+        
         public QuestionAnswerForm(KnowledgeBase kb) {
             
             InitializeComponent();
 
             PopulateQuestionTemplate();
 
-            virtualSuspectKb = kb;
+            VirtualSuspect = new VirtualSuspectQuestionAnswer(kb);
 
         }
 
@@ -35,9 +36,10 @@ namespace VirtualSupectQuestionAnswering
 
             QueryDto newQuery = QuestionParser.ExtractFromXml(questionXml);
 
-            QueryResult result = virtualSuspectKb.Query(newQuery);
+            QueryResult result = VirtualSuspect.Query(newQuery);
 
             tbAnswerStructure.Text = beautify(AnswerGenerator.GenerateAnswer(result));
+
         }
 
         private string beautify(XmlDocument doc) {
@@ -136,7 +138,7 @@ namespace VirtualSupectQuestionAnswering
 
         private void viewToolStripMenuItem_Click(object sender, EventArgs e) {
 
-            DataVisualizer dv = new DataVisualizer(virtualSuspectKb);
+            DataVisualizer dv = new DataVisualizer(VirtualSuspect.KnowledgeBase);
             dv.Show();
         }
 

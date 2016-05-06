@@ -11,8 +11,6 @@ namespace VirtualSuspect {
 
         internal enum LieStrategy{None, Hide, RandomEventReplacement, SmartEventReplacement};
 
-        internal KnowledgeBaseModifier modifier;
-
         internal LieModule(LieStrategy strategy) {
         
 

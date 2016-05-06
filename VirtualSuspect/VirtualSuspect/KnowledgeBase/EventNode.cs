@@ -251,6 +251,35 @@ namespace VirtualSuspect
             return null;
         }
         
+        public List<EntityNode> FindEntitiesByType(string type) {
+
+            List<EntityNode> nodes = new List<EntityNode>();
+
+            switch (type) {
+                case "Time":
+                    nodes.Add(Time);
+                    break;
+                case "Location":
+                    nodes.Add(Location); 
+                    break;
+                case "Agent":
+                    nodes.AddRange(Agent);
+                    break;
+                case "Theme":
+                    nodes.AddRange(Theme);
+                    break;
+                case "Reason":
+                    nodes.AddRange(Reason);
+                    break;
+                case "Manner":
+                    nodes.AddRange(Manner);
+                    break;
+            }
+
+            return nodes;
+
+        }
+
         /// <summary>
         /// Marks an entitiy Node as known by the user
         /// </summary>

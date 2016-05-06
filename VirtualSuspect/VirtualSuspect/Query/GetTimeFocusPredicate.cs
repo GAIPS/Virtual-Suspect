@@ -15,5 +15,8 @@ namespace VirtualSuspect.Query
 
             };
         }
+        public string GetSemanticRole() {
+            return "Time";
+        }
     }
 }

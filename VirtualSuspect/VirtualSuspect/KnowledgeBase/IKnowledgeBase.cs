@@ -34,14 +34,7 @@ namespace VirtualSuspect
         /// Adds this Event Node to the story
         /// </summary>
         /// <param name="en">The event Node to be added to the story</param>
-        void AddEventToStory(EventNode en);
-        
-        /// <summary>
-        /// Query the knowledge with the condition of the query
-        /// </summary>
-        /// <param name="query">The dto containing the query conditions</param>
-        /// <returns></returns>
-        QueryResult Query(QueryDto query);
+        void AddEventToStory(EventNode en);       
 
     }
 }

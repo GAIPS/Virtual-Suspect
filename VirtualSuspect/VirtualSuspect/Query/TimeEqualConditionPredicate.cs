@@ -14,7 +14,7 @@ namespace VirtualSuspect.Query
 
         public TimeEqualConditionPredicate(string time){
         
-            DateTime datetime = DateTime.ParseExact(time, "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
+             datetime = DateTime.ParseExact(time, "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
 
         }
 

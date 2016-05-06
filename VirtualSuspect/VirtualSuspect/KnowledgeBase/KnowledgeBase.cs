@@ -60,8 +60,6 @@ namespace VirtualSuspect{
 
         #endregion
 
-        private List<IUpdateHandler> modifiers;
-
         /// <summary>
         /// List of available entities
         /// </summary>
@@ -145,12 +143,6 @@ namespace VirtualSuspect{
             events = new List<EventNode>();
 
             story = new List<EventNode>();
-
-            //Add handlers to be used
-
-            modifiers = new List<IUpdateHandler>();
-
-            modifiers.Add(new TheoryofMindHandler());
 
         }
 
@@ -246,55 +238,6 @@ namespace VirtualSuspect{
             //Add event to the story
             story.Add(en);
 
-        }
-
-        public QueryResult Query(QueryDto query) {
-
-            //Update the KnowledgeBase with all the modifiers defined
-            foreach(IUpdateHandler module in modifiers) {
-
-                module.Update(this, query);
-
-            }
-
-            QueryResult result = new QueryResult(query);
-
-            if(query.QueryType == QueryDto.QueryTypeEnum.YesOrNo) { //Test yes or no
-
-                List<EventNode> queryEvents = story;
-                //Select entities from the dimension
-                foreach (IConditionPredicate predicate in query.QueryConditions) {
-
-                    queryEvents = queryEvents.FindAll(predicate.CreatePredicate());
-                }
-
-                result.AddBooleanResult(queryEvents.Count != 0);
-
-            } else if(query.QueryType == QueryDto.QueryTypeEnum.GetInformation) { //Test get information
-
-                List<EventNode> queryEvents = story;
-
-                //Iterate all the conditions (Disjuctive filtering)
-                foreach(IConditionPredicate predicate in query.QueryConditions) {
-                  
-                        queryEvents = queryEvents.FindAll(predicate.CreatePredicate());
-                }
-
-                //Select entities from the dimension
-                foreach (IFocusPredicate focus in query.QueryFocus) {
-
-                    result.AddResults(queryEvents.Select(focus.CreateFunction()));
-
-                }
-
-                //Count Cardinality
-                result.CountResult();
-
-
-
-            }
-
-            return result;
         }
 
         internal void PropagateIncriminaotryValues() {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace VirtualSuspect.Query
 {
@@ -10,5 +11,12 @@ namespace VirtualSuspect.Query
         /// <returns>a delgate to the predicate</returns>
         Func<EventNode, QueryResult.Result> CreateFunction();
 
+        /// <summary>
+        /// Returns the semantic role of the condition
+        /// </summary>
+        /// <returns>Ex: Theme, Action, Agent, Manner, Reason, Time, Location</returns>
+        string GetSemanticRole();
+
+        
     }
 }
