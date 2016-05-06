@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using VirtualSuspect.Query;
 using VirtualSuspect.KnowledgeBase;
 
-namespace VirtualSuspect.Handlers {
+namespace VirtualSuspect.Handler {
 
     internal class ReceiverTheoryOfMindHandler : IPreHandler {
 

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Query;
 
-namespace VirtualSuspect.Handlers {
+namespace VirtualSuspect.Handler {
 
     interface IPreHandler {
 

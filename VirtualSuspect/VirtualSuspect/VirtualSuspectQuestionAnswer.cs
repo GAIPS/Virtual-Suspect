@@ -5,12 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Query;
 using VirtualSuspect.KnowledgeBase;
-using VirtualSuspect.Handlers;
+using VirtualSuspect.Handler;
 
 
 namespace VirtualSuspect {
 
     public class VirtualSuspectQuestionAnswer : IQuestionAnswerSystem {
+
+        public enum LieStrategy { None, Hide, AdjustEntity, AdjustEvent, Improvise}
+
+        private LieStrategy strategy;
+
+        public LieStrategy Strategy {
+
+            get {
+                return strategy;
+            }
+
+            set {
+                strategy = value;
+            }
+
+        }
 
         private KnowledgeBaseManager knowledgeBase;
 
@@ -41,7 +57,8 @@ namespace VirtualSuspect {
             //   We assume that the answer is known by the user
             posHandlers.Add(new SenderTheoryOfMindHandler(this, true));
 
-
+            //Remove and update Incriminatory Event
+            //preHandlers.Add(new DuplicateAndAdjustEventsHandler(this));
 
         }
 
@@ -99,5 +116,9 @@ namespace VirtualSuspect {
             return result;
 
         }
+    
+
     }
+
+
 }

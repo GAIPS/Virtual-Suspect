@@ -40,13 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handler\DuplicateAndAdjustEventsHandler.cs" />
     <Compile Include="KnowledgeBase\Dtos\ActionDto.cs" />
     <Compile Include="Handler\IPosHandler.cs" />
     <Compile Include="Handler\IPreHandler.cs" />
     <Compile Include="KnowledgeBase\ActionNode.cs" />
     <Compile Include="Exception\DimensionParseException.cs" />
     <Compile Include="IQuestionAnswerSystem.cs" />
-    <Compile Include="Handler\LieModule.cs" />
     <Compile Include="Query\GetTimeFocusPredicate.cs" />
     <Compile Include="Query\GetReasonFocusPredicate.cs" />
     <Compile Include="Query\GetMannerFocusPredicate.cs" />
@@ -76,6 +76,7 @@
     <Compile Include="Query\QueryResult.cs" />
     <Compile Include="Handler\ReceiverTheoryOfMindHandler.cs" />
     <Compile Include="Handler\SenderTheoryOfMindHandler.cs" />
+    <Compile Include="StrategySelectorHandle.cs" />
     <Compile Include="Utils\AnswerGenerator.cs" />
     <Compile Include="Utils\KnowledgeBaseParser.cs" />
     <Compile Include="Exception\MessageFieldException.cs" />

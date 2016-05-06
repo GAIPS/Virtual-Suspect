@@ -6,32 +6,34 @@ using System.Threading.Tasks;
 using VirtualSuspect.Query;
 using VirtualSuspect.KnowledgeBase;
 
-namespace VirtualSuspect.Handlers {
+namespace VirtualSuspect.Handler {
 
-    internal class LieModule : IUpdateHandler {
+    class DuplicateAndAdjustEventsHandler : IPosHandler {
 
-        internal enum LieStrategy{None, Hide, RandomEventReplacement, SmartEventReplacement};
+        private VirtualSuspectQuestionAnswer virtualSuspect;
 
-        internal LieModule(LieStrategy strategy) {
+        public DuplicateAndAdjustEventsHandler(VirtualSuspectQuestionAnswer virtualSuspect) {
+
+            this.virtualSuspect = virtualSuspect;
         
-
         }
+        
+        public QueryResult Modify(QueryResult result) {
 
-        public void Update(KnowledgeBaseManager kb, QueryDto query) {
-
-            List<EventNode> queryEvents = kb.Events;
+            
+            List<EventNode> queryEvents = virtualSuspect.KnowledgeBase.Events;
 
             //Get all the events that match the query conditions
-            foreach (IConditionPredicate condition in query.QueryConditions) {
+            foreach (IConditionPredicate condition in result.Query.QueryConditions) {
 
                 queryEvents = queryEvents.FindAll(condition.CreatePredicate());
 
             }
 
             //Lie Process Decision Making 
-            
+
             //For each event
-            foreach(EventNode eventNode in queryEvents) {
+            foreach (EventNode eventNode in queryEvents) {
 
                 //Is the event incriminatory
                 int incriminatory = eventNode.Incriminatory;
@@ -39,6 +41,7 @@ namespace VirtualSuspect.Handlers {
 
             }
 
+            return result;
 
         }
 
@@ -50,12 +53,9 @@ namespace VirtualSuspect.Handlers {
 
             EventNode eventCopy = new EventNode(newID, old.Incriminatory, old.Action, isTimeKnwon ? old.Time : null, isLocationKnwon ? old.Location : null);
 
-
-
             return eventCopy;
 
         }
-
+    
     }
-
 }
