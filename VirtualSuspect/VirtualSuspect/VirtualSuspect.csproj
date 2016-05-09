@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handler\DuplicateAndAdjustEventsHandler.cs" />
+    <Compile Include="Handler\ModifyKnowledgeBaseHandler.cs" />
+    <Compile Include="Handler\FilterAnswerHandler.cs" />
     <Compile Include="KnowledgeBase\Dtos\ActionDto.cs" />
     <Compile Include="Handler\IPosHandler.cs" />
     <Compile Include="Handler\IPreHandler.cs" />
@@ -76,7 +77,7 @@
     <Compile Include="Query\QueryResult.cs" />
     <Compile Include="Handler\ReceiverTheoryOfMindHandler.cs" />
     <Compile Include="Handler\SenderTheoryOfMindHandler.cs" />
-    <Compile Include="StrategySelectorHandle.cs" />
+    <Compile Include="Handler\StrategySelectorHandler.cs" />
     <Compile Include="Utils\AnswerGenerator.cs" />
     <Compile Include="Utils\KnowledgeBaseParser.cs" />
     <Compile Include="Exception\MessageFieldException.cs" />

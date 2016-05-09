@@ -6,14 +6,16 @@ using VirtualSuspect.KnowledgeBase;
 
 namespace VirtualSuspect.Query
 {
-    public class QueryResult
-    {
+    public class QueryResult{
 
-        private bool yesNoResult;
-
-        public bool YesNoResult {
+        /// <summary>
+        /// Dictionary that holds meta data that describes the answer
+        /// </summary>
+        private Dictionary<string, string> metaData;
+        
+        public Dictionary<string, string> MetaData {
             get {
-                return yesNoResult;
+                return metaData;
             }
         }
 
@@ -22,6 +24,14 @@ namespace VirtualSuspect.Query
         public QueryDto Query {
             get {
                 return query;
+            }
+        }
+
+        private bool yesNoResult;
+
+        public bool YesNoResult {
+            get {
+                return yesNoResult;
             }
         }
 
@@ -34,6 +44,9 @@ namespace VirtualSuspect.Query
         }
 
         public QueryResult(QueryDto query) {
+
+            metaData = new Dictionary<string, string>();
+
             this.query = query;
             results = new List<Result>();
         }
@@ -101,9 +114,23 @@ namespace VirtualSuspect.Query
 
             public int GetHashCode(Result obj) {
                 int test1=obj.dimension.GetHashCode();
-                int test2 = obj.values.Sum(x => x.GetHashCode());
-                return obj.dimension.GetHashCode() + obj.values.Sum(x => x.GetHashCode());
+
+                int test2 = 0;
+
+                foreach(string value in obj.values) {
+
+                    test2 += value.GetHashCode();
+                }
+
+                return test1 + test2;
             }
         }
+
+        public void AddMetaData(string tag, string value) {
+
+            metaData.Add(tag, value);
+
+        }
+
     }
 }
