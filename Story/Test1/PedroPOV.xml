@@ -2,32 +2,32 @@
 	<entity>
 		<id>1</id>
 		<type>TimeSpan</type>
-		<begin>1/03/2016 11:00</begin>
-		<end>1/03/2016 11:30</end>
+		<begin>1/03/2016T11:00:00</begin>
+		<end>1/03/2016T11:30:00</end>
 	</entity>
 	<entity>
 		<id>2</id>
 		<type>TimeSpan</type>
-		<begin>1/03/2016 11:30</begin>
-		<end>1/03/2016 11:40</end>
+		<begin>1/03/2016T11:30:00</begin>
+		<end>1/03/2016T11:40:00</end>
 	</entity>
 	<entity>
 		<id>3</id>
 		<type>TimeSpan</type>
-		<begin>1/03/2016 11:40</begin>
-		<end>1/03/2016 12:30</end>
+		<begin>1/03/2016T11:40:00</begin>
+		<end>1/03/2016T12:30:00</end>
 	</entity>
 	<entity>
 		<id>4</id>
 		<type>TimeSpan</type>
-		<begin>1/03/2016 12:30</begin>
-		<end>1/03/2016 17:00</end>
+		<begin>1/03/2016T12:30:00</begin>
+		<end>1/03/2016T17:00:00</end>
 	</entity>
 	<entity>
 		<id>5</id>
 		<type>TimeSpan</type>
-		<begin>1/03/2016 17:00</begin>
-		<end>1/03/2016 17:15</end>
+		<begin>1/03/2016 17:00:00</begin>
+		<end>1/03/2016 17:15:00</end>
 	</entity>
 	<entity>
 		<id>6</id>
@@ -72,8 +72,8 @@
 	<entity>
 		<id>14</id>
 		<type>TimeSpan</type>
-		<begin>1/03/2016 10:00</begin>
-		<end>1/03/2016 11:00</end>
+		<begin>1/03/2016T10:00:00</begin>
+		<end>1/03/2016T11:00:00</end>
 	</entity>
 	<entity>
 		<id>15</id>

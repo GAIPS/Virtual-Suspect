@@ -2,8 +2,8 @@
 	<entity>
 		<id>1</id>
 		<type>TimeSpan</type>
-		<begin>1/03/2016 15:00</begin>
-		<end>1/03/2016 17:00</end>
+		<begin>1/03/2016T15:00:00</begin>
+		<end>1/03/2016T17:00:00</end>
 	</entity>
 	<entity>
 		<id>2</id>
@@ -23,7 +23,7 @@
 	<entity>
 		<id>5</id>
 		<type>TimeInstant</type>
-		<value>1/03/2016 17:15</value>
+		<value>1/03/2016T17:15:00</value>
 	</entity>
 	<entity>
 		<id>6</id>
