@@ -32,6 +32,7 @@ namespace VirtualSupectQuestionAnswering
             dgvActions.Columns.Add("action","Action");
 
             dgvEvents.Columns.Add("id", "ID");
+            dgvEvents.Columns.Add("real", "Real");
             dgvEvents.Columns.Add("incriminatory", "Incriminatory");
             dgvEvents.Columns.Add("known", "Known");
             dgvEvents.Columns.Add("action", "Action");
@@ -56,6 +57,7 @@ namespace VirtualSupectQuestionAnswering
             foreach (EventNode eventNode in suspectKB.Events) {
                 dgvEvents.Rows.Add(new string[] {
                     "" + eventNode.ID,
+                    suspectKB.Story.Contains(eventNode) ? "o" : "",
                     "" + eventNode.Incriminatory,
                     "" + eventNode.Know,
                     "' " +eventNode.Action.Action + " ' ( " + eventNode.Action.ID + " )",

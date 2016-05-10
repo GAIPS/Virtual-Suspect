@@ -28,9 +28,12 @@ namespace VirtualSuspect.KnowledgeBase {
 
         public ActionNode Action
         {
-            get
-            {
+            get{
                 return action;
+            }
+
+            set {
+                action = value;
             }
         }
 
@@ -38,9 +41,12 @@ namespace VirtualSuspect.KnowledgeBase {
 
         public EntityNode Time
         {
-            get
-            {
+            get{
                 return time;
+            }
+
+            set {
+                time = value;
             }
         }
 
@@ -51,6 +57,10 @@ namespace VirtualSuspect.KnowledgeBase {
             get
             {
                 return location;
+            }
+
+            set {
+                location = value;
             }
         }
 
@@ -105,7 +115,22 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
-        private Dictionary<EntityNode, bool> ToMTable;
+        internal Dictionary<EntityNode, bool> ToMTable;
+
+        internal EventNode(uint id, int incriminatory, ActionNode action) {
+
+            this.id = id;
+            this.incriminatory = incriminatory;
+            this.action = action;
+
+            agent = new List<EntityNode>();
+            theme = new List<EntityNode>();
+            manner = new List<EntityNode>();
+            reason = new List<EntityNode>();
+
+            ToMTable = new Dictionary<EntityNode, bool>();
+
+        }
 
         public EventNode(uint id, int incriminatory, ActionNode action, EntityNode time, EntityNode location) {
 

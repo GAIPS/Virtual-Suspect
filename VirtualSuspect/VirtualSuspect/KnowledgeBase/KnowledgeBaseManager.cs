@@ -112,7 +112,7 @@ namespace VirtualSuspect.KnowledgeBase {
         /// Returns the next available id for an node
         /// </summary>
         /// <returns>Available Id for node</returns>
-        private uint getNextNodeId(String nodeType) {
+        internal uint getNextNodeId(String nodeType) {
 
             if (nodeType == "action") {
 
@@ -240,6 +240,17 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
+        public void RemoveEventFromStory(EventNode en) {
+
+            //Test if event exists
+            if (!events.Exists(x => x == en))
+                throw new DtoFieldException("Event Node not found: " + en);
+
+            //Add event to the story
+            story.Remove(en);
+
+        }
+
         internal void PropagateIncriminaotryValues() {
 
             Dictionary<EntityNode, List<EventNode>> entityToEvent = new Dictionary<EntityNode, List<EventNode>>();
@@ -297,5 +308,83 @@ namespace VirtualSuspect.KnowledgeBase {
             
         }
         
+        internal List<EntityNode> ExtractSimilarEntities(EntityNode node, bool includeIncriminatory = true) {
+
+            List<EntityNode> result = new List<EntityNode>();
+
+            //Check in the Entity Nodes List for similar Entities
+            //Matching type
+            foreach(EntityNode entity in entities) {
+                if (entity.Type == node.Type)
+                    result.Add(entity);
+            }
+
+            //If entity has only one semantic role them choose another 
+            //entity in the same semantic role
+            List<String> semanticRoles = new List<String>();
+
+            //Get all the semantic roles that this entity has
+            foreach(EventNode eventNode in events) {
+
+                if(eventNode.ContainsEntity(node)) {
+
+                    if(eventNode.Agent.Contains(node)) {
+                        semanticRoles.Add("Agent");
+                    }
+
+                    if (eventNode.Theme.Contains(node)) {
+                        semanticRoles.Add("Theme");
+                    }
+
+                    if (eventNode.Manner.Contains(node)) {
+                        semanticRoles.Add("Manner");
+                    }
+
+                    if (eventNode.Reason.Contains(node)) {
+                        semanticRoles.Add("Reason");
+                    }
+
+                    if (eventNode.Time == node) {
+                        semanticRoles.Add("Time");
+                    }
+
+                    if (eventNode.Location == node) {
+                        semanticRoles.Add("Location");
+                    }
+                }
+            }
+
+            //If it only has one semantic role them get all the 
+            //entities in that semantic role
+            if(semanticRoles.Distinct().Count() == 1) {
+
+                foreach(EventNode eventNode in events) {
+
+                    result.AddRange(eventNode.FindEntitiesByType(semanticRoles[0]));
+
+                }
+
+            }
+
+            //If includeIncriminatory is true
+            //remove all the entities that are incriminatory
+            List<EntityNode> filteredResult = new List<EntityNode>();
+            if(!includeIncriminatory) {
+
+                foreach (EntityNode entity in result) {
+
+                    if(entity.Incriminatory == 0) {
+                        filteredResult.Add(entity);
+                    }
+
+                }
+
+            }else {
+                filteredResult.AddRange(result);
+            }
+            
+            return new List<EntityNode>(filteredResult.Distinct());
+        }
+
     }
 }
