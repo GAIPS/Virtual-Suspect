@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interpreter", "Interpreter\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualSupectQuestionAnswering", "VirtualSupectQuestionAnswering\VirtualSupectQuestionAnswering.csproj", "{054C1783-0064-4F7F-AE58-916DB63D3A96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualSuspectUI", "VirtualSuspectUI\VirtualSuspectUI.csproj", "{3739A240-503F-4E54-9791-96FAD6EA961B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{054C1783-0064-4F7F-AE58-916DB63D3A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{054C1783-0064-4F7F-AE58-916DB63D3A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{054C1783-0064-4F7F-AE58-916DB63D3A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3739A240-503F-4E54-9791-96FAD6EA961B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3739A240-503F-4E54-9791-96FAD6EA961B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3739A240-503F-4E54-9791-96FAD6EA961B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3739A240-503F-4E54-9791-96FAD6EA961B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

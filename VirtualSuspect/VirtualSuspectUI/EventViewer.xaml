@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="VirtualSuspectUI.EventViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VirtualSuspectUI"
+             mc:Ignorable="d" Width="300">
+    <Grid>
+        <Expander x:Name="expander" Background="White" Margin="0" Padding="4">
+            <Expander.Header>
+                <Grid Margin="0,0,0,0" Width="268">
+                    <Label Name="EventIdLabel">Event 1</Label>
+                    <Label Name="ActiveLabel" HorizontalAlignment="Right" Margin="0,0,10,0">Active</Label>
+                </Grid>
+            </Expander.Header>
+            <Border BorderBrush="Black" BorderThickness="0" Background="#FFF1F1F1">
+
+                <StackPanel>
+                    <Grid Height="25">
+                        <Label x:Name="ActionLabel" Content="Action:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70" HorizontalContentAlignment="Right" FontSize="10.667"/>
+                        <TextBlock x:Name="ActionTextBox" Margin="85,5,10,-8" TextWrapping="Wrap" Text="Action Placeholder" VerticalAlignment="Top" FontSize="10.667"/>
+                    </Grid>
+                    <Grid>
+                        <Label x:Name="TimeLabel" Content="Time:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70" HorizontalContentAlignment="Right" FontSize="10.667"/>
+                        <TextBlock x:Name="TimeTextBox" Margin="85,5,10,0" TextWrapping="Wrap" Text="Time Placeholder" VerticalAlignment="Top" FontSize="10.667"/>
+                    </Grid>
+                    <Grid Height="25">
+                        <Label x:Name="LocationLabel" Content="Location:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70" HorizontalContentAlignment="Right" FontSize="10.667"/>
+                        <TextBlock x:Name="LocationTextBox" Margin="85,5,10,0" TextWrapping="Wrap" Text="Location Placeholder" VerticalAlignment="Top" FontSize="10.667"/>
+                    </Grid>
+                    <Grid Height="25">
+                        <Label x:Name="AgentLabel" Content="Agent:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70" HorizontalContentAlignment="Right" FontSize="10.667"/>
+                        <TextBlock x:Name="AgentTextBox" Margin="85,5,10,0" TextWrapping="Wrap" Text="Agent Placeholder" VerticalAlignment="Top" FontSize="10.667"/>
+                    </Grid>
+                    <Grid Height="25">
+                        <Label x:Name="ThemeLabel" Content="Theme:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70" HorizontalContentAlignment="Right" FontSize="10.667"/>
+                        <TextBlock x:Name="ThemeTextBox" Margin="85,5,10,0" TextWrapping="Wrap" Text="Theme Placeholder" VerticalAlignment="Top" FontSize="10.667"/>
+                    </Grid>
+                    <Grid Height="25">
+                        <Label x:Name="MannerLabel" Content="Manner:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70" HorizontalContentAlignment="Right" FontSize="10.667"/>
+                        <TextBlock x:Name="MannerTextBox" Margin="85,5,10,0" TextWrapping="Wrap" Text="Manner Placeholder" VerticalAlignment="Top" FontSize="10.667"/>
+                    </Grid>
+                    <Grid Height="25">
+                        <Label x:Name="ReasonLabel" Content="Reason:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70" HorizontalContentAlignment="Right" FontSize="10.667"/>
+                        <TextBlock x:Name="ReasonTextBox" Margin="85,5,10,0" TextWrapping="Wrap" Text="Reason Placeholder" VerticalAlignment="Top" FontSize="10.667"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Expander>
+    </Grid>
+</UserControl>
