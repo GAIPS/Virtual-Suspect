@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VirtualSuspectUI"
         mc:Ignorable="d"
-        Title="QuestionInferface" Height="350" Width="525">
+        Title="QuestionInferface" Height="769" Width="1024" WindowState="Maximized">
     <Grid>
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="113">
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="113" Panel.ZIndex="1">
+            <StackPanel.Effect>
+                <DropShadowEffect Direction="0" BlurRadius="10" Opacity="0.25"/>
+            </StackPanel.Effect>
             <StackPanel.Background>
                 <SolidColorBrush Color="#efefef"/>
             </StackPanel.Background>
@@ -22,10 +25,35 @@
             <Button x:Name="button" Content="Ask Question" Background="#FFAFE6D7" Margin="10" FontWeight="Bold" Click="AskQuestion"/>
             <Button x:Name="button_Copy" Content="View History" Background="#FFE6E3AF" Margin="10" FontWeight="Bold" Click="ShowStoryViewer"/>
         </StackPanel>
-        <ScrollViewer VerticalAlignment="Stretch" Margin="113,0,0,0">
-            <StackPanel Name="DimensionsPanel" Margin="0,0,0,0" Background="#FFE8E8E8" CanVerticallyScroll="True">
+        <Grid Margin="113,0,0,0">
+            <Grid>
+                <ScrollViewer HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,0,0,100" Width="400">
+                    <StackPanel Name="DimensionsPanel" Margin="0,0,0,0" Background="#FFE8E8E8" CanVerticallyScroll="True">
 
-            </StackPanel>
-        </ScrollViewer>
+                    </StackPanel>
+                </ScrollViewer>
+                <DockPanel Margin="400,0,0,100">
+                    <Border HorizontalAlignment="Left" Background="#FFFFC391">
+                        <DockPanel  HorizontalAlignment="Stretch">
+                            <Label Margin="0,0,0,0" Background="#FFFBB981" OpacityMask="White" HorizontalContentAlignment="Center" FontSize="19" FontWeight="Bold" Height="40" VerticalAlignment="Top"  DockPanel.Dock="Top">Real Story Events</Label>
+                            <ScrollViewer VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Bottom">
+                                <StackPanel Name="RealStoryEventsStackPanel" Margin="0,0,0,0"/>
+                            </ScrollViewer>
+                        </DockPanel>
+                    </Border>
+                    <Border Background="#FFE07F5B" HorizontalAlignment="Stretch">
+                        <DockPanel  HorizontalAlignment="Stretch">
+                            <Label Margin="0,0,0,0" Background="#FFDE6F45" OpacityMask="White" HorizontalContentAlignment="Center" FontSize="19" FontWeight="Bold" Height="40" VerticalAlignment="Top" DockPanel.Dock="Top">Events Created</Label>
+                            <ScrollViewer VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Bottom">
+                                <StackPanel Name="EventsCreatedStackPanel" Margin="0,0,0,0" >
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </DockPanel>
+                    </Border>
+                </DockPanel>
+            </Grid>
+            <TextBlock HorizontalAlignment="Stretch" Background="#FF3C3838" Foreground="White" Height="100" VerticalAlignment="Bottom" Padding="10">dasada</TextBlock>
+        </Grid>
     </Grid>
 </Window>
