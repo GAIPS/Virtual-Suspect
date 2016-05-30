@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualSupectQuestionAnswer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualSuspectUI", "VirtualSuspectUI\VirtualSuspectUI.csproj", "{3739A240-503F-4E54-9791-96FAD6EA961B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualSuspectNaturalLanguage", "VirtualSuspectNaturalLanguage\VirtualSuspectNaturalLanguage.csproj", "{1A666C63-29DB-4012-AF41-B7BCFB23F33A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3739A240-503F-4E54-9791-96FAD6EA961B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3739A240-503F-4E54-9791-96FAD6EA961B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3739A240-503F-4E54-9791-96FAD6EA961B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A666C63-29DB-4012-AF41-B7BCFB23F33A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A666C63-29DB-4012-AF41-B7BCFB23F33A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A666C63-29DB-4012-AF41-B7BCFB23F33A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A666C63-29DB-4012-AF41-B7BCFB23F33A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

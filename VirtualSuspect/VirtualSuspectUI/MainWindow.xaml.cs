@@ -13,6 +13,7 @@ using VirtualSuspect;
 using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Query;
 using VirtualSuspect.Utils;
+using VirtualSuspectNaturalLanguage;
 
 namespace VirtualSuspectUI {
     /// <summary>
@@ -41,18 +42,18 @@ namespace VirtualSuspectUI {
 
             //Start Virtual Suspect
             //Select Knowledge Base To Open
-            console.ConsoleOutput.Add("[SETUP] Selecting Knowledge Base File...");
+            console.AddLineWithTag("setup", "Selecting Knowledge Base File...");
             OpenFileDialog dialog = new OpenFileDialog();
             if(dialog.ShowDialog() == true) {
                 KnowledgeBasePath = dialog.FileName;
             }
 
-            console.ConsoleOutput.Add("[SETUP] Parsing Knowledge Base File...");
+            console.AddLineWithTag("setup", "Parsing Knowledge Base File...");
             KnowledgeBaseManager kbm = KnowledgeBaseParser.parseFromFile(KnowledgeBasePath);
-            console.ConsoleOutput.Add("[SETUP] Knowledge Base parsed successfully.");
+            console.AddLineWithTag("setup", "Knowledge Base parsed successfully.");
 
             virtualSuspect = new VirtualSuspectQuestionAnswer(kbm);
-            console.ConsoleOutput.Add("[SETUP] Virtual Suspect loaded successfully.");
+            console.AddLineWithTag("setup", "Virtual Suspect loaded successfully.");
 
             UpdateStory(kbm);
 
@@ -302,31 +303,42 @@ namespace VirtualSuspectUI {
 
             }
 
+            console.AddLineWithTag("answering", "Asking question...");
             //Query Knowledge Base
             QueryResult result = virtualSuspect.Query(query);
+            console.AddLineWithTag("answering", "Question asked.");
 
-            //Open Answer Window
+            //Create Speech from Result
+            console.AddLineWithTag("answering", "Generating Natural Language Answer...");
+            String AnswerSpeech = NaturalLanguageGenerator.GenerateAnswer(result);
+            AnswerTextBlock.Text = AnswerSpeech;
+
+            if(AnswerSpeech == "")
+                console.AddLineWithTag("ERROR answering", "Impossible to generate natural language answer!");
+            else
+                console.AddLineWithTag("answering", "Generated Natural Language Answer Successfully");
 
             //Update StoryViewer Content
             UpdateStory(virtualSuspect.KnowledgeBase);
+            console.AddLineWithTag("Story", "Updated Story Successfully.");
 
         }
 
         private void ValidateQuestion(object sender, RoutedEventArgs e) {
 
-            bool validQuestion = false;
+            bool validQuestion = true;
             string QuestionError = "Unexpected error";
             
             //Validate Question
 
 
             if(validQuestion) {
-                console.ConsoleOutput.Add("The Question created is Valid");
+                console.AddLineWithTag("Valid Question", "The Question created is Valid");
                 //Enable Ask Question Button
                 AskQuestionButton.IsEnabled = true;
             } else {
-                console.ConsoleOutput.Add("[QUESTION ERROR] The Question created is Invalid");
-                console.ConsoleOutput.Add("[QUESTION ERROR] " + QuestionError);
+                console.AddLineWithTag("question error", "The Question created is Invalid");
+                console.AddLineWithTag("question error", QuestionError);
             }
             
         }

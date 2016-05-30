@@ -53,23 +53,19 @@
                 <DockPanel Name="StoryViewer" MinWidth="700" DockPanel.Dock="Right" Margin="0,4,4,4" HorizontalAlignment="Right">
                     <TextBlock DockPanel.Dock="Top" Background="{StaticResource ResourceKey=HeaderBackgroundColor}" Foreground="{StaticResource TitleColor}"  Padding="5" FontWeight="Bold" FontSize="14">= Story Viewer</TextBlock>
                     <DockPanel DockPanel.Dock="Bottom" Background="{StaticResource CommonBackgroundColor}">
-                        <Border HorizontalAlignment="Left" Width="350" Margin="2,2,1,2">
+                        <Border Background="{StaticResource SecondBackgroundColor}" HorizontalAlignment="Left" Width="350" Margin="2,2,1,2">
                             <DockPanel  HorizontalAlignment="Stretch">
-                                <Label Margin="0,0,0,0" Background="{StaticResource SecondBackgroundColor}" Foreground="{StaticResource SubTitleColor}" OpacityMask="White" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"  DockPanel.Dock="Top">Real Story Events</Label>
+                                <Label Margin="0,0,0,0"  Foreground="{StaticResource SubTitleColor}" OpacityMask="White" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"  DockPanel.Dock="Top">Real Story Events</Label>
                                 <ScrollViewer VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Bottom">
                                     <StackPanel Name="RealStoryEventsStackPanel" Margin="0,0,0,0"/>
                                 </ScrollViewer>
-
                             </DockPanel>
-
                         </Border>
-                        <Border MinWidth="350" HorizontalAlignment="Stretch" Margin="1,2,2,2">
+                        <Border Background="{StaticResource SecondBackgroundColor}" MinWidth="350" HorizontalAlignment="Stretch" Margin="1,2,2,2">
                             <DockPanel  HorizontalAlignment="Stretch">
-                                <Label Margin="0,0,0,0" Background="{StaticResource SecondBackgroundColor}" Foreground="{StaticResource SubTitleColor}" OpacityMask="White" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top">Events Created</Label>
+                                <Label Margin="0,0,0,0"  Foreground="{StaticResource SubTitleColor}" OpacityMask="White" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top">Events Created</Label>
                                 <ScrollViewer VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Bottom">
-                                    <StackPanel Name="EventsCreatedStackPanel" Margin="0,0,0,0" >
-
-                                    </StackPanel>
+                                    <StackPanel Name="EventsCreatedStackPanel" Margin="0,0,0,0"/>
                                 </ScrollViewer>
                             </DockPanel>
                         </Border>
@@ -83,8 +79,9 @@
                     <DockPanel LastChildFill="True" DockPanel.Dock="Bottom" Background="{StaticResource ResourceKey=CommonBackgroundColor}">
                         <DockPanel LastChildFill="True" DockPanel.Dock="Bottom" Height="160" >
                             <TextBlock DockPanel.Dock="Top" Background="{StaticResource ResourceKey=HeaderBackgroundColor}" Foreground="{StaticResource TitleColor}"  Padding="5" FontWeight="Bold" FontSize="14">= Answer</TextBlock>
-                            <Rectangle Fill="{StaticResource SecondBackgroundColor}" >
-                            </Rectangle>
+                            <StackPanel Margin="5" Background="{StaticResource SecondBackgroundColor}" DockPanel.Dock="Bottom">
+                                <TextBlock Name="AnswerTextBlock" Padding="10" TextWrapping="WrapWithOverflow">This is an example of an answer. I don't know yet what to do about it, but just to show some visual feedback I'll continue to write this sentence so that it'll fill more than one line! That's right! I've made it! but can we reach a second line? I guess not :( WE DID IT</TextBlock>
+                            </StackPanel>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" LastChildFill="True">
                             <StackPanel DockPanel.Dock="Left" Background="{StaticResource SecondBackgroundColor}" VerticalAlignment="Stretch" Width="113" Panel.ZIndex="1">
