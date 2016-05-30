@@ -5,88 +5,113 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VirtualSuspectUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="768" Width="1024" WindowState="Maximized" Background="#2b5797">
+        Title="MainWindow" 
+        WindowState="Maximized" Background="#2b5797" WindowStartupLocation="CenterScreen">
     <Window.Resources>
+
         <SolidColorBrush x:Key="HeaderBackgroundColor" Color="#00aba9"/>
         <SolidColorBrush x:Key="CommonBackgroundColor" Color="#eff4ff"/>
         <SolidColorBrush x:Key="SecondBackgroundColor" Color="#D6E2FD"/>
         <SolidColorBrush x:Key="TitleColor" Color="#F4F7FF"/>
-        <SolidColorBrush x:Key="SubTitleColor" Color="#FF5F91FF"/>
+        <SolidColorBrush x:Key="SubTitleColor" Color="#2d89ef"/>
+        <SolidColorBrush x:Key="TextColor" Color="#1d1d1d"/>
+        <SolidColorBrush x:Key="ButtonBackground" Color="#2d89ef"/>
+        <SolidColorBrush x:Key="ButtonForeground" Color="#F4F7FF"/>
+        <Style TargetType="{x:Type Button}" x:Key="AddDimensionButtonStyle">
+            <Setter Property="FontSize" Value="10.5"/>
+            <Setter Property="Margin" Value="10,3"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Background" Value="{StaticResource ButtonBackground}"/>
+            <Setter Property="Foreground" Value="{StaticResource ButtonForeground}"/>
+        </Style>
     </Window.Resources>
     <Grid>
-        <DockPanel LastChildFill="True" Margin="0,0,0,155">
+        <DockPanel LastChildFill="True" Grid.ColumnSpan="2">
+            <DockPanel DockPanel.Dock="Bottom" Name="Console" Background="Black" Height="150" VerticalAlignment="Bottom" Margin="4,0,4,4" Grid.Row="1">
+                <TextBlock  DockPanel.Dock="Top" Background="{StaticResource ResourceKey=HeaderBackgroundColor}" Foreground="{StaticResource TitleColor}"  Padding="5" FontWeight="Bold" FontSize="14">= Console</TextBlock>
+                <DockPanel LastChildFill="True" DockPanel.Dock="Bottom" Background="{StaticResource ResourceKey=CommonBackgroundColor}" >
+                    <TextBox FontFamily="Consolas" DockPanel.Dock="Bottom" Background="{StaticResource SecondBackgroundColor}" Text="{Binding ConsoleInput, Mode=TwoWay}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Name="InputBlock" />
+                    <ScrollViewer FontFamily="Consolas" DockPanel.Dock="Top" Name="ConsoleScroller" Foreground="{StaticResource TextColor}" Padding="5">
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding ConsoleOutput, Mode=OneWay}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=.}"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ScrollViewer>
+                </DockPanel>
 
-            <DockPanel Width="700" DockPanel.Dock="Right" Margin="0,4,4,4" HorizontalAlignment="Right">
-                <TextBlock DockPanel.Dock="Top" Background="{StaticResource ResourceKey=HeaderBackgroundColor}" Foreground="{StaticResource TitleColor}"  Padding="5" FontWeight="Bold" FontSize="14">Story Viewer</TextBlock>
-                <DockPanel DockPanel.Dock="Bottom" Background="{StaticResource CommonBackgroundColor}">
-                    <Border HorizontalAlignment="Left" Width="350" Margin="2,2,1,2">
-                        <DockPanel  HorizontalAlignment="Stretch">
-                            <Label Margin="0,0,0,0" Background="{StaticResource SecondBackgroundColor}" Foreground="{StaticResource SubTitleColor}" OpacityMask="White" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"  DockPanel.Dock="Top">Real Story Events</Label>
-                            <ScrollViewer VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Bottom">
-                                <StackPanel Name="RealStoryEventsStackPanel" Margin="0,0,0,0"/>
-                            </ScrollViewer>
+            </DockPanel>
 
+            <DockPanel DockPanel.Dock="Top" LastChildFill="True" Margin="0,0,0,0" Grid.RowSpan="2">
+
+                <DockPanel Name="StoryViewer" MinWidth="700" DockPanel.Dock="Right" Margin="0,4,4,4" HorizontalAlignment="Right">
+                    <TextBlock DockPanel.Dock="Top" Background="{StaticResource ResourceKey=HeaderBackgroundColor}" Foreground="{StaticResource TitleColor}"  Padding="5" FontWeight="Bold" FontSize="14">= Story Viewer</TextBlock>
+                    <DockPanel DockPanel.Dock="Bottom" Background="{StaticResource CommonBackgroundColor}">
+                        <Border HorizontalAlignment="Left" Width="350" Margin="2,2,1,2">
+                            <DockPanel  HorizontalAlignment="Stretch">
+                                <Label Margin="0,0,0,0" Background="{StaticResource SecondBackgroundColor}" Foreground="{StaticResource SubTitleColor}" OpacityMask="White" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"  DockPanel.Dock="Top">Real Story Events</Label>
+                                <ScrollViewer VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Bottom">
+                                    <StackPanel Name="RealStoryEventsStackPanel" Margin="0,0,0,0"/>
+                                </ScrollViewer>
+
+                            </DockPanel>
+
+                        </Border>
+                        <Border MinWidth="350" HorizontalAlignment="Stretch" Margin="1,2,2,2">
+                            <DockPanel  HorizontalAlignment="Stretch">
+                                <Label Margin="0,0,0,0" Background="{StaticResource SecondBackgroundColor}" Foreground="{StaticResource SubTitleColor}" OpacityMask="White" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top">Events Created</Label>
+                                <ScrollViewer VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Bottom">
+                                    <StackPanel Name="EventsCreatedStackPanel" Margin="0,0,0,0" >
+
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </DockPanel>
+                        </Border>
+                    </DockPanel>
+                </DockPanel>
+
+
+
+                <DockPanel Name="QuestionWizardDock" DockPanel.Dock="Left" Margin="4">
+                    <TextBlock DockPanel.Dock="Top" Background="{StaticResource ResourceKey=HeaderBackgroundColor}" Foreground="{StaticResource TitleColor}"  Padding="5" FontWeight="Bold" FontSize="14">= Question Wizard</TextBlock>
+                    <DockPanel LastChildFill="True" DockPanel.Dock="Bottom" Background="{StaticResource ResourceKey=CommonBackgroundColor}">
+                        <DockPanel LastChildFill="True" DockPanel.Dock="Bottom" Height="160" >
+                            <TextBlock DockPanel.Dock="Top" Background="{StaticResource ResourceKey=HeaderBackgroundColor}" Foreground="{StaticResource TitleColor}"  Padding="5" FontWeight="Bold" FontSize="14">= Answer</TextBlock>
+                            <Rectangle Fill="{StaticResource SecondBackgroundColor}" >
+                            </Rectangle>
                         </DockPanel>
-
-                    </Border>
-                    <Border MinWidth="350" HorizontalAlignment="Stretch" Margin="1,2,2,2">
-                        <DockPanel  HorizontalAlignment="Stretch">
-                            <Label Margin="0,0,0,0" Background="{StaticResource SecondBackgroundColor}" Foreground="{StaticResource SubTitleColor}" OpacityMask="White" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top">Events Created</Label>
-                            <ScrollViewer VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Bottom">
-                                <StackPanel Name="EventsCreatedStackPanel" Margin="0,0,0,0" >
+                        <DockPanel DockPanel.Dock="Top" LastChildFill="True">
+                            <StackPanel DockPanel.Dock="Left" Background="{StaticResource SecondBackgroundColor}" VerticalAlignment="Stretch" Width="113" Panel.ZIndex="1">
+                                <TextBlock Foreground="{StaticResource SubTitleColor}" HorizontalAlignment="Stretch" Padding="10" FontWeight="Bold" FontSize="13.333">Dimensions:</TextBlock>
+                                <Button Style="{StaticResource AddDimensionButtonStyle}" Click="AddAction" AllowDrop="True">Add Action</Button>
+                                <Button Style="{StaticResource AddDimensionButtonStyle}" Click="AddTime">Add Time</Button>
+                                <Button Style="{StaticResource AddDimensionButtonStyle}" Click="AddLocation">Add Location</Button>
+                                <Button Style="{StaticResource AddDimensionButtonStyle}" Click="AddTheme">Add Theme</Button>
+                                <Button Style="{StaticResource AddDimensionButtonStyle}" Click="AddAgent">Add Agent</Button>
+                                <Button Style="{StaticResource AddDimensionButtonStyle}" Click="AddManner">Add Manner</Button>
+                                <Button Style="{StaticResource AddDimensionButtonStyle}" Click="AddReason">Add Reason</Button>
+                                <Separator Background="{StaticResource ButtonBackground}" Margin="6,5"/>
+                                <Button Style="{StaticResource AddDimensionButtonStyle}" x:Name="CheckQuestionButton" Content="Check Structure" FontWeight="Bold" Click="ValidateQuestion"/>
+                                <Button Style="{StaticResource AddDimensionButtonStyle}" x:Name="AskQuestionButton" Content="Ask Question" FontWeight="Bold" Click="AskQuestion"/>
+                            </StackPanel>
+                            <ScrollViewer DockPanel.Dock="Right" VerticalAlignment="Stretch">
+                                <StackPanel Name="DimensionsPanel" Margin="0,0,0,0" CanVerticallyScroll="True">
 
                                 </StackPanel>
                             </ScrollViewer>
                         </DockPanel>
-                    </Border>
-                </DockPanel>
-            </DockPanel>
-
-            <DockPanel DockPanel.Dock="Left" Margin="4">
-                <TextBlock DockPanel.Dock="Top" Background="{StaticResource ResourceKey=HeaderBackgroundColor}" Foreground="{StaticResource TitleColor}"  Padding="5" FontWeight="Bold" FontSize="14">Question Wizard</TextBlock>
-                <DockPanel LastChildFill="True" DockPanel.Dock="Bottom" Background="{StaticResource ResourceKey=CommonBackgroundColor}">
-                    <DockPanel LastChildFill="True" DockPanel.Dock="Bottom" Height="100" >
-                        <TextBlock DockPanel.Dock="Top" Background="{StaticResource ResourceKey=HeaderBackgroundColor}" Foreground="{StaticResource TitleColor}"  Padding="5" FontWeight="Bold" FontSize="14">Answer</TextBlock>
-                        <Rectangle Fill="{StaticResource SecondBackgroundColor}" >
-                        </Rectangle>
-                    </DockPanel>
-                    <DockPanel DockPanel.Dock="Top" LastChildFill="True">
-                        <StackPanel DockPanel.Dock="Left" Background="{StaticResource SecondBackgroundColor}" VerticalAlignment="Stretch" Width="113" Panel.ZIndex="1">
-                            <TextBlock HorizontalAlignment="Center" Margin="0,10">Dimensions:</TextBlock>
-                            <!--<Button FontSize="10.667" Margin="10,5" HorizontalContentAlignment="Center" Click="AddAction">Add Action</Button>
-                            <Button FontSize="10.667" Margin="10,5" HorizontalContentAlignment="Center" Click="AddTime">Add Time</Button>
-                            <Button FontSize="10.667" Margin="10,5" HorizontalContentAlignment="Center" Click="AddLocation">Add Location</Button>
-                            <Button FontSize="10.667" Margin="10,5" HorizontalContentAlignment="Center" Click="AddTheme">Add Theme</Button>
-                            <Button FontSize="10.667" Margin="10,5" HorizontalContentAlignment="Center" Click="AddAgent">Add Agent</Button>
-                            <Button FontSize="10.667" Margin="10,5" HorizontalContentAlignment="Center" Click="AddManner">Add Manner</Button>
-                            <Button FontSize="10.667" Margin="10,5" HorizontalContentAlignment="Center" Click="AddReason">Add Reason</Button>
-                            <Button x:Name="button" Content="Ask Question" Background="#FFAFE6D7" Margin="10" FontWeight="Bold" Click="AskQuestion"/>-->
-                        </StackPanel>
-                        <ScrollViewer DockPanel.Dock="Right" VerticalAlignment="Stretch">
-                            <StackPanel Name="DimensionsPanel" Margin="0,0,0,0" CanVerticallyScroll="True">
-
-                            </StackPanel>
-                        </ScrollViewer>
                     </DockPanel>
                 </DockPanel>
+
             </DockPanel>
 
         </DockPanel>
-        <DockPanel Background="Black" Height="150" VerticalAlignment="Bottom" Margin="4">
-            <TextBlock DockPanel.Dock="Top" Background="{StaticResource ResourceKey=HeaderBackgroundColor}" Foreground="{StaticResource TitleColor}"  Padding="5" FontWeight="Bold" FontSize="14">Console</TextBlock>
-            <ScrollViewer DockPanel.Dock="Bottom" Background="{StaticResource ResourceKey=CommonBackgroundColor}" Foreground="White">
-                <StackPanel>
-                    <ItemsControl ItemsSource="{Binding ConsoleOutput, Mode=OneWay}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=.}"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                    <TextBlock Background="{StaticResource SecondBackgroundColor}" Text="{Binding ConsoleInput, Mode=TwoWay}" Name="InputBlock"/>
-                </StackPanel>
-            </ScrollViewer>
-        </DockPanel>
-        
+
     </Grid>
 </Window>

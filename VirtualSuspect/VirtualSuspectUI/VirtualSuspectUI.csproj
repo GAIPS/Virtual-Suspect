@@ -55,17 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConsoleContent.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TextBoxDimensionPropertiesBox.xaml.cs">
+    <Compile Include="CustomControl\TextBoxDimensionPropertiesBox.xaml.cs">
       <DependentUpon>TextBoxDimensionPropertiesBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ConditionBox.cs" />
-    <Compile Include="EventViewer.xaml.cs">
+    <Compile Include="CustomControl\ConditionBox.cs" />
+    <Compile Include="CustomControl\EventViewer.xaml.cs">
       <DependentUpon>EventViewer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StoryViewer.xaml.cs">
+    <Compile Include="Deprecated\StoryViewer.xaml.cs">
       <DependentUpon>StoryViewer.xaml</DependentUpon>
     </Compile>
     <Page Include="Dictionary.xaml">
@@ -76,19 +77,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TextBoxDimensionPropertiesBox.xaml">
+    <Page Include="CustomControl\TextBoxDimensionPropertiesBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ComboBoxDimensionPropertiesBox.xaml">
+    <Page Include="CustomControl\ComboBoxDimensionPropertiesBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EventViewer.xaml">
+    <Page Include="CustomControl\EventViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuestionInferface.xaml">
+    <Page Include="Deprecated\QuestionInferface.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -96,14 +97,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ComboBoxDimensionPropertiesBox.xaml.cs">
+    <Compile Include="CustomControl\ComboBoxDimensionPropertiesBox.xaml.cs">
       <DependentUpon>ComboBoxDimensionPropertiesBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuestionInferface.xaml.cs">
+    <Compile Include="Deprecated\QuestionInferface.xaml.cs">
       <DependentUpon>QuestionInferface.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="StoryViewer.xaml">
+    <Page Include="Deprecated\StoryViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,7 +143,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Arrow.png" />
+    <Resource Include="Images\Arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

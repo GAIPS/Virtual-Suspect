@@ -1,155 +1,50 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using VirtualSuspect;
 using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Query;
-using VirtualSuspect.Utils;
 
 namespace VirtualSuspectUI {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window {
+    public partial class QuestionInferface : Window {
 
-        //Console Variables
-        ConsoleContent console;
+        private StoryViewer storyViewerWindow;
+        
+        private VirtualSuspectQuestionAnswer virtualSuspect;
 
-        //Virtual Suspect Variables
-        VirtualSuspectQuestionAnswer virtualSuspect;
-        String KnowledgeBasePath;
+        public QuestionInferface() {
 
-        public MainWindow() {
-
+            virtualSuspect = new VirtualSuspectQuestionAnswer(VirtualSuspect.Utils.KnowledgeBaseParser.parseFromFile("C:\\Users\\Diogo Rato\\Documents\\IST\\Virtual Suspect\\Projects\\Virtual Suspect\\Story\\Test1\\GuilhermePOV.xml"));
+            
             InitializeComponent();
 
-            //Prepare UI
-            AskQuestionButton.IsEnabled = false;
-
-            //Start Console
-            console = new ConsoleContent(this);
-            DataContext = console;
-            InputBlock.KeyDown += InputBlock_KeyDown;
-
-            //Start Virtual Suspect
-            //Select Knowledge Base To Open
-            console.ConsoleOutput.Add("[SETUP] Selecting Knowledge Base File...");
-            OpenFileDialog dialog = new OpenFileDialog();
-            if(dialog.ShowDialog() == true) {
-                KnowledgeBasePath = dialog.FileName;
-            }
-
-            console.ConsoleOutput.Add("[SETUP] Parsing Knowledge Base File...");
-            KnowledgeBaseManager kbm = KnowledgeBaseParser.parseFromFile(KnowledgeBasePath);
-            console.ConsoleOutput.Add("[SETUP] Knowledge Base parsed successfully.");
-
-            virtualSuspect = new VirtualSuspectQuestionAnswer(kbm);
-            console.ConsoleOutput.Add("[SETUP] Virtual Suspect loaded successfully.");
-
-            UpdateStory(kbm);
-
         }
 
-        /// <summary>
-        /// Event handler for console Commands
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void InputBlock_KeyDown(object sender, KeyEventArgs e) {
-            
-            if(e.Key == Key.Enter) {
-                console.ConsoleInput = InputBlock.Text;
-                console.RunCommand();
-                InputBlock.Focus();
-                ConsoleScroller.ScrollToBottom();
-                InputBlock.SelectionStart = InputBlock.Text.Length ;
+        private void AddAction(object sender, RoutedEventArgs e) {
 
-            }
+            AddDimensionBox("TextBox", "Action");
+
         }
-
-        /// <summary>
-        /// Updates the Content of the Story Viewer
-        /// </summary>
-        /// <param name="manager"></param>
-        public void UpdateStory(KnowledgeBaseManager manager) {
-
-            List<EventNode> originalEvents = manager.Events.FindAll(x => x.OriginalStory);
-
-            List<EventNode> eventsCreated = manager.Events.Except(originalEvents).ToList();
-            
-            RealStoryEventsStackPanel.Children.Clear();
-            EventsCreatedStackPanel.Children.Clear();
-
-            foreach (EventNode originalNode in originalEvents) {
-
-
-                EventViewer viewer = new EventViewer(originalNode.ID,
-                                                    originalNode.Action.Action,
-                                                    originalNode.Location.Value,
-                                                    originalNode.Time.Value,
-                                                    new List<string>(originalNode.Agent.Select(x => x.Value)),
-                                                    new List<string>(originalNode.Theme.Select(x => x.Value)),
-                                                    new List<string>(originalNode.Manner.Select(x => x.Value)),
-                                                    new List<string>(originalNode.Reason.Select(x => x.Value)),
-                                                    manager.Story.Contains(originalNode));
-                                                    
-                viewer.Margin = new Thickness(4);
-
-                RealStoryEventsStackPanel.Children.Add(viewer);
-
-                //Add arrow after
-                if (originalNode != originalEvents.Last()) {
-
-                    Image arrowImageControl = new Image();
-                    BitmapImage arrowImage = new BitmapImage(new Uri("pack://application:,,,/Images/Arrow.png"));
-                    arrowImageControl.Height = 25;
-                    arrowImageControl.Width = 25;
-                    arrowImageControl.RenderTransformOrigin = new Point(0.5, 0.5);
-                    arrowImageControl.Source = arrowImage;
-
-                    RotateTransform transform = new RotateTransform(90);
-                    arrowImageControl.RenderTransform = transform;
-
-                    RealStoryEventsStackPanel.Children.Add(arrowImageControl);
-
-                }
-            }
-
-            foreach (EventNode node in eventsCreated) {
-
-                EventViewer viewer = new EventViewer(node.ID,
-                                                    node.Action.Action,
-                                                    node.Location.Value,
-                                                    node.Time.Value,
-                                                    new List<string>(node.Agent.Select(x => x.Value)),
-                                                    new List<string>(node.Theme.Select(x => x.Value)),
-                                                    new List<string>(node.Manner.Select(x => x.Value)),
-                                                    new List<string>(node.Reason.Select(x => x.Value)),
-                                                    manager.Story.Contains(node));
-
-                viewer.Margin = new Thickness(4);
-
-                EventsCreatedStackPanel.Children.Add(viewer);
-
-
-            }
-        }
-
-        #region QuestionAnswering Controls
 
         private void AddDimensionBox(string boxType, string dimensionName) {
 
             UserControl newBox = null;
 
-            switch (boxType) {
+            switch(boxType) {
                 case "ComboBox":
 
                     newBox = new ComboBoxDimensionPropertiesBox();
@@ -173,12 +68,6 @@ namespace VirtualSuspectUI {
             newBox.Margin = margin;
 
             DimensionsPanel.Children.Add(newBox);
-
-        }
-
-        private void AddAction(object sender, RoutedEventArgs e) {
-
-            AddDimensionBox("TextBox", "Action");
 
         }
 
@@ -218,6 +107,21 @@ namespace VirtualSuspectUI {
 
         }
 
+        private void ShowStoryViewer(object sender, RoutedEventArgs e) {
+
+            if (storyViewerWindow == null || !storyViewerWindow.IsLoaded) {
+                storyViewerWindow = new StoryViewer();
+                storyViewerWindow.Show();
+                storyViewerWindow.Update(virtualSuspect.KnowledgeBase);
+            } else {
+                storyViewerWindow = Application.Current.Windows.OfType<StoryViewer>().ElementAt(0);
+                storyViewerWindow.Focus();
+            }
+
+            
+
+        }
+    
         private void AskQuestion(object sender, RoutedEventArgs e) {
 
             //Parse Question to Xml
@@ -229,7 +133,7 @@ namespace VirtualSuspectUI {
                 string dimension = condition.Dimension;
                 string value = condition.Value;
 
-                if (condition.Focus) {
+                if(condition.Focus) {
                     KnowledgeBaseManager.DimentionsEnum focusDimension = KnowledgeBaseManager.convertToDimentions(dimension);
 
                     //Parse the focus according to the dimension
@@ -256,11 +160,10 @@ namespace VirtualSuspectUI {
                             query.AddFocus(new GetThemeFocusPredicate());
                             break;
                     }
-                }
-                else {
+                }else {
 
                     KnowledgeBaseManager.DimentionsEnum conditionDimension = KnowledgeBaseManager.convertToDimentions(dimension);
-
+                    
                     switch (conditionDimension) {
                         case KnowledgeBaseManager.DimentionsEnum.Action:
                             string action = value;
@@ -295,44 +198,23 @@ namespace VirtualSuspectUI {
                             agents.Add(value);
                             query.AddCondition(new AgentEqualConditionPredicate(agents));
                             break;
-
+                        
                     }
 
                 }
-
+                
             }
-
+            
             //Query Knowledge Base
             QueryResult result = virtualSuspect.Query(query);
 
             //Open Answer Window
+            
 
             //Update StoryViewer Content
-            UpdateStory(virtualSuspect.KnowledgeBase);
-
+            if(storyViewerWindow != null)
+                storyViewerWindow.Update(virtualSuspect.KnowledgeBase);
+         
         }
-
-        private void ValidateQuestion(object sender, RoutedEventArgs e) {
-
-            bool validQuestion = false;
-            string QuestionError = "Unexpected error";
-            
-            //Validate Question
-
-
-            if(validQuestion) {
-                console.ConsoleOutput.Add("The Question created is Valid");
-                //Enable Ask Question Button
-                AskQuestionButton.IsEnabled = true;
-            } else {
-                console.ConsoleOutput.Add("[QUESTION ERROR] The Question created is Invalid");
-                console.ConsoleOutput.Add("[QUESTION ERROR] " + QuestionError);
-            }
-            
-        }
-
-        #endregion 
-
     }
-
 }
