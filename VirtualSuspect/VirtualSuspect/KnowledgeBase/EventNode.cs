@@ -15,6 +15,14 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
+        private bool originalStory;
+
+        public bool OriginalStory {
+            get {
+                return originalStory;
+            }
+        }
+        
         private int incriminatory;
 
         public int Incriminatory
@@ -117,11 +125,12 @@ namespace VirtualSuspect.KnowledgeBase {
 
         internal Dictionary<EntityNode, bool> ToMTable;
 
-        internal EventNode(uint id, int incriminatory, ActionNode action) {
+        internal EventNode(uint id, int incriminatory, bool originalStory, ActionNode action) {
 
             this.id = id;
             this.incriminatory = incriminatory;
             this.action = action;
+            this.originalStory = originalStory;
 
             agent = new List<EntityNode>();
             theme = new List<EntityNode>();
@@ -132,13 +141,14 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
-        public EventNode(uint id, int incriminatory, ActionNode action, EntityNode time, EntityNode location) {
+        public EventNode(uint id, int incriminatory, bool originalStory, ActionNode action, EntityNode time, EntityNode location) {
 
             this.id = id;
             this.incriminatory = incriminatory;
             this.action = action;
             this.time = time;
             this.location = location;
+            this.originalStory = originalStory;
 
             agent = new List<EntityNode>();
             theme = new List<EntityNode>();

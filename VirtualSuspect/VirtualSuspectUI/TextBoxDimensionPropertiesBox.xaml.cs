@@ -14,12 +14,39 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace VirtualSuspectUI {
+
     /// <summary>
     /// Interaction logic for DimensionPropertiesBox.xaml
     /// </summary>
-    public partial class DimensionPropertiesBox : UserControl {
-        public DimensionPropertiesBox() {
+    /// 
+    public partial class TextBoxDimensionPropertiesBox : UserControl, ConditionBox {
+
+        public TextBoxDimensionPropertiesBox() {
             InitializeComponent();
+        }
+
+        public string Dimension {
+            get {
+                return (string)DimensionLabel.Content;
+            }
+        }
+
+        public bool Known {
+            get {
+                return (bool)KnwonCheckBox.IsChecked;
+            }
+        }
+
+        public string Value {
+            get {
+                return ValueTextBox.Text;
+            }
+        }
+
+        bool ConditionBox.Focus {
+            get {
+                return (bool)ToDiscoverCheckBox.IsChecked;
+            }
         }
 
         private void RemoveDimensionBox_Click(object sender, RoutedEventArgs e) {
@@ -31,14 +58,14 @@ namespace VirtualSuspectUI {
 
             //Disable Other Components
             KnwonCheckBox.IsEnabled = false;
-            PossibleValueComboBox.IsEnabled = false;
+            ValueTextBox.IsEnabled = false;
         }
 
         private void ToDiscoverCheckBox_UnChecked(object sender, RoutedEventArgs e) {
 
             //Disable Other Components
             KnwonCheckBox.IsEnabled = true;
-            PossibleValueComboBox.IsEnabled = true;
+            ValueTextBox.IsEnabled = true;
         }
     }
 }

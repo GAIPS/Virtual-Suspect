@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,13 +55,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="TextBoxDimensionPropertiesBox.xaml.cs">
+      <DependentUpon>TextBoxDimensionPropertiesBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConditionBox.cs" />
     <Compile Include="EventViewer.xaml.cs">
       <DependentUpon>EventViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="StoryViewer.xaml.cs">
       <DependentUpon>StoryViewer.xaml</DependentUpon>
     </Compile>
-    <Page Include="DimensionPropertiesBox.xaml">
+    <Page Include="TextBoxDimensionPropertiesBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ComboBoxDimensionPropertiesBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -68,7 +77,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="QuestionInferface.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -76,11 +85,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DimensionPropertiesBox.xaml.cs">
-      <DependentUpon>DimensionPropertiesBox.xaml</DependentUpon>
+    <Compile Include="ComboBoxDimensionPropertiesBox.xaml.cs">
+      <DependentUpon>ComboBoxDimensionPropertiesBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="QuestionInferface.xaml.cs">
+      <DependentUpon>QuestionInferface.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="StoryViewer.xaml">
@@ -120,6 +129,9 @@
       <Project>{27eea46d-3298-4315-b082-f61096444d36}</Project>
       <Name>VirtualSuspect</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Arrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

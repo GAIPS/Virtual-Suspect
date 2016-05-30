@@ -31,7 +31,7 @@ namespace VirtualSuspectUI {
             InitializeComponent();
 
             EventIdLabel.Content = "Event ID: " + ID;
-            ActiveLabel.IsEnabled = isActive;
+            ActiveLabel.Visibility = isActive ? Visibility.Visible : Visibility.Collapsed;
 
             ActionTextBox.Text = action;
             TimeTextBox.Text = time;

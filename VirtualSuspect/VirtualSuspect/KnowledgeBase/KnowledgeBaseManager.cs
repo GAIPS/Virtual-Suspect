@@ -16,6 +16,8 @@ namespace VirtualSuspect.KnowledgeBase {
         
         public static DimentionsEnum convertToDimentions(string dimension) {
 
+            dimension = dimension.ToLower();
+
             switch (dimension) {
                 case "action":
                     return KnowledgeBaseManager.DimentionsEnum.Action;
@@ -201,7 +203,7 @@ namespace VirtualSuspect.KnowledgeBase {
             uint newEventNodeId = getNextNodeId("event");
 
             //Create a new node with the default fields
-            EventNode newEventNode = new EventNode(newEventNodeId, ev.Incriminatory, ev.Action, ev.Time, ev.Location);
+            EventNode newEventNode = new EventNode(newEventNodeId, ev.Incriminatory, true, ev.Action, ev.Time, ev.Location);
 
             //Add other fields
             newEventNode.AddAgent(ev.Agent);

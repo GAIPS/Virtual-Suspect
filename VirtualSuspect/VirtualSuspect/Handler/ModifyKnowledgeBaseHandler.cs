@@ -172,7 +172,7 @@ namespace VirtualSuspect.Handler {
 
         private EventNode DuplicateEventKnownData(EventNode old, uint newID) {
 
-            EventNode eventCopy = new EventNode(newID, 0, old.Action);
+            EventNode eventCopy = new EventNode(newID, 0, false, old.Action);
 
             //Copy each dimension if they are known
             if(old.IsKnown(old.Time)) {
