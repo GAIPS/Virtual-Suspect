@@ -28,6 +28,10 @@ namespace VirtualSuspect.Handler {
                     //TODO:
                     break;
                 case VirtualSuspectQuestionAnswer.LieStrategy.Improvise:
+                    //The Improvise Lie Strategy searches for the entities similar to the ones that shoudl be replaced
+                    //and randomly assign them
+                    
+                    //TODO: Should be aware of the agent performing the action 
 
                     List<EventNode> nodes = virtualSuspect.FilterEvents(query.QueryConditions);
 

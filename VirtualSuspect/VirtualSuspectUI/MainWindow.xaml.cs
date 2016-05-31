@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml;
 using VirtualSuspect;
 using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Query;
@@ -311,12 +313,17 @@ namespace VirtualSuspectUI {
             //Create Speech from Result
             console.AddLineWithTag("answering", "Generating Natural Language Answer...");
             String AnswerSpeech = NaturalLanguageGenerator.GenerateAnswer(result);
-            AnswerTextBlock.Text = AnswerSpeech;
+            
 
-            if(AnswerSpeech == "")
+            if (AnswerSpeech == "") {
                 console.AddLineWithTag("ERROR answering", "Impossible to generate natural language answer!");
-            else
+                console.AddLineWithTag("answering", "Showing Answer Structure!");
+                AnswerTextBlock.Text = ConvertToString(VirtualSuspect.Utils.AnswerGenerator.GenerateAnswer(result));
+            } else {
                 console.AddLineWithTag("answering", "Generated Natural Language Answer Successfully");
+                AnswerTextBlock.Text = AnswerSpeech;
+            }
+                
 
             //Update StoryViewer Content
             UpdateStory(virtualSuspect.KnowledgeBase);
@@ -330,8 +337,6 @@ namespace VirtualSuspectUI {
             string QuestionError = "Unexpected error";
             
             //Validate Question
-
-
             if(validQuestion) {
                 console.AddLineWithTag("Valid Question", "The Question created is Valid");
                 //Enable Ask Question Button
@@ -345,6 +350,19 @@ namespace VirtualSuspectUI {
 
         #endregion 
 
+        private string ConvertToString(XmlDocument doc) {
+            StringBuilder sb = new StringBuilder();
+            XmlWriterSettings settings = new XmlWriterSettings {
+                Indent = true,
+                IndentChars = "  ",
+                NewLineChars = "\r\n",
+                NewLineHandling = NewLineHandling.Replace
+            };
+            using (XmlWriter writer = XmlWriter.Create(sb, settings)) {
+                doc.Save(writer);
+            }
+            return sb.ToString();
+        }
     }
 
 }

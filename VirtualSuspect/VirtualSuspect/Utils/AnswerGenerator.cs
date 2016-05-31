@@ -28,6 +28,14 @@ namespace VirtualSuspect.Utils
             }
             else if (queryResult.Query.QueryType == QueryDto.QueryTypeEnum.GetInformation) {
 
+                foreach (KeyValuePair<string,string> pair in queryResult.MetaData) {
+
+                    XmlElement newMetaData = newAnswer.CreateElement(pair.Key);
+                    newMetaData.InnerText = pair.Value;
+                    XmlNode refElem = newAnswer.DocumentElement.LastChild;
+                    newAnswer.DocumentElement.InsertAfter(newMetaData, refElem);
+
+                }
                 foreach (QueryResult.Result result in queryResult.Results) {
 
                     XmlElement newResponseXml = newAnswer.CreateElement("response");

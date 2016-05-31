@@ -26,7 +26,7 @@ namespace VirtualSuspect.Handler {
 
                 //TODO: Select best negative answer type
                 Random generator = new Random(DateTime.Now.Millisecond);
-                String negativeAnswerType = (generator.NextDouble() < 0.5) ? "non-remember" : "non-existence";
+                String negativeAnswerType = (generator.NextDouble() < 0.5) ? "non-remember" : "denial";
                 newResult.AddMetaData("negative-answer", negativeAnswerType);
 
                 return newResult;

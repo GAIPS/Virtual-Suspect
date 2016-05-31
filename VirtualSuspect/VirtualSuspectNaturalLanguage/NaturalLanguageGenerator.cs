@@ -28,7 +28,7 @@ namespace VirtualSuspectNaturalLanguage
                 }
 
             //If its a irrelevant (special answer)
-            }else if(result.MetaData.ContainsKey("negative-answer")) {
+            }else if(result.MetaData.ContainsKey("special-answer")) {
                 
                 switch(result.MetaData["special-answer"]) {
                     case "irrelevant":

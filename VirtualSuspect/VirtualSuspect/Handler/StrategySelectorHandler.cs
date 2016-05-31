@@ -50,6 +50,11 @@ namespace VirtualSuspect {
 
         }
         
+        /// <summary>
+        /// This method does not modify the queryDto but uses its information to select the strategy to use
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public QueryDto Modify(QueryDto query) {
 
             //Check if the information related to the events in the query is incriminatory
@@ -79,7 +84,12 @@ namespace VirtualSuspect {
         
         }
 
-        //TODO: Improve this Heuristic
+        //TODO: Improve this Heuristic, does no use the events yet
+        /// <summary>
+        /// Select the strategy according to the events and the lie strategy distribution
+        /// </summary>
+        /// <param name="events">Events triggered by the query</param>
+        /// <returns></returns>
         private VirtualSuspectQuestionAnswer.LieStrategy EvaluateStrategy(List<EventNode> events) {
 
             Random randomizer = new Random(DateTime.Now.Millisecond * DateTime.Now.Hour);

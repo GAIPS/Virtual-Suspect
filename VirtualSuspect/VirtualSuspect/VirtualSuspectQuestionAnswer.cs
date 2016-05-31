@@ -55,7 +55,7 @@ namespace VirtualSuspect {
             preHandlers.Add(1, new ReceiverTheoryOfMindHandler(this));
 
             //Setup the strategy selector to handle the decision making process related with the selection of the approach to be used
-            //  Create the distribution for the strategies
+            //Create the distribution for the strategies
             Dictionary<LieStrategy, float> distribution = new Dictionary<LieStrategy, float>();
             distribution.Add(LieStrategy.None, 0);
             distribution.Add(LieStrategy.Hide, 0);

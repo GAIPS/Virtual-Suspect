@@ -79,9 +79,9 @@
                     <DockPanel LastChildFill="True" DockPanel.Dock="Bottom" Background="{StaticResource ResourceKey=CommonBackgroundColor}">
                         <DockPanel LastChildFill="True" DockPanel.Dock="Bottom" Height="160" >
                             <TextBlock DockPanel.Dock="Top" Background="{StaticResource ResourceKey=HeaderBackgroundColor}" Foreground="{StaticResource TitleColor}"  Padding="5" FontWeight="Bold" FontSize="14">= Answer</TextBlock>
-                            <StackPanel Margin="5" Background="{StaticResource SecondBackgroundColor}" DockPanel.Dock="Bottom">
+                            <ScrollViewer Margin="5" Background="{StaticResource SecondBackgroundColor}" DockPanel.Dock="Bottom">
                                 <TextBlock Name="AnswerTextBlock" Padding="10" TextWrapping="WrapWithOverflow">This is an example of an answer. I don't know yet what to do about it, but just to show some visual feedback I'll continue to write this sentence so that it'll fill more than one line! That's right! I've made it! but can we reach a second line? I guess not :( WE DID IT</TextBlock>
-                            </StackPanel>
+                            </ScrollViewer>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" LastChildFill="True">
                             <StackPanel DockPanel.Dock="Left" Background="{StaticResource SecondBackgroundColor}" VerticalAlignment="Stretch" Width="113" Panel.ZIndex="1">
