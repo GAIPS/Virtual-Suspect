@@ -1,4 +1,7 @@
 <story>
+	<properties>
+			<name>Guilherme</name>
+	</properties>
 	<entity>
 		<id>1</id>
 		<type>TimeSpan</type>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +7,12 @@ using VirtualSuspect.Query;
 
 namespace VirtualSuspect.KnowledgeBase {
     interface IKnowledgeBase{
+
+        /// <summary>
+        /// Accessor for the virtual agent's properties
+        /// </summary>
+        /// <returns></returns>
+        Dictionary<string, string> Properties { get; }
 
         /// <summary>
         /// Creates a new action with the parameters in 'ac'

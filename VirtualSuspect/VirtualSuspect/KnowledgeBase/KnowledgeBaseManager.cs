@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -62,6 +62,19 @@ namespace VirtualSuspect.KnowledgeBase {
 
         #endregion
 
+        private Dictionary<string, string> properties;
+
+        public Dictionary<string, string> Properties {
+
+            get {
+                return properties;
+            }
+
+            set {
+                properties = value;
+            }
+        }
+        
         /// <summary>
         /// List of available entities
         /// </summary>
@@ -110,6 +123,8 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
+        #region Constructor
+
         /// <summary>
         /// Returns the next available id for an node
         /// </summary>
@@ -146,7 +161,13 @@ namespace VirtualSuspect.KnowledgeBase {
 
             story = new List<EventNode>();
 
+            properties = new Dictionary<string, string>();
+
         }
+
+        #endregion
+
+        #region Event Management
 
         public ActionNode CreateNewAction(ActionDto ac) {
             
@@ -253,6 +274,10 @@ namespace VirtualSuspect.KnowledgeBase {
 
         }
 
+        #endregion
+
+        #region Incriminatory Related Methods
+
         internal void PropagateIncriminaotryValues() {
 
             Dictionary<EntityNode, List<EventNode>> entityToEvent = new Dictionary<EntityNode, List<EventNode>>();
@@ -309,28 +334,20 @@ namespace VirtualSuspect.KnowledgeBase {
             }
             
         }
-        
-        internal List<EntityNode> ExtractSimilarEntities(EntityNode node, bool includeIncriminatory = true) {
 
-            List<EntityNode> result = new List<EntityNode>();
+        #endregion
 
-            //Check in the Entity Nodes List for similar Entities
-            //Matching type
-            foreach(EntityNode entity in entities) {
-                if (entity.Type == node.Type)
-                    result.Add(entity);
-            }
 
-            //If entity has only one semantic role them choose another 
-            //entity in the same semantic role
+        internal List<string> GetSemanticRoles(EntityNode node) {
+
             List<String> semanticRoles = new List<String>();
 
             //Get all the semantic roles that this entity has
-            foreach(EventNode eventNode in events) {
+            foreach (EventNode eventNode in events) {
 
-                if(eventNode.ContainsEntity(node)) {
+                if (eventNode.ContainsEntity(node)) {
 
-                    if(eventNode.Agent.Contains(node)) {
+                    if (eventNode.Agent.Contains(node)) {
                         semanticRoles.Add("Agent");
                     }
 
@@ -356,36 +373,62 @@ namespace VirtualSuspect.KnowledgeBase {
                 }
             }
 
-            //If it only has one semantic role them get all the 
-            //entities in that semantic role
-            if(semanticRoles.Distinct().Count() == 1) {
+            return semanticRoles;
+        }
 
-                foreach(EventNode eventNode in events) {
+        internal float EvaluateEntitySimilarity(EntityNode node1, EntityNode node2) {
 
-                    result.AddRange(eventNode.FindEntitiesByType(semanticRoles[0]));
+            float typeSimilarity = 1;
 
-                }
+            float dimensionSimilarity = 1;
 
-            }
+            //Evaluate the type similarity of the entities
+            //(some type of hyperonyme checker could be implemented) 
+            typeSimilarity = node1.Type == node2.Type ? 1.0f : 0;
 
-            //If includeIncriminatory is true
-            //remove all the entities that are incriminatory
-            List<EntityNode> filteredResult = new List<EntityNode>();
-            if(!includeIncriminatory) {
+            //Measure the number of types common to both entities
+            List<string> node1Dimensions = GetSemanticRoles(node1);
+            List<string> node2Dimensions = GetSemanticRoles(node2);
+            int CommonDimensions = node1Dimensions.Intersect(node2Dimensions).Count();
+            int NonCommonDimension = node1Dimensions.Except(node2Dimensions).Union(node2Dimensions.Except(node1Dimensions)).Count();
+            
+            dimensionSimilarity = CommonDimensions / (CommonDimensions + NonCommonDimension);
 
-                foreach (EntityNode entity in result) {
-
-                    if(entity.Incriminatory == 0) {
-                        filteredResult.Add(entity);
-                    }
-
-                }
-
-            }else {
-                filteredResult.AddRange(result);
+            //Onde of the entities does not appear in any event yet
+            if(node1Dimensions.Count == 0 || node2Dimensions.Count == 0) {
+                return typeSimilarity;
+            } else { 
+                return typeSimilarity * 0.5f + dimensionSimilarity * 0.5f;
             }
             
-            return new List<EntityNode>(filteredResult.Distinct());
+        }
+
+        /// <summary>
+        /// Creates an ordered list of entities. Orders by the similarity of the entity being searched. 
+        /// If useIncriminatory is true then multiplies the value of incriminatory to the similarityFactor
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        internal Dictionary<EntityNode, float> ExtractSimilarEntities(EntityNode node, bool UseIncriminatory = false) {
+
+            Dictionary<EntityNode, float> result = new Dictionary<EntityNode, float>();
+
+            foreach(EntityNode testingNode in entities) {
+
+                if (testingNode == node)
+                    continue;
+
+                float similarityFactor = EvaluateEntitySimilarity(node, testingNode);
+
+                if (UseIncriminatory)
+                    similarityFactor = similarityFactor  * ((100 - testingNode.Incriminatory) / 100);
+ 
+                if(similarityFactor > 0)
+                    result.Add(testingNode, similarityFactor);
+
+            }
+
+            return result;
         }
 
     }

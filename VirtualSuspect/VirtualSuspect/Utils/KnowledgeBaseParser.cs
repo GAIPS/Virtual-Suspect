@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -118,6 +118,23 @@ namespace VirtualSuspect.Utils
                 if(eventXmlNode.SelectSingleNode("real").InnerText == "true") {
                     kb.AddEventToStory(newEventNode);
                 }
+
+            }
+
+            //Extract porperties
+            Dictionary<string, string> properties = kb.Properties;
+
+            XmlNode propertyNode;
+
+            if((propertyNode = xmlRoot.SelectSingleNode("/story/properties/name")) != null) {
+
+                properties.Add("Name", propertyNode.InnerText);
+
+            }
+
+            if ((propertyNode = xmlRoot.SelectSingleNode("/story/properties/gender")) != null) {
+
+                properties.Add("Gender", propertyNode.InnerText);
 
             }
 
