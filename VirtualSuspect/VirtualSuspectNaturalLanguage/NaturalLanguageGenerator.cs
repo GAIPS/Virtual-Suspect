@@ -1,9 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VirtualSuspect.Query;
+using VirtualSuspectNaturalLanguage.Component;
 
 namespace VirtualSuspectNaturalLanguage
 {
@@ -13,32 +15,74 @@ namespace VirtualSuspectNaturalLanguage
 
             string answer = "";
             
-            //Prefilter the Answer According to the MetaData
+            if (result.YesNoResult) { //Yes or no Question
 
-            //If its a non-remember or denial (negative answer)
-            if(result.MetaData.ContainsKey("negative-answer")) {
 
-                switch(result.MetaData["negative-answer"]) {
-                    case "non-remember":
-                        answer += "I can't remember that.";
-                        break;
-                    case "denial":
-                        answer += "I don't want to talk about it.";
-                        break;
+
+            } else { //Get Information Question
+
+                //Create the answer introduction
+
+                //Write the query result
+                foreach (QueryResult.Result queryResult in result.Results) {
+                    
+                    switch(queryResult.dimension) {
+
+                        case VirtualSuspect.KnowledgeBase.KnowledgeBaseManager.DimentionsEnum.Time:
+
+                            //Add Preposition
+                            answer += NewSentencePossible(answer) ? " On " : "on ";
+
+                            List<string> values = new List<string>();
+                            
+                            foreach(string value in queryResult.values) {
+
+                                INaturalLanguageGenerationComponent component = new NaturalLanguageTimeComponent(value);
+
+                                values.Add(component.GenerateNaturalLanguage());
+                            }
+
+                            answer += CombineValues("and", values);
+
+                            answer += ".";
+
+                            break;
+
+                        case VirtualSuspect.KnowledgeBase.KnowledgeBaseManager.DimentionsEnum.Location:
+
+                            //Add Preposition
+                            break;
+
+                    } 
                 }
-
-            //If its a irrelevant (special answer)
-            }else if(result.MetaData.ContainsKey("special-answer")) {
-                
-                switch(result.MetaData["special-answer"]) {
-                    case "irrelevant":
-                        answer += "I don't find that question relevant!";
-                        break;
-                }
-        
             }
 
             return answer;
+
+        }
+      
+        private static bool NewSentencePossible(string sentence) {
+
+            return sentence == "" || sentence.Last() == '.';
+
+        }
+        
+        private static string CombineValues(string term, List<string> values) {
+
+            string combinedValues = "";
+
+            for(int i = 0; i < values.Count(); i++) {
+
+                combinedValues += values[i];
+
+                if(i == values.Count() - 2) {
+                    combinedValues += " " + term + " ";
+                }else if(i < values.Count() - 1){
+                    combinedValues += ", ";   
+                }
+            }
+
+            return combinedValues;
 
         }
     }

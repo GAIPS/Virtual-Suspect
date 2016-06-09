@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -100,7 +100,7 @@ namespace VirtualSuspect {
                     result.AddResults(queryEvents.Select(focus.CreateFunction()));
 
                 }
-
+                
                 //Count Cardinality
                 result.CountResult();
 

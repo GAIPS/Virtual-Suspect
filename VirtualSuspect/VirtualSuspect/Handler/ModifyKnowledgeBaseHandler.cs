@@ -52,7 +52,7 @@ namespace VirtualSuspect.Handler {
                             Dictionary<EntityNode, float> SimilarLocationEntities = virtualSuspect.KnowledgeBase.ExtractSimilarEntities(eventNode.Location, true);
 
                             //Iterate all the similar location and retrieve the best one
-                            foreach(EntityNode similarLocation in SimilarLocationEntities.OrderBy(x => x.Value).Select(x=> x.Key)) {
+                            foreach(EntityNode similarLocation in SimilarLocationEntities.OrderByDescending(x => x.Value).Select(x=> x.Key)) {
 
                                 //TODO: Perform Test to check if location is possible(Setting to the first available)
                                 //TODO: Improve Space-Time Coherence
@@ -103,7 +103,6 @@ namespace VirtualSuspect.Handler {
                             }
 
                         }
-
                         //Fill the rest of reasons
                         foreach (EntityNode OldReasonNode in NonAddedEntities[KnowledgeBaseManager.DimentionsEnum.Reason]) {
 
