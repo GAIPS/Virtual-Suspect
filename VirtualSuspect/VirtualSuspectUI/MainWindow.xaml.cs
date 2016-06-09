@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -237,9 +237,6 @@ namespace VirtualSuspectUI {
 
                     //Parse the focus according to the dimension
                     switch (focusDimension) {
-                        case KnowledgeBaseManager.DimentionsEnum.Action:
-                            query.AddFocus(new GetActionFocusPredicate());
-                            break;
                         case KnowledgeBaseManager.DimentionsEnum.Manner:
                             query.AddFocus(new GetMannerFocusPredicate());
                             break;

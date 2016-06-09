@@ -65,22 +65,22 @@ namespace VirtualSuspect.Query
 
         public class Result {
 
-            public List<string> values;
+            public List<EntityNode> values;
 
             public int cardinality;
 
             public KnowledgeBaseManager.DimentionsEnum dimension;
 
-            public Result(IEnumerable<string> values, int cardinality, KnowledgeBaseManager.DimentionsEnum dimension) {
-                this.values = values.ToList();
+            public Result(IEnumerable<EntityNode> entityValues, int cardinality, KnowledgeBaseManager.DimentionsEnum dimension) {
+                values = entityValues.ToList();
                 this.cardinality = cardinality;
                 this.dimension = dimension;
             }
 
-            public Result(string value, int cardinality, KnowledgeBaseManager.DimentionsEnum dimension) {
+            public Result(EntityNode entityValue, int cardinality, KnowledgeBaseManager.DimentionsEnum dimension) {
                 
-                List<string> values = new List<string>();
-                values.Add(value); 
+                List<EntityNode> values = new List<EntityNode>();
+                values.Add(entityValue); 
 
                 this.values = values;
                 this.cardinality = cardinality;
@@ -117,7 +117,7 @@ namespace VirtualSuspect.Query
 
                 int test2 = 0;
 
-                foreach(string value in obj.values) {
+                foreach(string value in obj.values.Select(x => x.Value)) {
 
                     test2 += value.GetHashCode();
                 }

@@ -35,7 +35,7 @@ namespace VirtualSuspectNaturalLanguage
 
                             List<string> values = new List<string>();
                             
-                            foreach(string value in queryResult.values) {
+                            foreach(string value in queryResult.values.Select(x => x.Value)) {
 
                                 INaturalLanguageGenerationComponent component = new NaturalLanguageTimeComponent(value);
 

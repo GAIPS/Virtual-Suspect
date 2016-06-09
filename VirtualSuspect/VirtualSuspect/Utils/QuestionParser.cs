@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,9 +41,6 @@ namespace VirtualSuspect.Utils{
 
                 //Parse the focus according to the dimension
                 switch (focusDimension) {
-                    case KnowledgeBaseManager.DimentionsEnum.Action:
-                        newQueryDto.AddFocus(new GetActionFocusPredicate());
-                        break;
                     case KnowledgeBaseManager.DimentionsEnum.Manner:
                         newQueryDto.AddFocus(new GetMannerFocusPredicate());
                         break;

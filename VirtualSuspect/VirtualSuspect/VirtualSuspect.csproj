@@ -51,7 +51,6 @@
     <Compile Include="Query\GetTimeFocusPredicate.cs" />
     <Compile Include="Query\GetReasonFocusPredicate.cs" />
     <Compile Include="Query\GetMannerFocusPredicate.cs" />
-    <Compile Include="Query\GetActionFocusPredicate.cs" />
     <Compile Include="Query\GetThemeFocusPredicate.cs" />
     <Compile Include="Query\GetAgentFocusPredicate.cs" />
     <Compile Include="Query\ThemeEqualConditionPredicate.cs" />

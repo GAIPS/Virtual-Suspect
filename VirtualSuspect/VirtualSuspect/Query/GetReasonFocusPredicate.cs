@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,7 @@ namespace VirtualSuspect.Query
         public Func<EventNode, QueryResult.Result> CreateFunction() {
             return delegate (EventNode node) {    
 
-                return new QueryResult.Result(node.Reason.Select(x => x.Value), node.Reason.Count , KnowledgeBaseManager.DimentionsEnum.Reason);
+                return new QueryResult.Result(node.Reason, node.Reason.Count , KnowledgeBaseManager.DimentionsEnum.Reason);
 
             };
         }

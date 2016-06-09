@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,7 +49,7 @@ namespace VirtualSuspect.Utils
                     newResponseXml.AppendChild(newDimensionNode);
                     newResponseXml.AppendChild(newCardinalityNode);
 
-                    foreach (string value in result.values) {
+                    foreach (string value in result.values.Select(x => x.Value)) {
 
                         XmlElement newValueNode = newAnswer.CreateElement("value");
                         newValueNode.InnerText = value;
