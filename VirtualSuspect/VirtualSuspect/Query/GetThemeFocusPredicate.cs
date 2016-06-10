@@ -17,8 +17,8 @@ namespace VirtualSuspect.Query
             };
         }
 
-        public string GetSemanticRole() {
-            return "Theme";
+        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole() {
+            return KnowledgeBaseManager.DimentionsEnum.Theme;
         }
     }
 }

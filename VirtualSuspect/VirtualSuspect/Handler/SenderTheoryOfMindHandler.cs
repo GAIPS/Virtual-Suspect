@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,9 +41,9 @@ namespace VirtualSuspect.Handler {
 
                 foreach (IFocusPredicate predicate in result.Query.QueryFocus) {
 
-                    string semanticRole = predicate.GetSemanticRole();
+                    KnowledgeBaseManager.DimentionsEnum semanticRole = predicate.GetSemanticRole();
 
-                    if (semanticRole != "Action") {
+                    if (semanticRole != KnowledgeBaseManager.DimentionsEnum.Action) {
 
                         List<EntityNode> nodes = node.FindEntitiesByType(semanticRole);
 

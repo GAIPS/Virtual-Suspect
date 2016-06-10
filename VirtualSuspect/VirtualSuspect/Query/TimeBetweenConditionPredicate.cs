@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -49,9 +49,9 @@ namespace VirtualSuspect.Query
                 };
         }
         
-        public string GetSemanticRole() {
+        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole() {
 
-            return "TimeSpan";
+            return KnowledgeBaseManager.DimentionsEnum.Time;
 
         }
 

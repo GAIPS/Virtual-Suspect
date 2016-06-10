@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using VirtualSuspect.KnowledgeBase;
 
@@ -16,7 +16,7 @@ namespace VirtualSuspect.Query {
         /// Returns the semantic role of the condition
         /// </summary>
         /// <returns>Ex: Theme, Action, Agent, Manner, Reason, Time, Location</returns>
-        string GetSemanticRole();
+        KnowledgeBaseManager.DimentionsEnum GetSemanticRole();
 
         /// <summary>
         /// Returns the list of values used inside the condition

@@ -94,24 +94,6 @@
 			<entity id="9"/>
 		</association>
 	</event>
-<event>
-		<id>6</id>
-		<action>Eat</action>
-		<real>true</real>
-		<incriminatory>0</incriminatory>
-		<association relation="Time">
-			<entity id="2"/>
-		</association>
-		<association relation="Location">
-			<entity id="10"/>
-		</association>
-		<association relation="Agent">
-			<entity id="5"/>
-		</association>
-		<association relation="Agent">
-			<entity id="7"/>
-		</association>
-	</event>
 	<event>
 		<id>2</id>
 		<action>Eat</action>

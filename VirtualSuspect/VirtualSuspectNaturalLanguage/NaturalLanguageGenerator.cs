@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Query;
 using VirtualSuspectNaturalLanguage.Component;
 
@@ -17,73 +18,147 @@ namespace VirtualSuspectNaturalLanguage
             
             if (result.YesNoResult) { //Yes or no Question
 
-
-
-            } else { //Get Information Question
+            
+            } else { //Get Information Question (We assume that the answer only has 1 type of dimension of answer)
 
                 //Create the answer introduction
 
-                //Write the query result
-                foreach (QueryResult.Result queryResult in result.Results) {
+                //Get all the answers by dimension
+                Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension = new Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>>();
+                foreach(QueryResult.Result queryResult in result.Results) {
+
+                    if (!resultsByDimension.ContainsKey(queryResult.dimension)) {
+                        resultsByDimension[queryResult.dimension] = new List<QueryResult.Result>();
+                    }
+                    resultsByDimension[queryResult.dimension].Add(queryResult);
+                }
+
+                //Is there any entity with dimension Time
+                if(resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Time)) {
+
+                    //Ignore Cardinality(the same time period only appears once)
+
+                    //Get all the TimeDate and Parse them
+                    List<KeyValuePair<DateTime, DateTime>> dateTimeList = new List<KeyValuePair<DateTime, DateTime>>();
+
+                    foreach (QueryResult.Result value in resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Time]) {
+
+                        DateTime firstDate = DateTime.ParseExact(value.values.ElementAt(0).Value.Split('>')[0], "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
+                        DateTime secondDate = DateTime.ParseExact(value.values.ElementAt(0).Value.Split('>')[1], "dd/MM/yyyyTHH:mm:ss", CultureInfo.InvariantCulture);
+
+                        dateTimeList.Add(new KeyValuePair<DateTime, DateTime>(firstDate, secondDate));
+
+                    }
+
+                    //Merge sequence
+                    dateTimeList = SortAndMergeSequenceDateTime(dateTimeList);
+
+                    //Group by Day
+                    Dictionary<DateTime, List<KeyValuePair<DateTime,DateTime>>> dateTimeGroupByDay = GroupDateTimeByDay(dateTimeList);
+
+                    answer += TimeNaturalLanguageGenerator.Generate(dateTimeGroupByDay);
                     
-                    switch(queryResult.dimension) {
+                }else if(resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Location)) {
 
-                        case VirtualSuspect.KnowledgeBase.KnowledgeBaseManager.DimentionsEnum.Time:
+                    //Consider Number of Agents associated with the events
+                    int numberAgents = GetNumberAgents(result.Query);
 
-                            //Add Preposition
-                            answer += NewSentencePossible(answer) ? " On " : "on ";
+                    //Consider Cardinality
 
-                            List<string> values = new List<string>();
-                            
-                            foreach(string value in queryResult.values.Select(x => x.Value)) {
 
-                                INaturalLanguageGenerationComponent component = new NaturalLanguageTimeComponent(value);
-
-                                values.Add(component.GenerateNaturalLanguage());
-                            }
-
-                            answer += CombineValues("and", values);
-
-                            answer += ".";
-
-                            break;
-
-                        case VirtualSuspect.KnowledgeBase.KnowledgeBaseManager.DimentionsEnum.Location:
-
-                            //Add Preposition
-                            break;
-
-                    } 
                 }
             }
+
+            //Capitalize the answer if needed
+            answer = UppercaseFirst(answer);
 
             return answer;
 
         }
-      
+
+        private static string UppercaseFirst(string s) {
+            // Check for empty string.
+            if (string.IsNullOrEmpty(s)) {
+                return string.Empty;
+            }
+            // Return char and concat substring.
+            return char.ToUpper(s[0]) + s.Substring(1);
+        }
+
         private static bool NewSentencePossible(string sentence) {
 
-            return sentence == "" || sentence.Last() == '.';
+            return sentence == "" || sentence.TrimEnd().Last() == '.';
 
         }
-        
-        private static string CombineValues(string term, List<string> values) {
+    
+        private static string NaturalLanguageGetFrequency(int number) {
 
-            string combinedValues = "";
+            string frequencyWord = "";
 
-            for(int i = 0; i < values.Count(); i++) {
-
-                combinedValues += values[i];
-
-                if(i == values.Count() - 2) {
-                    combinedValues += " " + term + " ";
-                }else if(i < values.Count() - 1){
-                    combinedValues += ", ";   
-                }
+            if(number == 0) {
+                frequencyWord = "never";
+            }
+            else if (number == 1) {
+                frequencyWord = "once";
+            }
+            else if (number == 2) {
+                frequencyWord = "twice";
+            }
+            else if (number >= 3 && number <= 6) {
+                frequencyWord = number + " times";
+            }
+            else {
+                Random rng = new Random();
+                int randomNumber = rng.Next(2);
+                if (randomNumber == 0)
+                    frequencyWord = "many";
+                else if (randomNumber == 1)
+                    frequencyWord = "several";
             }
 
-            return combinedValues;
+            return frequencyWord;
+        }
+        
+        private static List<KeyValuePair<DateTime, DateTime>> SortAndMergeSequenceDateTime(List<KeyValuePair<DateTime, DateTime>> sequence) {
+
+            List<KeyValuePair<DateTime,DateTime>> sequenceMerged = new List<KeyValuePair<DateTime, DateTime>>();
+
+            sequence.Sort((a, b) => a.Key.CompareTo(b.Value));
+            
+            for(int i = 0; i < sequence.Count; i++) {
+
+                if(i == 0) {
+                    sequenceMerged.Add(sequence.ElementAt(0));
+                }else {
+
+                    if(sequenceMerged.Last().Value == sequence[i].Key) { //the end of the last is equal to the begin of current Date
+                        DateTime beginInterval = sequenceMerged.Last().Key;
+                        sequenceMerged.RemoveAt(sequenceMerged.Count - 1);
+                        sequenceMerged.Add(new KeyValuePair<DateTime, DateTime>(beginInterval, sequence[i].Value));
+                    }else{
+                        sequenceMerged.Add(sequence.ElementAt(i));
+                    }
+
+                }
+                    
+            }
+                
+            return sequenceMerged;    
 
         }
-    }
+
+        private static Dictionary<DateTime, List<KeyValuePair<DateTime,DateTime>>> GroupDateTimeByDay(List<KeyValuePair<DateTime, DateTime>> dateTimeList) {
+        
+            dateTimeList.Sort((a, b) => a.Key.CompareTo(b.Value));
+
+            IEnumerable<IGrouping<DateTime, KeyValuePair<DateTime, DateTime>>> groupedResult = dateTimeList.GroupBy(x => new DateTime(x.Key.Year, x.Key.Month, x.Key.Day), x => x);
+
+            return groupedResult.ToDictionary(x=>x.Key, x=>x.ToList());
+        }
+
+        private static int GetNumberAgents(QueryDto query) {
+
+            return query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Agent);   
+        }
+    }   
 }

@@ -338,9 +338,9 @@ namespace VirtualSuspect.KnowledgeBase {
         #endregion
 
 
-        internal List<string> GetSemanticRoles(EntityNode node) {
+        internal List<KnowledgeBaseManager.DimentionsEnum> GetSemanticRoles(EntityNode node) {
 
-            List<String> semanticRoles = new List<String>();
+            List<KnowledgeBaseManager.DimentionsEnum> semanticRoles = new List<KnowledgeBaseManager.DimentionsEnum>();
 
             //Get all the semantic roles that this entity has
             foreach (EventNode eventNode in events) {
@@ -348,27 +348,27 @@ namespace VirtualSuspect.KnowledgeBase {
                 if (eventNode.ContainsEntity(node)) {
 
                     if (eventNode.Agent.Contains(node)) {
-                        semanticRoles.Add("Agent");
+                        semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Agent);
                     }
 
                     if (eventNode.Theme.Contains(node)) {
-                        semanticRoles.Add("Theme");
+                        semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Theme);
                     }
 
                     if (eventNode.Manner.Contains(node)) {
-                        semanticRoles.Add("Manner");
+                        semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Manner);
                     }
 
                     if (eventNode.Reason.Contains(node)) {
-                        semanticRoles.Add("Reason");
+                        semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Reason);
                     }
 
                     if (eventNode.Time == node) {
-                        semanticRoles.Add("Time");
+                        semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Time);
                     }
 
                     if (eventNode.Location == node) {
-                        semanticRoles.Add("Location");
+                        semanticRoles.Add(KnowledgeBaseManager.DimentionsEnum.Location);
                     }
                 }
             }
@@ -387,8 +387,8 @@ namespace VirtualSuspect.KnowledgeBase {
             typeSimilarity = node1.Type == node2.Type ? 1.0f : 0;
 
             //Measure the number of types common to both entities
-            List<string> node1Dimensions = GetSemanticRoles(node1);
-            List<string> node2Dimensions = GetSemanticRoles(node2);
+            List<KnowledgeBaseManager.DimentionsEnum> node1Dimensions = GetSemanticRoles(node1);
+            List<KnowledgeBaseManager.DimentionsEnum> node2Dimensions = GetSemanticRoles(node2);
             int CommonDimensions = node1Dimensions.Intersect(node2Dimensions).Count();
             int NonCommonDimension = node1Dimensions.Except(node2Dimensions).Union(node2Dimensions.Except(node1Dimensions)).Count();
             

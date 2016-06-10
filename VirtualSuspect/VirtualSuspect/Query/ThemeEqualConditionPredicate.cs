@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,9 +35,9 @@ namespace VirtualSuspect.Query
                 };
         }
 
-        public string GetSemanticRole() {
+        public KnowledgeBaseManager.DimentionsEnum GetSemanticRole() {
 
-            return "Theme";
+            return KnowledgeBaseManager.DimentionsEnum.Theme;
 
         }
 

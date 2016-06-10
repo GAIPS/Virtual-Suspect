@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +36,7 @@ namespace VirtualSuspect.Handler {
 
                     foreach(string value in condition.GetValues()) {
 
-                        if (condition.GetSemanticRole() != "Action") {
+                        if (condition.GetSemanticRole() != KnowledgeBaseManager.DimentionsEnum.Action) {
                             EntityNode entity = node.FindEntity(condition.GetSemanticRole(), value);
 
                             if (entity != null)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -258,24 +258,24 @@ namespace VirtualSuspect.KnowledgeBase {
         /// <param name="value"></param>
         /// <returns>returns the entity if there is a match or null otherwise</returns>
         /// 
-        public EntityNode FindEntity(string type, string value) {
+        public EntityNode FindEntity(KnowledgeBaseManager.DimentionsEnum type, string value) {
 
             switch(type) {
-                case "Time":
+                case KnowledgeBaseManager.DimentionsEnum.Time:
                     if (Time.Value == value)
                         return time;
                     break;
-                case "Location":
+                case KnowledgeBaseManager.DimentionsEnum.Location:
                     if (Location.Value == value)
                         return location;
                     break;
-                case "Agent":
+                case KnowledgeBaseManager.DimentionsEnum.Agent:
                     return Agent.Find(x => x.Value == value);
-                case "Theme":
+                case KnowledgeBaseManager.DimentionsEnum.Theme:
                     return Theme.Find(x => x.Value == value);
-                case "Reason":
+                case KnowledgeBaseManager.DimentionsEnum.Reason:
                     return Reason.Find(x => x.Value == value);
-                case "Manner":
+                case KnowledgeBaseManager.DimentionsEnum.Manner:
                     return Manner.Find(x => x.Value == value);
                 default:
                     return null;
@@ -285,27 +285,27 @@ namespace VirtualSuspect.KnowledgeBase {
             return null;
         }
         
-        public List<EntityNode> FindEntitiesByType(string type) {
+        public List<EntityNode> FindEntitiesByType(KnowledgeBaseManager.DimentionsEnum type) {
 
             List<EntityNode> nodes = new List<EntityNode>();
 
             switch (type) {
-                case "Time":
+                case KnowledgeBaseManager.DimentionsEnum.Time:
                     nodes.Add(Time);
                     break;
-                case "Location":
+                case KnowledgeBaseManager.DimentionsEnum.Location:
                     nodes.Add(Location); 
                     break;
-                case "Agent":
+                case KnowledgeBaseManager.DimentionsEnum.Agent:
                     nodes.AddRange(Agent);
                     break;
-                case "Theme":
+                case KnowledgeBaseManager.DimentionsEnum.Theme:
                     nodes.AddRange(Theme);
                     break;
-                case "Reason":
+                case KnowledgeBaseManager.DimentionsEnum.Reason:
                     nodes.AddRange(Reason);
                     break;
-                case "Manner":
+                case KnowledgeBaseManager.DimentionsEnum.Manner:
                     nodes.AddRange(Manner);
                     break;
             }
