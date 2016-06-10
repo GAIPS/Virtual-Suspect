@@ -21,8 +21,16 @@ namespace VirtualSuspectNaturalLanguage
             
             } else { //Get Information Question (We assume that the answer only has 1 type of dimension of answer)
 
+                //==============================
                 //Create the answer introduction
 
+                //Consider Number of Agents associated with the events
+                int numberAgents = GetNumberAgents(result.Query);
+
+                answer += (numberAgents == 1) ? "I am " : "we were ";
+
+
+                //==============================
                 //Get all the answers by dimension
                 Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension = new Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>>();
                 foreach(QueryResult.Result queryResult in result.Results) {
@@ -33,8 +41,9 @@ namespace VirtualSuspectNaturalLanguage
                     resultsByDimension[queryResult.dimension].Add(queryResult);
                 }
 
+                //==============================
                 //Is there any entity with dimension Time
-                if(resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Time)) {
+                if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Time)) {
 
                     //Ignore Cardinality(the same time period only appears once)
 
@@ -60,12 +69,14 @@ namespace VirtualSuspectNaturalLanguage
                     
                 }else if(resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Location)) {
 
-                    //Consider Number of Agents associated with the events
-                    int numberAgents = GetNumberAgents(result.Query);
+                    //Group by entities type
 
-                    //Consider Cardinality
+                    //Merge all entities and sum cardinality
+                    List<EntityNode> mergedLocations = MergeAndSumLocationsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Location]);
+                    //Group by Type
+                    Dictionary<string, List<EntityNode>> locationGroupByType = GroupLocationByType(mergedLocations);
 
-
+                    answer += LocationNaturalLanguageGenerator.Generate(locationGroupByType);                  
                 }
             }
 
@@ -156,6 +167,17 @@ namespace VirtualSuspectNaturalLanguage
             return groupedResult.ToDictionary(x=>x.Key, x=>x.ToList());
         }
 
+        private static List<EntityNode> MergeAndSumLocationsCardinality(List<QueryResult.Result> locations) {
+
+            throw new NotImplementedException();
+            return new List<EntityNode>();
+        }
+
+        private static Dictionary<string, List<EntityNode>> GroupLocationByType(List<EntityNode> locations) {
+
+            throw new NotImplementedException();
+            return new Dictionary<string, List<EntityNode>>();
+        }
         private static int GetNumberAgents(QueryDto query) {
 
             return query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Agent);   

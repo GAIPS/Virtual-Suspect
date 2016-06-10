@@ -8,7 +8,7 @@ using VirtualSuspect.KnowledgeBase;
 namespace VirtualSuspectNaturalLanguage.Component {
     public static class LocationNaturalLanguageGenerator {
 
-        public static string Generate(List<EntityNode> locations) {
+        public static string Generate(Dictionary<string, List<EntityNode>> locationByType) {
 
             string answer = "";
             
