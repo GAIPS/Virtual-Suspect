@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualSuspect", "VirtualSuspect\VirtualSuspect.csproj", "{27EEA46D-3298-4315-B082-F61096444D36}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualSuspectUI", "VirtualSuspectUI\VirtualSuspectUI.csproj", "{3739A240-503F-4E54-9791-96FAD6EA961B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualSuspectNaturalLanguage", "VirtualSuspectNaturalLanguage\VirtualSuspectNaturalLanguage.csproj", "{1A666C63-29DB-4012-AF41-B7BCFB23F33A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEnvironment", "TestEnvironment\TestEnvironment.csproj", "{FA790D18-7CF0-4BE7-868F-793BD549A5A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1A666C63-29DB-4012-AF41-B7BCFB23F33A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A666C63-29DB-4012-AF41-B7BCFB23F33A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A666C63-29DB-4012-AF41-B7BCFB23F33A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA790D18-7CF0-4BE7-868F-793BD549A5A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA790D18-7CF0-4BE7-868F-793BD549A5A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA790D18-7CF0-4BE7-868F-793BD549A5A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA790D18-7CF0-4BE7-868F-793BD549A5A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
