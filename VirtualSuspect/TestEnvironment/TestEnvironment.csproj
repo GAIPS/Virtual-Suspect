@@ -37,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -59,6 +61,9 @@
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestManager.cs" />
+    <Compile Include="User Control\InitialNote.xaml.cs">
+      <DependentUpon>InitialNote.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User Control\SuspectInfo.xaml.cs">
       <DependentUpon>SuspectInfo.xaml</DependentUpon>
     </Compile>
@@ -66,6 +71,10 @@
       <DependentUpon>SummaryWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="SplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Control\InitialNote.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,6 +156,16 @@
     <Resource Include="Resources\profileDefaultPlaceholder.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VirtualSuspectNaturalLanguage\VirtualSuspectNaturalLanguage.csproj">
+      <Project>{1a666c63-29db-4012-af41-b7bcfb23f33a}</Project>
+      <Name>VirtualSuspectNaturalLanguage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VirtualSuspect\VirtualSuspect.csproj">
+      <Project>{27eea46d-3298-4315-b082-f61096444d36}</Project>
+      <Name>VirtualSuspect</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

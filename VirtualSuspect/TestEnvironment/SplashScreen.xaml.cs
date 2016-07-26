@@ -19,7 +19,9 @@ namespace TestEnvironment {
     /// Interaction logic for SplashScreen.xaml
     /// </summary>
     public partial class SplashScreen : Window {
+
         public SplashScreen() {
+
             InitializeComponent();
 
             TestManager.LoadTestSuspects();
@@ -34,6 +36,7 @@ namespace TestEnvironment {
         private void dispatcherTimer_Tick(object sender, EventArgs e) {
 
             ((System.Windows.Threading.DispatcherTimer) sender).Stop();
+
             MainWindow mainWindow = new MainWindow();
 
             mainWindow.Show();

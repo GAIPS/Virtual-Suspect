@@ -59,8 +59,19 @@ namespace TestEnvironment
             Button newButton = new Button();
             newButton.Content = question;
             newButton.Style = this.FindResource("QuestionButtonStyle") as Style;
+            newButton.Click += AskQuestion;
             questionStackPanel.Children.Add(newButton);
 
+        }
+
+        private void AskQuestion(object sender, RoutedEventArgs e) {
+            throw new NotImplementedException();
+        }
+
+        private void NotesButton_Click(object sender, RoutedEventArgs e) {
+
+            NotesWindow window = new NotesWindow(new List<string>());
+            window.Show();
         }
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VirtualSuspect;
+using VirtualSuspect.KnowledgeBase;
+using VirtualSuspect.Utils;
 
 namespace TestEnvironment
 {
@@ -32,6 +35,16 @@ namespace TestEnvironment
 
     public class TestSuspect {
 
+        private VirtualSuspectQuestionAnswer virtualSuspect;
+
+        private VirtualSuspectQuestionAnswer VirtualSuspect {
+
+            get {
+                return virtualSuspect;
+            }
+
+        }
+
         private string storyFilePath;
 
         public string StoryFilePath { get { return storyFilePath; } }
@@ -59,6 +72,10 @@ namespace TestEnvironment
             this.connection = connection;
             this.summary = summary;
             this.profileImagePath = profileImagePath;
+
+            KnowledgeBaseManager kb = KnowledgeBaseParser.parseFromFile(this.storyFilePath);
+
+            virtualSuspect = new VirtualSuspectQuestionAnswer(kb);
 
         }
     }
