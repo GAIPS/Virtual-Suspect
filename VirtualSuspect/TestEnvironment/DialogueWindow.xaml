@@ -52,7 +52,7 @@
         </Grid>
         <StackPanel x:Name="questionStackPanel" Grid.Column="1" Margin="10,5" Grid.Row="1"/>
         <Canvas Grid.Column="1" HorizontalAlignment="Left" Height="80" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="583" Background="#FF2980B9">
-            <TextBlock x:Name="tbSummary_Copy" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in vestibulum quam. Quisque euismod elit at egestas placerat. Nulla aliquet leo quis massa faucibus pretium." VerticalAlignment="Top" Height="60" TextAlignment="Justify" Foreground="White" FontFamily="Segoe UI Light" FontSize="14" Padding="5,0,5,5" Canvas.Left="10" Canvas.Top="10" Width="563"/>
+            <TextBlock x:Name="tbAnswer" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in vestibulum quam. Quisque euismod elit at egestas placerat. Nulla aliquet leo quis massa faucibus pretium." VerticalAlignment="Top" Height="60" TextAlignment="Justify" Foreground="White" FontFamily="Segoe UI Light" FontSize="14" Padding="5,0,5,5" Canvas.Left="10" Canvas.Top="10" Width="563"/>
         </Canvas>
 
     </Grid>

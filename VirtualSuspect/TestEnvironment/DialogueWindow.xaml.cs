@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
+using TestEnvironment.CustomItems;
+using VirtualSuspect.Query;
+using VirtualSuspectNaturalLanguage;
 
 namespace TestEnvironment
 {
@@ -21,6 +25,8 @@ namespace TestEnvironment
 
         private int id;
         private TestSuspect testSuspect;
+
+        private NotesWindow notesWindow;
 
         public DialogueWindow(int id, TestSuspect testSuspect) {
 
@@ -54,24 +60,84 @@ namespace TestEnvironment
 
         }
 
-        private void addQuestion(string question, object o) {
+        private void addQuestion(string question, QueryDto questionDto) {
 
             Button newButton = new Button();
-            newButton.Content = question;
             newButton.Style = this.FindResource("QuestionButtonStyle") as Style;
             newButton.Click += AskQuestion;
             questionStackPanel.Children.Add(newButton);
-
+            newButton.Content = new QuestionButtonContent(question, questionDto);
+            
         }
 
         private void AskQuestion(object sender, RoutedEventArgs e) {
-            throw new NotImplementedException();
-        }
+
+            Button button = (Button) sender;
+            QueryDto question = ((QuestionButtonContent)button.Content).QuestionDto;
+
+            //Question Virtual Suspect
+            QueryResult answer = testSuspect.VirtualSuspect.Query(question);
+
+            //Generate Natural Language Answer from Query Result
+            String AnswerSpeech = NaturalLanguageGenerator.GenerateAnswer(answer);
+
+
+            if( AnswerSpeech == "" ) { //If no answer was generated show query's xml
+                tbAnswer.Text = ConvertToString(VirtualSuspect.Utils.AnswerGenerator.GenerateAnswer(answer));
+            } else {
+                tbAnswer.Text = AnswerSpeech;
+            }
+            
+        } 
 
         private void NotesButton_Click(object sender, RoutedEventArgs e) {
 
-            NotesWindow window = new NotesWindow(new List<string>());
-            window.Show();
+            if( !IsWindowOpen<NotesWindow>() ) {
+                notesWindow = new NotesWindow(new List<string>());
+                notesWindow.Show();
+            }else {
+                notesWindow.Focus();
+            }
+
+        }
+
+        #region Utility Methods
+
+        public static bool IsWindowOpen<T>(string name = "") where T : Window {
+            return string.IsNullOrEmpty(name)
+               ? Application.Current.Windows.OfType<T>().Any()
+               : Application.Current.Windows.OfType<T>().Any(w => w.Name.Equals(name));
+        }
+
+        private string ConvertToString(XmlDocument doc) {
+            StringBuilder sb = new StringBuilder();
+            XmlWriterSettings settings = new XmlWriterSettings {
+                Indent = true,
+                IndentChars = "  ",
+                NewLineChars = "\r\n",
+                NewLineHandling = NewLineHandling.Replace
+            };
+            using( XmlWriter writer = XmlWriter.Create(sb, settings) ) {
+                doc.Save(writer);
+            }
+            return sb.ToString();
+        }
+
+        #endregion
+
+        private class QuestionButtonContent {
+
+            internal QueryDto QuestionDto;
+            internal string QuestionText;
+
+            internal QuestionButtonContent(string questionText, QueryDto questionDto) {
+                QuestionText = questionText;
+                QuestionDto = questionDto;
+            } 
+
+            public override string ToString() {
+                return QuestionText;
+            }
         }
     }
 }

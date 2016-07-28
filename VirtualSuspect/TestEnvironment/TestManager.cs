@@ -19,6 +19,7 @@ namespace TestEnvironment
                 return testSuspects.ToList();
             }
         }
+
         public static void LoadTestSuspects() {
 
 
@@ -37,13 +38,7 @@ namespace TestEnvironment
 
         private VirtualSuspectQuestionAnswer virtualSuspect;
 
-        private VirtualSuspectQuestionAnswer VirtualSuspect {
-
-            get {
-                return virtualSuspect;
-            }
-
-        }
+        public VirtualSuspectQuestionAnswer VirtualSuspect { get { return virtualSuspect; } }
 
         private string storyFilePath;
 

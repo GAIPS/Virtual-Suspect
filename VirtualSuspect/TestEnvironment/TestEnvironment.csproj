@@ -64,6 +64,9 @@
     <Compile Include="User Control\InitialNote.xaml.cs">
       <DependentUpon>InitialNote.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User Control\QuestionAdvancedForm.xaml.cs">
+      <DependentUpon>QuestionAdvancedForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User Control\SuspectInfo.xaml.cs">
       <DependentUpon>SuspectInfo.xaml</DependentUpon>
     </Compile>
@@ -75,6 +78,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User Control\InitialNote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Control\QuestionAdvancedForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
