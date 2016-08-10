@@ -688,4 +688,22 @@
     </association>
   </event>
 
+  <question>
+    <speech>Where were you on March the 5th between 4.00 and 4.30?</speech>
+    <type>get-information</type>
+    <focus>
+      <dimension>Location</dimension>
+    </focus>
+    <condition>
+      <dimension>Agent</dimension>
+      <operator>equal</operator>
+      <value>Peter Barker</value>
+    </condition>
+    <condition>
+      <dimension>Time</dimension>
+      <operator>between</operator>
+      <begin>05/03/2016T04:00:00</begin>
+      <end>05/03/2016T04:30:00</end>
+    </condition>
+  </question>
 </story>

@@ -12,11 +12,11 @@ namespace VirtualSuspect.Utils{
 
     public static class QuestionParser{
         
-        public static QueryDto ExtractFromXml(XmlDocument question) {
+        public static QueryDto ExtractFromXml(XmlNode question) {
 
             QueryDto newQueryDto;
 
-            String questionType = question.SelectSingleNode("/question/type").InnerText;
+            String questionType = question.SelectSingleNode("type").InnerText;
 
             if(questionType == "get-information") {
 
@@ -33,7 +33,7 @@ namespace VirtualSuspect.Utils{
             }
 
             //Get Focus Field
-            XmlNodeList focusNodeList = question.SelectNodes("/question/focus");
+            XmlNodeList focusNodeList = question.SelectNodes("focus");
 
             foreach(XmlNode focusNode in focusNodeList) {
 
@@ -64,7 +64,7 @@ namespace VirtualSuspect.Utils{
             }
 
             //Get Conditions Predicate
-            XmlNodeList conditionsNodeList = question.SelectNodes("/question/condition");
+            XmlNodeList conditionsNodeList = question.SelectNodes("condition");
             foreach(XmlNode conditionNode in conditionsNodeList) {
 
                 KnowledgeBaseManager.DimentionsEnum conditionDimension = KnowledgeBaseManager.convertToDimentions(conditionNode.SelectSingleNode("dimension").InnerText);

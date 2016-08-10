@@ -36,6 +36,8 @@ namespace TestEnvironment
 
     public class TestSuspect {
 
+        private List<Question> questions;
+
         private VirtualSuspectQuestionAnswer virtualSuspect;
 
         public VirtualSuspectQuestionAnswer VirtualSuspect { get { return virtualSuspect; } }
@@ -72,6 +74,15 @@ namespace TestEnvironment
 
             virtualSuspect = new VirtualSuspectQuestionAnswer(kb);
 
+            questions = QuestionManager.LoadQuestions(this.storyFilePath);
+
+        }
+
+        public List<Question> RetrieveAvailableQuestions() {
+
+            //TODO: filter questions
+
+            return questions;
         }
     }
 }

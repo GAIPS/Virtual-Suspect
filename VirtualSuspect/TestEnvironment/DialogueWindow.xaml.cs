@@ -45,35 +45,25 @@ namespace TestEnvironment
             lname.Content = testSuspect.Name + " (" + testSuspect.Connection + ")";
             tbSummary.Text = testSuspect.Summary;
 
-            //Test 
-            addQuestion("Hello from the other sideeeeee", null);
-
-            addQuestion("I must've called a thousand times", null);
-
-            addQuestion("To tell you I'm sorry", null);
-
-            addQuestion("To tell you I'm sorry", null);
-
-            addQuestion("To tell you I'm sorry", null);
-
-            addQuestion("To tell you I'm sorry", null);
-
+            foreach(Question question in testSuspect.RetrieveAvailableQuestions() ) {
+                addQuestion(question);
+            }
         }
 
-        private void addQuestion(string question, QueryDto questionDto) {
+        private void addQuestion(Question question) {
 
             Button newButton = new Button();
             newButton.Style = this.FindResource("QuestionButtonStyle") as Style;
             newButton.Click += AskQuestion;
+            newButton.Content = question;
             questionStackPanel.Children.Add(newButton);
-            newButton.Content = new QuestionButtonContent(question, questionDto);
-            
+
         }
 
         private void AskQuestion(object sender, RoutedEventArgs e) {
 
             Button button = (Button) sender;
-            QueryDto question = ((QuestionButtonContent)button.Content).QuestionDto;
+            QueryDto question = ((Question)button.Content).Query;
 
             //Question Virtual Suspect
             QueryResult answer = testSuspect.VirtualSuspect.Query(question);
