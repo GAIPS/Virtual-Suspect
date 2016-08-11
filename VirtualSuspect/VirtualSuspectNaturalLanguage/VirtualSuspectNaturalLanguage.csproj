@@ -42,15 +42,36 @@
   <ItemGroup>
     <Compile Include="Component\INaturalLanguageGenerationComponent.cs" />
     <Compile Include="Component\LocationNaturalLanguageGenerator.cs" />
+    <Compile Include="Component\MannerNaturalLanguageGenerator.cs" />
+    <Compile Include="Component\AgentNaturalLanguageGenerator.cs" />
+    <Compile Include="Component\ThemeNaturalLanguageGenerator.cs" />
+    <Compile Include="Component\ReasonNaturalLanguageGenerator.cs" />
     <Compile Include="Component\TimeNaturalLanguageGenerator.cs" />
     <Compile Include="NaturalLanguageGenerator.cs" />
+    <Compile Include="NaturalLanguageResourceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtualSuspect\VirtualSuspect.csproj">
       <Project>{27eea46d-3298-4315-b082-f61096444d36}</Project>
       <Name>VirtualSuspect</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ActionResources.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

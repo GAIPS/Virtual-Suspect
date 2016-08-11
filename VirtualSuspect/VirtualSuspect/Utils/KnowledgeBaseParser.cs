@@ -41,7 +41,7 @@ namespace VirtualSuspect.Utils
 
                     string endTime = entityNode.SelectSingleNode("end").InnerText;
 
-                    EntityDto newEntityDto = new EntityDto(beginTime + ">" + endTime, "TimeSpan");
+                    EntityDto newEntityDto = new EntityDto(beginTime + ">" + endTime, "","TimeSpan");
 
                     entities.Add(id, kb.CreateNewEntity(newEntityDto)); //Source of Polymorphism problems
 
@@ -50,7 +50,7 @@ namespace VirtualSuspect.Utils
 
                     string time = entityNode.SelectSingleNode("value").InnerText;
 
-                    EntityDto newEntityDto = new EntityDto(time, "TimeInstant");
+                    EntityDto newEntityDto = new EntityDto(time, "", "TimeInstant");
 
                     entities.Add(id, kb.CreateNewEntity(newEntityDto)); //Source of Polymorphism problems
 
@@ -59,7 +59,9 @@ namespace VirtualSuspect.Utils
 
                     string value = entityNode.SelectSingleNode("value").InnerText;
 
-                    EntityDto newEntityDto = new EntityDto(value, type);
+                    string speech = entityNode.SelectSingleNode("speech").InnerText;
+
+                    EntityDto newEntityDto = new EntityDto(value, speech, type);
 
                     entities.Add(id, kb.CreateNewEntity(newEntityDto));
 

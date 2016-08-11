@@ -1,4 +1,4 @@
-﻿namespace VirtualSuspect.KnowledgeBase {
+namespace VirtualSuspect.KnowledgeBase {
     public class EntityDto{
 
         private string value;
@@ -8,6 +8,14 @@
             get
             {
                 return value;
+            }
+        }
+
+        private string speech;
+
+        public string Speech {
+            get {
+                return speech;
             }
         }
 
@@ -21,8 +29,9 @@
             }
         }
 
-        public EntityDto(string _value, string _type) {
+        public EntityDto(string _value, string _speech, string _type) {
 
+            speech = _speech;
             value = _value;
             type = _type;
 

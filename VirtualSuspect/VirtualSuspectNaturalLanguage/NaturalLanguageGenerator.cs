@@ -12,6 +12,11 @@ namespace VirtualSuspectNaturalLanguage
 {
     public static class NaturalLanguageGenerator{
 
+        /// <summary>
+        /// The method that uses the result to generate an natural language text
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
         public static string GenerateAnswer(QueryResult result) {
 
             string answer = "";
@@ -21,16 +26,7 @@ namespace VirtualSuspectNaturalLanguage
             
             } else { //Get Information Question (We assume that the answer only has 1 type of dimension of answer)
 
-                //==============================
-                //Create the answer introduction
-
-                //Consider Number of Agents associated with the events
-                int numberAgents = GetNumberAgents(result.Query);
-
-                answer += (numberAgents == 1) ? "I am " : "we were ";
-
-
-                //==============================
+                //=============================
                 //Get all the answers by dimension
                 Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension = new Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>>();
                 foreach(QueryResult.Result queryResult in result.Results) {
@@ -44,6 +40,8 @@ namespace VirtualSuspectNaturalLanguage
                 //==============================
                 //Is there any entity with dimension Time
                 if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Time)) {
+
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Time);
 
                     //Ignore Cardinality(the same time period only appears once)
 
@@ -69,15 +67,36 @@ namespace VirtualSuspectNaturalLanguage
                     
                 }else if(resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Location)) {
 
-                    //Group by entities type
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Location);
 
-                    //Merge all entities and sum cardinality
-                    List<EntityNode> mergedLocations = MergeAndSumLocationsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Location]);
-                    //Group by Type
-                    Dictionary<string, List<EntityNode>> locationGroupByType = GroupLocationByType(mergedLocations);
+                    answer += LocationNaturalLanguageGenerator.Generate(result, resultsByDimension);
+                                      
+                }else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Agent)) {
 
-                    answer += LocationNaturalLanguageGenerator.Generate(locationGroupByType);                  
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Agent);
+
+                    answer += AgentNaturalLanguageGenerator.Generate(result, resultsByDimension);
                 }
+                else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Theme)) {
+
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Theme);
+
+                    answer += ThemeNaturalLanguageGenerator.Generate(result, resultsByDimension);
+                }
+                else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Manner)) {
+
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Manner);
+
+                    answer += MannerNaturalLanguageGenerator.Generate(result, resultsByDimension);
+                }
+                else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Reason)) {
+
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Reason);
+
+                    answer += ReasonNaturalLanguageGenerator.Generate(result, resultsByDimension);
+
+                }
+
             }
 
             //Capitalize the answer if needed
@@ -101,35 +120,7 @@ namespace VirtualSuspectNaturalLanguage
             return sentence == "" || sentence.TrimEnd().Last() == '.';
 
         }
-    
-        private static string NaturalLanguageGetFrequency(int number) {
-
-            string frequencyWord = "";
-
-            if(number == 0) {
-                frequencyWord = "never";
-            }
-            else if (number == 1) {
-                frequencyWord = "once";
-            }
-            else if (number == 2) {
-                frequencyWord = "twice";
-            }
-            else if (number >= 3 && number <= 6) {
-                frequencyWord = number + " times";
-            }
-            else {
-                Random rng = new Random();
-                int randomNumber = rng.Next(2);
-                if (randomNumber == 0)
-                    frequencyWord = "many";
-                else if (randomNumber == 1)
-                    frequencyWord = "several";
-            }
-
-            return frequencyWord;
-        }
-        
+     
         private static List<KeyValuePair<DateTime, DateTime>> SortAndMergeSequenceDateTime(List<KeyValuePair<DateTime, DateTime>> sequence) {
 
             List<KeyValuePair<DateTime,DateTime>> sequenceMerged = new List<KeyValuePair<DateTime, DateTime>>();
@@ -167,20 +158,49 @@ namespace VirtualSuspectNaturalLanguage
             return groupedResult.ToDictionary(x=>x.Key, x=>x.ToList());
         }
 
-        private static List<EntityNode> MergeAndSumLocationsCardinality(List<QueryResult.Result> locations) {
-
-            throw new NotImplementedException();
-            return new List<EntityNode>();
-        }
-
-        private static Dictionary<string, List<EntityNode>> GroupLocationByType(List<EntityNode> locations) {
-
-            throw new NotImplementedException();
-            return new Dictionary<string, List<EntityNode>>();
-        }
         private static int GetNumberAgents(QueryDto query) {
 
-            return query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Agent);   
+            return query.QueryConditions.Count(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Agent);
         }
+    
+        /// <summary>
+        /// Creates the begin for a answer according to the question asked and the agent's number
+        /// </summary>
+        /// <returns>begin of the answer</returns>
+        private static string GenerateAnswerBegin(QueryResult result, KnowledgeBaseManager.DimentionsEnum dimension) {
+
+            string answerBegin = "";
+
+            //Create the subject
+            int numberAgents = GetNumberAgents(result.Query);
+
+            answerBegin += (numberAgents == 1) ? "I " : "we ";
+
+            //Add verb
+            if (result.Query.QueryConditions.Count(x=>x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action) == 0) {
+                //No action is asked about. Use verb to be
+
+                answerBegin += (numberAgents == 1) ? "was " : "were ";
+
+            } else {
+
+                //Add verb from action resource
+                NaturalLanguageResourceManager manager = NaturalLanguageResourceManager.Instance;
+                ActionResource resource = manager.FindResource<ActionResource>(result.Query.QueryConditions.Find(x => x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action).GetValues().ElementAt(0));
+                
+                answerBegin += resource.Speech + " ";
+
+                //Add preposition for the dimension
+                answerBegin += resource.ExtractPreposition(dimension);
+
+            }
+
+            //Add answer conjunction
+
+
+            return answerBegin;
+            
+        }    
+        
     }   
 }

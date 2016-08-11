@@ -39,7 +39,14 @@ namespace VirtualSuspect.KnowledgeBase {
         /// Adds this Event Node to the story
         /// </summary>
         /// <param name="en">The event Node to be added to the story</param>
-        void AddEventToStory(EventNode en);       
+        void AddEventToStory(EventNode en);
+
+        /// <summary>
+        /// Gets a list of all the entities with the dimension
+        /// </summary>
+        /// <param name="dimension"></param>
+        /// <returns></returns>
+        IEnumerable<EntityNode> GetAllEntitiesByDimension(KnowledgeBaseManager.DimentionsEnum dimension);
 
     }
 }

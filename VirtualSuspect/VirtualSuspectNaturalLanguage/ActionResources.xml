@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+  <type>action</type>
+  <name>Talk</name>
+  <speech>talked</speech>
+  <timePreposition></timePreposition>
+  <locationPreposition></locationPreposition>
+  <themePreposition>about</themePreposition>
+  <agentPreposition>with</agentPreposition>
+  <reasonPreposition>because</reasonPreposition>
+  <mannerPreposition></mannerPreposition>
+</resource>

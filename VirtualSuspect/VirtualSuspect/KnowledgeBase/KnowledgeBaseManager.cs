@@ -199,7 +199,7 @@ namespace VirtualSuspect.KnowledgeBase {
             uint newEntityId = getNextNodeId("entity");
             
             //Create the node according to the type
-            EntityNode newEntityNode = new EntityNode(newEntityId, en.Value, en.Type);
+            EntityNode newEntityNode = new EntityNode(newEntityId, en.Value, en.Speech, en.Type);
 
             //Add to the list of available entities
             entities.Add(newEntityNode);
@@ -337,7 +337,6 @@ namespace VirtualSuspect.KnowledgeBase {
 
         #endregion
 
-
         internal List<KnowledgeBaseManager.DimentionsEnum> GetSemanticRoles(EntityNode node) {
 
             List<KnowledgeBaseManager.DimentionsEnum> semanticRoles = new List<KnowledgeBaseManager.DimentionsEnum>();
@@ -431,5 +430,18 @@ namespace VirtualSuspect.KnowledgeBase {
             return result;
         }
 
+        public IEnumerable<EntityNode> GetAllEntitiesByDimension(DimentionsEnum dimension) {
+
+            List<EntityNode> result = new List<EntityNode>();
+
+            foreach(EventNode node in events) {
+
+                result.AddRange(node.FindEntitiesByType(dimension));
+
+            }
+
+            return result.Distinct();
+
+        }
     }
 }

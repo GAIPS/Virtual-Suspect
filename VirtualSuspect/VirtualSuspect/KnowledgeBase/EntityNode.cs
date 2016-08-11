@@ -1,4 +1,4 @@
-﻿namespace VirtualSuspect.KnowledgeBase {
+namespace VirtualSuspect.KnowledgeBase {
     public class EntityNode{
 
         private uint id;
@@ -35,6 +35,14 @@
             }
         }
 
+        private string speech;
+
+        public string Speech {
+            get {
+                return speech;
+            }
+        }
+
         private string type;
 
         public string Type
@@ -45,10 +53,11 @@
             }
         }
 
-        public EntityNode(uint _id, string _value, string _type){
+        public EntityNode(uint _id, string _value, string _speech, string _type){
 
             id = _id;
             value = _value;
+            speech = _speech;
             type = _type;
 
         }
