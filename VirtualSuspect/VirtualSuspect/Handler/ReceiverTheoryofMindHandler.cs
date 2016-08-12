@@ -11,14 +11,25 @@ namespace VirtualSuspect.Handler {
     internal class ReceiverTheoryOfMindHandler : IPreHandler {
 
         IQuestionAnswerSystem questionAnswer;
+        bool yesOrNoTOM;
 
-        internal ReceiverTheoryOfMindHandler(IQuestionAnswerSystem questionAnswer) {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="questionAnswer">the owner of this module</param>
+        /// <param name="YesOrNoTOM">true if the upgrades ToM when asking yes or no question</param>
+        internal ReceiverTheoryOfMindHandler(IQuestionAnswerSystem questionAnswer, bool YesOrNoTOM = true) {
 
             this.questionAnswer = questionAnswer;
+            this.yesOrNoTOM = YesOrNoTOM;
 
         }
 
         public QueryDto Modify(QueryDto query) {
+
+            //If it shouldnt update when is a yes or No question
+            if( !yesOrNoTOM )
+                return query;
 
             List<EventNode> queryEvents = questionAnswer.KnowledgeBase.Events;
 

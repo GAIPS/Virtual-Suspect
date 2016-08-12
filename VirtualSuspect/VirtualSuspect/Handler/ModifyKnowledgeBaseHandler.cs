@@ -84,9 +84,12 @@ namespace VirtualSuspect.Handler {
 
                             foreach (EntityNode similarAgent in SimilarAgentsEntities.OrderByDescending(x => x.Value).Select(x => x.Key)) {
 
-                                duplicateNode.AddAgent(similarAgent);
-                                break;
-
+                                //If Agent Already Exists
+                                if( !duplicateNode.Agent.Contains(similarAgent)) {
+                                    duplicateNode.AddAgent(similarAgent);
+                                    break;
+                                }
+                                
                             }
 
                         }
@@ -98,8 +101,11 @@ namespace VirtualSuspect.Handler {
 
                             foreach (EntityNode similarTheme in SimilarThemesEntities.OrderByDescending(x => x.Value).Select(x => x.Key)) {
 
-                                duplicateNode.AddTheme(similarTheme);
-                                break;
+                                if( !duplicateNode.Theme.Contains(similarTheme) ) {
+                                    duplicateNode.AddTheme(similarTheme);
+                                    break;
+                                }
+                                
                             }
 
                         }
@@ -110,8 +116,11 @@ namespace VirtualSuspect.Handler {
 
                             foreach (EntityNode similarReason in SimilarReasonsEntities.OrderByDescending(x => x.Value).Select(x => x.Key)) {
 
-                                duplicateNode.AddReason(similarReason);
-                                break;
+                                if( duplicateNode.Reason.Contains(similarReason) ) {
+                                    duplicateNode.AddReason(similarReason);
+                                    break;
+                                }
+                                
                             }
 
                         }
@@ -123,8 +132,11 @@ namespace VirtualSuspect.Handler {
 
                             foreach (EntityNode similarManner in SimilarMannersEntities.OrderByDescending(x => x.Value).Select(x => x.Key)) {
 
-                                duplicateNode.AddManner(similarManner);
-                                break;
+                                if( duplicateNode.Manner.Contains(similarManner) ) {
+                                    duplicateNode.AddManner(similarManner);
+                                    break;
+                                }
+                            
                             }
 
                         }

@@ -21,8 +21,9 @@ namespace VirtualSuspectNaturalLanguage
 
             string answer = "";
             
-            if (result.YesNoResult) { //Yes or no Question
+            if (result.Query.QueryType == QueryDto.QueryTypeEnum.YesOrNo) { //Yes or no Question
 
+                answer = (result.YesNoResult) ? "Yes" : "No";
             
             } else { //Get Information Question (We assume that the answer only has 1 type of dimension of answer)
 

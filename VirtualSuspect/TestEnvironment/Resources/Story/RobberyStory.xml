@@ -205,7 +205,7 @@
     <id>34</id>
     <type>Shop</type>
     <value>Mall's Hall</value>
-    <speech>Mall's Hall</speech>
+    <speech>at Mall's Hall</speech>
   </entity>
   <entity>
     <id>35</id>
@@ -735,6 +735,15 @@
       <operator>between</operator>
       <begin>05/03/2016T04:00:00</begin>
       <end>05/03/2016T04:30:00</end>
+    </condition>
+  </question>
+  <question>
+    <speech>Do you know John Frey?</speech>
+    <type>yes-no</type>
+    <condition>
+      <dimension>Agent</dimension>
+      <operator>equal</operator>
+      <value>John Frey</value>
     </condition>
   </question>
 </story>
