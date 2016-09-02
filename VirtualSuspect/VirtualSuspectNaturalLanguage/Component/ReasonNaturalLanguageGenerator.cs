@@ -16,7 +16,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
             answer += "Because ";
 
-            Dictionary<EntityNode, int> mergedLocations = MergeAndSumReasonsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Location]);
+            Dictionary<EntityNode, int> mergedLocations = MergeAndSumReasonsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Reason]);
 
             answer += CombineValues("and", mergedLocations.Select(x=>x.Key.Speech));
                 

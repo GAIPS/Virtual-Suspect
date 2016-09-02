@@ -41,7 +41,7 @@ namespace VirtualSuspectNaturalLanguage {
 
         private void ParseResourceXml(XmlDocument resourceFile) {
 
-            foreach(XmlNode resourceNode in resourceFile.SelectNodes("resource")) {
+            foreach(XmlNode resourceNode in resourceFile.DocumentElement.SelectNodes("resource")) {
 
                 string resourceType = resourceNode.SelectSingleNode("type").InnerText;
 

@@ -57,15 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Question.cs" />
-    <Compile Include="QuestionManager.cs" />
     <Compile Include="SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestManager.cs" />
-    <Compile Include="User Control\InitialNote.xaml.cs">
-      <DependentUpon>InitialNote.xaml</DependentUpon>
-    </Compile>
     <Compile Include="User Control\QuestionAdvancedForm.xaml.cs">
       <DependentUpon>QuestionAdvancedForm.xaml</DependentUpon>
     </Compile>
@@ -76,10 +71,6 @@
       <DependentUpon>SummaryWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="SplashScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User Control\InitialNote.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,6 +150,7 @@
   <ItemGroup>
     <Resource Include="Resources\Story\RobberyStory.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Resource>
   </ItemGroup>
   <ItemGroup>

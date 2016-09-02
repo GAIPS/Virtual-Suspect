@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using VirtualSuspect;
 using VirtualSuspect.KnowledgeBase;
+using VirtualSuspect.Query;
 using VirtualSuspect.Utils;
 
 namespace TestEnvironment
@@ -22,7 +24,6 @@ namespace TestEnvironment
 
         public static void LoadTestSuspects() {
 
-
             testSuspects.Add(0, new TestSuspect("C:\\Users\\ratuspro\\Documents\\Virtual Suspect\\Repos\\Virtual-Suspect\\VirtualSuspect\\TestEnvironment\\Resources\\Story\\RobberyStory.xml", "John Doe","Coworker", "Some Text to chill", "C:\\Users\\ratuspro\\Documents\\Virtual Suspect\\Repos\\Virtual-Suspect\\VirtualSuspect\\TestEnvironment\\Resources\\profileDefaultPlaceholder.jpg"));
 
         }
@@ -36,7 +37,17 @@ namespace TestEnvironment
 
     public class TestSuspect {
 
-        private List<Question> questions;
+        private List<Goal> goals;
+
+        private int currentGoalId = 0;
+
+        public Goal CurrentGoal {
+
+            get {
+                return goals[currentGoalId];
+            }
+
+        }
 
         private VirtualSuspectQuestionAnswer virtualSuspect;
 
@@ -74,15 +85,111 @@ namespace TestEnvironment
 
             virtualSuspect = new VirtualSuspectQuestionAnswer(kb);
 
-            questions = QuestionManager.LoadQuestions(this.storyFilePath);
+            //Load Game Goals
+            goals = new List<Goal>();
+
+            XmlDocument xmlFile = new XmlDocument();
+
+            xmlFile.Load(this.storyFilePath);
+
+            XmlNodeList goalsNodeList = xmlFile.DocumentElement.SelectNodes("goal");
+
+            foreach(XmlNode goalNode in goalsNodeList ) {
+                goals.Add(new Goal(goalNode));
+            }
 
         }
 
-        public List<Question> RetrieveAvailableQuestions() {
+        /// <summary>
+        /// Advances the goal state and returns the new goal
+        /// </summary>
+        /// <returns></returns>
+        public Goal CompleteCurrentGoal() {
 
-            //TODO: filter questions
+            int totalNumGoal = goals.Count;
 
-            return questions;
+            if( currentGoalId < totalNumGoal ) {
+                currentGoalId++;
+                return CurrentGoal;
+            } else {
+                return null;
+            }
+            
+        }
+
+    }
+
+    public class Goal {
+
+        public string description;
+
+        public List<Note> notes;
+
+        public List<Question> questions;
+
+        public Goal(XmlNode goalNode) {
+            notes = new List<Note>();
+            questions = new List<Question>();
+
+            XmlNode descriptionNode = goalNode.SelectSingleNode("description");
+            description = descriptionNode.InnerText;
+
+            XmlNodeList notesNodeList = goalNode.SelectNodes("note");
+            foreach(XmlNode noteNode in notesNodeList ) {
+
+                notes.Add(new Note(noteNode.SelectSingleNode("info").InnerText, noteNode.SelectSingleNode("source").InnerText, noteNode.SelectSingleNode("state").InnerText));
+
+            }
+
+            XmlNodeList questionsNodeList = goalNode.SelectNodes("question");
+            foreach( XmlNode questionNode in questionsNodeList ) {
+
+                //Get Speech from Question
+                String speech = questionNode.SelectSingleNode("speech").InnerText;
+
+                //Get type of question
+                QueryDto query = QuestionParser.ExtractFromXml(questionNode.SelectSingleNode("query"));
+
+                //Create new Question
+                Question newQuestion = new Question(speech, query);
+
+                questions.Add(newQuestion);
+            }
+
+        }
+
+    }
+
+    public class Note {
+
+        public string info;
+        public string source;
+        public string state;
+
+        public Note(string info, string source, string state) {
+            this.info = info;
+            this.source = source;
+            this.state = state;
+        }
+
+        public override string ToString() {
+            return info + " (source: " + source + ") [ " + state + " ]" ;
+        }
+
+    }
+
+    public class Question {
+
+        public QueryDto Query;
+        public string Speech;
+
+        public Question(string speech, QueryDto query) {
+            this.Speech = speech;
+            this.Query = query;
+        }
+
+        public override string ToString() {
+            return Speech;
         }
     }
 }

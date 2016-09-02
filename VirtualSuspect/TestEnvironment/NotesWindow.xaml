@@ -5,17 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestEnvironment"
         mc:Ignorable="d"
-        Title="NotesWindow" Width="620" Background="#FF3498DB" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize" Height="510">
+        Title="NotesWindow" Width="620" Background="#FF3498DB" WindowStartupLocation="CenterOwner" Height="510">
     <Grid>
         <StackPanel Margin="10">
-            <Label x:Name="label" Content="Suspect Selection" Margin="0" FontFamily="Segoe UI Black" FontSize="20" Foreground="White"/>
-            <Label x:Name="label1" Content="Select one of the suspects below to interview and discover the real story!" Margin="0" Grid.Row="1" FontFamily="Segoe UI Light" FontSize="14" Foreground="White"/>
-            <Label x:Name="label_Copy" Content="Initial Notes" FontFamily="Segoe UI Semibold" FontSize="16" Foreground="White"/>
-            <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Height="141">
-                <StackPanel x:Name="spInitialNotes" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="572"/>
+            <Label x:Name="label" Content="Police Notebook" Margin="0" FontFamily="Segoe UI Black" FontSize="20" Foreground="White"/>
+            <Label x:Name="label1" Content="These notes are the information available during the interview." Margin="0" Grid.Row="1" FontFamily="Segoe UI Light" FontSize="14" Foreground="White"/>
+            <Label x:Name="label_Copy" Content="Notes:" FontFamily="Segoe UI Semibold" FontSize="16" Foreground="White"/>
+            <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Height="363">
+                <StackPanel x:Name="spNotes" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="572"/>
             </ScrollViewer>
-            <Label x:Name="label_Copy1" Content="Custom Notes" FontFamily="Segoe UI Semibold" FontSize="16" Foreground="White"/>
-            <TextBox AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" x:Name="textBox" Margin="14,5" Text="" BorderBrush="{x:Null}" Background="#FF2980B9" Foreground="White" Padding="5,0,0,0" Height="176"/>
         </StackPanel>
 
 

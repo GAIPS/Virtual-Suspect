@@ -20,24 +20,25 @@ namespace TestEnvironment
     /// </summary>
     public partial class NotesWindow : Window
     {
-        public NotesWindow(List<string> initialNotes)
+
+        public NotesWindow(List<Note> initialNotes)
         {
             InitializeComponent();
 
-            initialNotes.ForEach(x => addNote(x, false) );
+            initialNotes.ForEach(x => addNote(x.ToString()) );
         }
 
-        private void addNote(string note, bool customNote = true) {
-            if( !customNote ) {
+        public void addNote(string note) {
 
-                InitialNote noteControl = new InitialNote(note);
-                spInitialNotes.Children.Add(noteControl);
+            TextBlock newNote = new TextBlock();
+            newNote.Text = note;
+            newNote.Background = Brushes.Transparent;
+            newNote.TextWrapping = TextWrapping.Wrap;
+            newNote.Margin = new Thickness(7, 7, 7, 7);
+            newNote.FontSize = 14;
+            newNote.Foreground = Brushes.White;
+            spNotes.Children.Add(newNote);
 
-            } else {
-
-                textBox.AppendText(note);
-
-            }
         }
 
         

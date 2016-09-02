@@ -198,7 +198,6 @@ namespace VirtualSuspectNaturalLanguage
 
             //Add answer conjunction
 
-
             return answerBegin;
             
         }    

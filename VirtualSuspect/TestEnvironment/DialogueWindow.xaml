@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestEnvironment"
         mc:Ignorable="d"
-        Title="DialogueWindow" Width="751.39" Background="#FF3498DB" WindowStartupLocation="CenterScreen" WindowStyle="None" SizeToContent="Height">
+        Title="DialogueWindow" Width="751.39" Background="#FF3498DB" WindowStartupLocation="CenterScreen" >
     <Window.Resources>
         <Style x:Key="QuestionButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="white"/>
@@ -15,21 +15,24 @@
             <Setter Property="BorderBrush" Value="{x:Null}"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="auto"/>
+            
         </Style>
     </Window.Resources>
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="52*"/>
+            <ColumnDefinition Width="149*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label x:Name="label" Content="Questions:" HorizontalAlignment="Right" Margin="0,10,10,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-0.246,0.586" Width="100" HorizontalContentAlignment="Right" FontSize="16" FontFamily="Segoe UI Semibold" Foreground="White"/>
         <Label x:Name="label_Copy" Content="Answer:" HorizontalAlignment="Right" Margin="0,10,10,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="-0.246,0.586" Width="100" HorizontalContentAlignment="Right" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16"/>
-        <Grid Background="#2980b9" Margin="0" Grid.ColumnSpan="2">
+        <Grid Background="#2980b9" Margin="0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
@@ -43,17 +46,14 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" Margin="10,0" x:Name="NotesButton" Content="Open Notebook" BorderBrush="{x:Null}" Background="White" Padding="10,8" Foreground="#FF3498DB" FontSize="14" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="NotesButton_Click"/>
                 <Button Grid.Row="1" Grid.Column="0" Margin="10,0" x:Name="FillReport" Content="Fill Report" BorderBrush="{x:Null}" Background="White" Padding="10,8" Foreground="#FF3498DB" FontSize="14" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
             <Label x:Name="lname" Content="John Doe (Co Worker)" Grid.Column="1" Margin="10" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" FontSize="16" Foreground="White"/>
             <TextBlock x:Name="tbSummary" Grid.Column="1" Margin="10,44,10,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in vestibulum quam. Quisque euismod elit at egestas placerat. Nulla aliquet leo quis massa faucibus pretium." VerticalAlignment="Top" Height="66" TextAlignment="Justify" Foreground="White" FontFamily="Segoe UI Light" FontSize="14" Padding="5,0,5,5"/>
         </Grid>
-        <StackPanel x:Name="questionStackPanel" Grid.Column="1" Margin="10,5" Grid.Row="1"/>
-        <Canvas Grid.Column="1" HorizontalAlignment="Left" Height="80" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="583" Background="#FF2980B9">
-            <TextBlock x:Name="tbAnswer" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in vestibulum quam. Quisque euismod elit at egestas placerat. Nulla aliquet leo quis massa faucibus pretium." VerticalAlignment="Top" Height="60" TextAlignment="Justify" Foreground="White" FontFamily="Segoe UI Light" FontSize="14" Padding="5,0,5,5" Canvas.Left="10" Canvas.Top="10" Width="563"/>
-        </Canvas>
-
+        <StackPanel x:Name="questionStackPanel" Grid.Column="1" Margin="10,5,10,15" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="1" Background="#FF2980B9" x:Name="tbAnswer" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in vestibulum quam. Quisque euismod elit at egestas placerat. Nulla aliquet leo quis massa faucibus pretium." VerticalAlignment="Top" TextAlignment="Justify" Foreground="White" FontFamily="Segoe UI Light" FontSize="14" Padding="10" Canvas.Left="10" Canvas.Top="10"/>
     </Grid>
 </Window>

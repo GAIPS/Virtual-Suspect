@@ -232,12 +232,6 @@
     <speech>Robbery</speech>
   </entity>
   <entity>
-    <id>39</id>
-    <type>Item</type>
-    <value>Delivered Box</value>
-    <speech>Delivered Box</speech>
-  </entity>
-  <entity>
     <id>40</id>
     <type>Motive</type>
     <value>To sell its contents</value>
@@ -339,7 +333,7 @@
   </event>
   <event>
     <id>2</id>
-    <action>Eavesdropping</action>
+    <action>Eavesdrop</action>
     <real>true</real>
     <incriminatory>100</incriminatory>
     <association relation="Time">
@@ -402,20 +396,17 @@
   </event>
   <event>
     <id>5</id>
-    <action>Surveillance</action>
+    <action>Watch</action>
     <real>true</real>
     <incriminatory>50</incriminatory>
     <association relation="Time">
       <entity id="5"/>
     </association>
     <association relation="Location">
-      <entity id="34"/>
+      <entity id="35"/>
     </association>
     <association relation="Agent">
       <entity id="22"/>
-    </association>
-    <association relation="Theme">
-      <entity id="35"/>
     </association>
     <association relation="Reason">
       <entity id="36"/>
@@ -438,20 +429,17 @@
   </event>
   <event>
     <id>7</id>
-    <action>Surveillance</action>
+    <action>Watch</action>
     <real>true</real>
     <incriminatory>50</incriminatory>
     <association relation="Time">
       <entity id="7"/>
     </association>
     <association relation="Location">
-      <entity id="34"/>
+      <entity id="35"/>
     </association>
     <association relation="Agent">
       <entity id="22"/>
-    </association>
-    <association relation="Theme">
-      <entity id="35"/>
     </association>
     <association relation="Reason">
       <entity id="36"/>
@@ -492,7 +480,7 @@
   </event>
   <event>
     <id>10</id>
-    <action>Setup</action>
+    <action>Prepare</action>
     <real>true</real>
     <incriminatory>80</incriminatory>
     <association relation="Time">
@@ -523,7 +511,7 @@
       <entity id="22"/>
     </association>
     <association relation="Theme">
-      <entity id="39"/>
+      <entity id="41"/>
     </association>
     <association relation="Reason">
       <entity id="40"/>
@@ -719,31 +707,139 @@
     </association>
   </event>
 
-  <question>
-    <speech>Where were you on March the 5th between 4.00 and 4.30?</speech>
-    <type>get-information</type>
-    <focus>
-      <dimension>Location</dimension>
-    </focus>
-    <condition>
-      <dimension>Agent</dimension>
-      <operator>equal</operator>
-      <value>Peter Barker</value>
-    </condition>
-    <condition>
-      <dimension>Time</dimension>
-      <operator>between</operator>
-      <begin>05/03/2016T04:00:00</begin>
-      <end>05/03/2016T04:30:00</end>
-    </condition>
-  </question>
-  <question>
-    <speech>Do you know John Frey?</speech>
-    <type>yes-no</type>
-    <condition>
-      <dimension>Agent</dimension>
-      <operator>equal</operator>
-      <value>John Frey</value>
-    </condition>
-  </question>
+
+
+  <goal>
+    <description>Validate that Peter sold the silver Necklace to John Frey.</description>
+    <note>
+      <info>A silver necklace was stolen. It was delivered on March the 4th at 14.00 by a delivery boy to the shop owner.</info>
+      <source>Delivery Report</source>
+      <state>Verified</state>
+    </note>
+    <note>
+      <info>CastleTown Mall Jewlery Shop was robbed on March 5th between 4.00 and 4.30 in the morning.</info>
+      <source>Police Report</source>
+      <state>Verified</state>
+    </note>
+    <note>
+      <info>Peter Barker bought a train ticket to SilverMoon City on March 5th at 22.00.</info>
+      <source>Train Station Logs</source>
+      <state>Verified</state>
+    </note>
+    <note>
+      <info>Our informant found the stolen necklace in John Frey's office. John Frey is a know smugler from SilverMoon City.</info>
+      <source>John Frey's gang informant</source>
+      <state>Not Verified</state>
+    </note>
+    <question>
+      <speech>Do you know what was stolen from the jewelry shop?</speech>
+      <query>
+        <type>yes-no</type>
+        <condition>
+          <dimension>Action</dimension>
+          <operator>equal</operator>
+          <value>Steal</value>
+        </condition>
+        <condition>
+          <dimension>Location</dimension>
+          <operator>equal</operator>
+          <value>Jewlery Shop</value>
+        </condition>
+      </query>
+    </question>
+    <question>
+      <speech>Do you ever heard about John Frey?</speech>
+      <query>
+        <type>yes-no</type>
+        <condition>
+          <dimension>Agent</dimension>
+          <operator>equal</operator>
+          <value>John Frey</value>
+        </condition>
+      </query>
+    </question>
+    <question>
+      <speech>Did you ever went to SilverMoon City in the past days?</speech>
+      <query>
+        <type>yes-no</type>
+        <condition>
+          <dimension>Agent</dimension>
+          <operator>equal</operator>
+          <value>Peter Barker</value>
+        </condition>
+        <condition>
+          <dimension>Location</dimension>
+          <operator>equal</operator>
+          <value>SilverMoon City</value>
+        </condition>
+      </query>
+    </question>
+    <question>
+      <speech>You bought a ticket to SilverMoon City. Why did you went there?</speech>
+      <query>
+        <type>get-information</type>
+        <focus>
+          <dimension>Reason</dimension>
+        </focus>
+        <condition>
+          <dimension>Agent</dimension>
+          <operator>equal</operator>
+          <value>Peter Barker</value>
+        </condition>
+        <condition>
+          <dimension>Location</dimension>
+          <operator>equal</operator>
+          <value>Castle Town Train Station</value>
+        </condition>
+        <condition>
+          <dimension>Action</dimension>
+          <operator>equal</operator>
+          <value>Buy</value>
+        </condition>
+      </query>
+    </question>
+    <question>
+      <speech>Did you meet with John Frey when you were on Silvermoon City?</speech>
+      <query>
+        <type>yes-no</type>
+        <condition>
+          <dimension>Agent</dimension>
+          <operator>equal</operator>
+          <value>Peter Barker</value>
+        </condition>
+        <condition>
+          <dimension>Agent</dimension>
+          <operator>equal</operator>
+          <value>John Frey</value>
+        </condition>
+        <condition>
+          <dimension>Location</dimension>
+          <operator>equal</operator>
+          <value>SilverMoon City</value>
+        </condition>
+      </query>
+    </question>
+    <question>
+      <speech>We found the stolen necklace inside John Frey's office. Did you sold him the stolen necklace?</speech>
+      <query>
+        <type>yes-no</type>
+        <condition>
+          <dimension>Agent</dimension>
+          <operator>equal</operator>
+          <value>Peter Barker</value>
+        </condition>
+        <condition>
+          <dimension>Agent</dimension>
+          <operator>equal</operator>
+          <value>John Frey</value>
+        </condition>
+        <condition>
+          <dimension>Action</dimension>
+          <operator>equal</operator>
+          <value>Sell</value>
+        </condition>
+      </query>
+    </question>
+  </goal>
+  
 </story>

@@ -45,9 +45,17 @@ namespace TestEnvironment
             lname.Content = testSuspect.Name + " (" + testSuspect.Connection + ")";
             tbSummary.Text = testSuspect.Summary;
 
-            foreach(Question question in testSuspect.RetrieveAvailableQuestions() ) {
+            //Load First Goal
+            Goal currentGoal = testSuspect.CurrentGoal;
+
+            foreach(Question question in currentGoal.questions ) {
                 addQuestion(question);
             }
+
+            //Load Notes
+            notesWindow = new NotesWindow(currentGoal.notes);
+            notesWindow.Show();
+
         }
 
         private void addQuestion(Question question) {
@@ -55,7 +63,10 @@ namespace TestEnvironment
             Button newButton = new Button();
             newButton.Style = this.FindResource("QuestionButtonStyle") as Style;
             newButton.Click += AskQuestion;
-            newButton.Content = question;
+            newButton.Content = new TextBlock();
+            ((TextBlock) newButton.Content).TextWrapping = TextWrapping.Wrap;
+            ((TextBlock) newButton.Content).Text = question.ToString();
+            ((TextBlock) newButton.Content).TextAlignment = TextAlignment.Justify;
             questionStackPanel.Children.Add(newButton);
 
         }
@@ -63,10 +74,17 @@ namespace TestEnvironment
         private void AskQuestion(object sender, RoutedEventArgs e) {
 
             Button button = (Button) sender;
-            QueryDto question = ((Question)button.Content).Query;
+
+            QueryDto questionQuery = null;
+
+            foreach(Question question in testSuspect.CurrentGoal.questions ) {
+                if(question.Speech == ((TextBlock)button.Content).Text ) {
+                    questionQuery = question.Query;
+                }
+            }
 
             //Question Virtual Suspect
-            QueryResult answer = testSuspect.VirtualSuspect.Query(question);
+            QueryResult answer = testSuspect.VirtualSuspect.Query(questionQuery);
 
             //Generate Natural Language Answer from Query Result
             String AnswerSpeech = NaturalLanguageGenerator.GenerateAnswer(answer);
@@ -79,17 +97,6 @@ namespace TestEnvironment
             }
             
         } 
-
-        private void NotesButton_Click(object sender, RoutedEventArgs e) {
-
-            if( !IsWindowOpen<NotesWindow>() ) {
-                notesWindow = new NotesWindow(new List<string>());
-                notesWindow.Show();
-            }else {
-                notesWindow.Focus();
-            }
-
-        }
 
         #region Utility Methods
 
@@ -129,5 +136,12 @@ namespace TestEnvironment
                 return QuestionText;
             }
         }
+
+        protected override void OnClosed(EventArgs e) {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
+        }
+
     }
 }
