@@ -18,7 +18,7 @@ namespace VirtualSuspect.Handler {
         /// </summary>
         /// <param name="questionAnswer">the owner of this module</param>
         /// <param name="YesOrNoTOM">true if the upgrades ToM when asking yes or no question</param>
-        internal ReceiverTheoryOfMindHandler(IQuestionAnswerSystem questionAnswer, bool YesOrNoTOM = true) {
+        internal ReceiverTheoryOfMindHandler(IQuestionAnswerSystem questionAnswer, bool YesOrNoTOM = false) {
 
             this.questionAnswer = questionAnswer;
             this.yesOrNoTOM = YesOrNoTOM;
@@ -28,7 +28,7 @@ namespace VirtualSuspect.Handler {
         public QueryDto Modify(QueryDto query) {
 
             //If it shouldnt update when is a yes or No question
-            if( !yesOrNoTOM )
+            if( query.QueryType == QueryDto.QueryTypeEnum.YesOrNo && !yesOrNoTOM )
                 return query;
 
             List<EventNode> queryEvents = questionAnswer.KnowledgeBase.Events;

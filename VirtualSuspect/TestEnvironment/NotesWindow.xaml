@@ -12,7 +12,7 @@
             <Label x:Name="label1" Content="These notes are the information available during the interview." Margin="0" Grid.Row="1" FontFamily="Segoe UI Light" FontSize="14" Foreground="White"/>
             <Label x:Name="label_Copy" Content="Notes:" FontFamily="Segoe UI Semibold" FontSize="16" Foreground="White"/>
             <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Height="363">
-                <StackPanel x:Name="spNotes" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="572"/>
+                <StackPanel x:Name="spNotes" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top"/>
             </ScrollViewer>
         </StackPanel>
 

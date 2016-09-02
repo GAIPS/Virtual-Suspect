@@ -52,7 +52,7 @@ namespace VirtualSuspect {
             posHandlers = new OrderedDictionary();
 
             //Setup Theory of Mind to Handle the query received
-            preHandlers.Add(1, new ReceiverTheoryOfMindHandler(this, false));
+            preHandlers.Add(1, new ReceiverTheoryOfMindHandler(this));
 
             //Setup the strategy selector to handle the decision making process related with the selection of the approach to be used
             //Create the distribution for the strategies

@@ -140,8 +140,8 @@
     <locationPreposition>from</locationPreposition>
     <themePreposition>to</themePreposition>
     <agentPreposition>alongside</agentPreposition>
-    <reasonPreposition>because</reasonPreposition>
-    <mannerPreposition>usign</mannerPreposition>
+    <reasonPreposition>to</reasonPreposition>
+    <mannerPreposition>using</mannerPreposition>
   </resource>
   <resource>
     <type>action</type>

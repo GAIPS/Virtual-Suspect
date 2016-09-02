@@ -37,6 +37,7 @@ namespace TestEnvironment
             newNote.Margin = new Thickness(7, 7, 7, 7);
             newNote.FontSize = 14;
             newNote.Foreground = Brushes.White;
+            newNote.HorizontalAlignment = HorizontalAlignment.Stretch;
             spNotes.Children.Add(newNote);
 
         }

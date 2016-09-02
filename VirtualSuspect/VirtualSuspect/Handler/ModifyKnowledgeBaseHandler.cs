@@ -116,7 +116,7 @@ namespace VirtualSuspect.Handler {
 
                             foreach (EntityNode similarReason in SimilarReasonsEntities.OrderByDescending(x => x.Value).Select(x => x.Key)) {
 
-                                if( duplicateNode.Reason.Contains(similarReason) ) {
+                                if( !duplicateNode.Reason.Contains(similarReason) ) {
                                     duplicateNode.AddReason(similarReason);
                                     break;
                                 }
@@ -132,7 +132,7 @@ namespace VirtualSuspect.Handler {
 
                             foreach (EntityNode similarManner in SimilarMannersEntities.OrderByDescending(x => x.Value).Select(x => x.Key)) {
 
-                                if( duplicateNode.Manner.Contains(similarManner) ) {
+                                if( !duplicateNode.Manner.Contains(similarManner) ) {
                                     duplicateNode.AddManner(similarManner);
                                     break;
                                 }

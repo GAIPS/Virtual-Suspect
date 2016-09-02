@@ -12,9 +12,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
         public static string Generate(QueryResult result, Dictionary<KnowledgeBaseManager.DimentionsEnum, List<QueryResult.Result>> resultsByDimension) {
 
-            string answer = "";
-
-            answer += "Because ";
+            string answer = " ";
 
             Dictionary<EntityNode, int> mergedLocations = MergeAndSumReasonsCardinality(resultsByDimension[KnowledgeBaseManager.DimentionsEnum.Reason]);
 
