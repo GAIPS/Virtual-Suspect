@@ -57,8 +57,18 @@ namespace VirtualSuspect {
         /// <returns></returns>
         public QueryDto Modify(QueryDto query) {
 
+            bool backupToOriginal;
+
             //Check if the information related to the events in the query is incriminatory
-            List<EventNode> events = virtualSuspect.FilterEvents(query.QueryConditions);
+            List<EventNode> events = virtualSuspect.FilterEvents(query.QueryConditions, out backupToOriginal);
+
+            //we need to return to a backupOriginalStory
+            if( backupToOriginal ) {
+                foreach( EventNode node in events ) {
+                    virtualSuspect.KnowledgeBase.ReturnEventToOriginal(node);
+                }                
+            }
+
             float maximumIncriminatory = 0;
 
             foreach(EventNode node in events) {

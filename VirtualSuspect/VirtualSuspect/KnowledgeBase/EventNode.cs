@@ -15,6 +15,16 @@ namespace VirtualSuspect.KnowledgeBase {
             }
         }
 
+        /// <summary>
+        /// this event was replaced by the event with ID replacedByID
+        /// </summary>
+        public uint replacedByID = 0;
+
+        /// <summary>
+        /// this event replaced the event with ID replacedID
+        /// </summary>
+        public uint replacedID = 0;
+
         private bool originalStory;
 
         public bool OriginalStory {

@@ -329,7 +329,7 @@
     <id>2</id>
     <action>Eavesdrop</action>
     <real>true</real>
-    <incriminatory>100</incriminatory>
+    <incriminatory>95</incriminatory>
     <association relation="Time">
       <entity id="2"/>
     </association>
@@ -368,7 +368,7 @@
     <id>4</id>
     <action>Buy</action>
     <real>true</real>
-    <incriminatory>100</incriminatory>
+    <incriminatory>95</incriminatory>
     <association relation="Time">
       <entity id="4"/>
     </association>
@@ -494,7 +494,7 @@
     <id>11</id>
     <action>Steal</action>
     <real>true</real>
-    <incriminatory>100</incriminatory>
+    <incriminatory>95</incriminatory>
     <association relation="Time">
       <entity id="11"/>
     </association>
@@ -515,7 +515,7 @@
     <id>12</id>
     <action>Research</action>
     <real>true</real>
-    <incriminatory>100</incriminatory>
+    <incriminatory>95</incriminatory>
     <association relation="Time">
       <entity id="12"/>
     </association>
@@ -596,7 +596,7 @@
     <id>16</id>
     <action>Buy</action>
     <real>true</real>
-    <incriminatory>0</incriminatory>
+    <incriminatory>60</incriminatory>
     <association relation="Time">
       <entity id="16"/>
     </association>
@@ -614,7 +614,7 @@
     <id>17</id>
     <action>Wait</action>
     <real>true</real>
-    <incriminatory>0</incriminatory>
+    <incriminatory>60</incriminatory>
     <association relation="Time">
       <entity id="17"/>
     </association>
@@ -632,7 +632,7 @@
     <id>18</id>
     <action>Travel</action>
     <real>true</real>
-    <incriminatory>100</incriminatory>
+    <incriminatory>95</incriminatory>
     <association relation="Time">
       <entity id="18"/>
     </association>
@@ -650,7 +650,7 @@
     <id>19</id>
     <action>Sell</action>
     <real>true</real>
-    <incriminatory>100</incriminatory>
+    <incriminatory>95</incriminatory>
     <association relation="Time">
       <entity id="19"/>
     </association>

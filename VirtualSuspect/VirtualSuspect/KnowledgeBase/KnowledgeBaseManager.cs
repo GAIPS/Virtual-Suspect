@@ -74,7 +74,7 @@ namespace VirtualSuspect.KnowledgeBase {
                 properties = value;
             }
         }
-        
+
         /// <summary>
         /// List of available entities
         /// </summary>
@@ -272,6 +272,31 @@ namespace VirtualSuspect.KnowledgeBase {
             //Add event to the story
             story.Remove(en);
 
+        }
+
+        public void ReplaceEvent(EventNode oldEvent, EventNode newEvent) {
+
+            oldEvent.replacedByID = newEvent.ID;
+
+            newEvent.replacedID = oldEvent.ID;
+
+            story.Add(newEvent);
+
+            story.Remove(oldEvent);
+
+        }
+
+        public void ReturnEventToOriginal(EventNode node) {
+            
+            uint nodeToRemoveID = node.replacedByID;
+
+            EventNode nodeToRemove = events.Find(x => x.ID == nodeToRemoveID);
+
+            RemoveEventFromStory(nodeToRemove);
+
+            AddEventToStory(node);
+
+            node.replacedByID = 0;
         }
 
         #endregion

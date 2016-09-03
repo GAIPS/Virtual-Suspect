@@ -85,14 +85,15 @@ namespace VirtualSuspect {
 
             //Perform Query
             QueryResult result = new QueryResult(query);
+            bool backupToOriginal;
 
             if (query.QueryType == QueryDto.QueryTypeEnum.YesOrNo) { //Test yes or no
 
-                result.AddBooleanResult(FilterEvents(query.QueryConditions).Count != 0);
+                result.AddBooleanResult(FilterEvents(query.QueryConditions, out backupToOriginal).Count != 0 && !backupToOriginal);
 
             }else if (query.QueryType == QueryDto.QueryTypeEnum.GetInformation) { //Test get information
 
-                List<EventNode> queryEvents = FilterEvents(query.QueryConditions);
+                List<EventNode> queryEvents = FilterEvents(query.QueryConditions, out backupToOriginal);
 
                 //Select entities from the dimension
                 foreach (IFocusPredicate focus in query.QueryFocus) {
@@ -115,7 +116,9 @@ namespace VirtualSuspect {
 
         }
     
-        internal List<EventNode> FilterEvents(List<IConditionPredicate> predicates) {
+        internal List<EventNode> FilterEvents(List<IConditionPredicate> predicates, out bool backupOriginal) {
+
+            backupOriginal = false;
 
             List<EventNode> queryEvents = knowledgeBase.Story;
 
@@ -123,6 +126,21 @@ namespace VirtualSuspect {
             foreach (IConditionPredicate predicate in predicates) {
 
                 queryEvents = queryEvents.FindAll(predicate.CreatePredicate());
+            }
+
+            if(queryEvents.Count == 0 ) {
+                queryEvents = knowledgeBase.Events;
+
+                //Select entities from the dimension
+                foreach( IConditionPredicate predicate in predicates ) {
+
+                    queryEvents = queryEvents.FindAll(predicate.CreatePredicate());
+                }
+
+                if(queryEvents.Count != 0 ) {
+
+                    backupOriginal = true;
+                }
             }
 
             return queryEvents;

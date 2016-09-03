@@ -31,8 +31,10 @@ namespace VirtualSuspect.Handler {
 
                 case VirtualSuspectQuestionAnswer.LieStrategy.Improvise:
 
+                    bool backupToOriginal;
+
                     //Get a list of incriminatory and active events
-                    IEnumerable<EventNode> nodes = virtualSuspect.FilterEvents(query.QueryConditions).Where(x => x.Incriminatory > 0);
+                    IEnumerable<EventNode> nodes = virtualSuspect.FilterEvents(query.QueryConditions, out backupToOriginal).Where(x => x.Incriminatory > 0);
 
                     foreach(EventNode eventNode in nodes) {
 
@@ -144,11 +146,7 @@ namespace VirtualSuspect.Handler {
                         //Add event to the events list
                         virtualSuspect.KnowledgeBase.Events.Add(duplicateNode);
 
-                        //Remove the old node from the story
-                        virtualSuspect.KnowledgeBase.RemoveEventFromStory(eventNode);
-
-                        //Add the new node to the story
-                        virtualSuspect.KnowledgeBase.AddEventToStory(duplicateNode);
+                        virtualSuspect.KnowledgeBase.ReplaceEvent(eventNode, duplicateNode);
                     }
                     
                     break;
