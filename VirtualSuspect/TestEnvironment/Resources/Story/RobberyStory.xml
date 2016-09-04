@@ -169,7 +169,7 @@
     <id>28</id>
     <type>House</type>
     <value>Peter's House</value>
-    <speech>at Peter's House</speech>
+    <speech>at my House</speech>
   </entity>
   <entity>
     <id>29</id>
@@ -202,16 +202,10 @@
     <speech>rob the Jewlery Shop</speech>
   </entity>
   <entity>
-    <id>34</id>
-    <type>Shop</type>
-    <value>Mall's Hall</value>
-    <speech>at Mall's Hall</speech>
-  </entity>
-  <entity>
     <id>35</id>
     <type>Shop</type>
     <value>Jewlery Shop</value>
-    <speech>on Jewlery Shop</speech>
+    <speech>on the Jewlery Shop</speech>
   </entity>
   <entity>
     <id>36</id>
@@ -274,12 +268,6 @@
     <speech>ticket to SilverMoon City</speech>
   </entity>
   <entity>
-    <id>48</id>
-    <type>Train</type>
-    <value>Train to SilverMoon City</value>
-    <speech>train to SilverMoon City</speech>
-  </entity>
-  <entity>
     <id>49</id>
     <type>City</type>
     <value>SilverMoon City</value>
@@ -292,18 +280,23 @@
     <speech>Gary's Pub</speech>
   </entity>
   <entity>
-    <id>51</id>
-    <type>Train</type>
-    <value>Train to CastleTown</value>
-    <speech>train to CastleTown</speech>
-  </entity>
-  <entity>
     <id>52</id>
     <type>City</type>
     <value>CastleTown</value>
     <speech>CastleTown</speech>
   </entity>
-
+  <entity>
+    <id>53</id>
+    <type>Motive</type>
+    <value>see a football game</value>
+    <speech>see a football game</speech>
+  </entity>
+  <entity>
+    <id>54</id>
+    <type>Motive</type>
+    <value>Look for a Watch to buy</value>
+    <speech>look for a watch to buy</speech>
+  </entity>
 
 
 
@@ -347,7 +340,7 @@
     <id>3</id>
     <action>Research</action>
     <real>true</real>
-    <incriminatory>60</incriminatory>
+    <incriminatory>15</incriminatory>
     <association relation="Time">
       <entity id="3"/>
     </association>
@@ -476,7 +469,7 @@
     <id>10</id>
     <action>Prepare</action>
     <real>true</real>
-    <incriminatory>80</incriminatory>
+    <incriminatory>60</incriminatory>
     <association relation="Time">
       <entity id="10"/>
     </association>
@@ -515,7 +508,7 @@
     <id>12</id>
     <action>Research</action>
     <real>true</real>
-    <incriminatory>95</incriminatory>
+    <incriminatory>10</incriminatory>
     <association relation="Time">
       <entity id="12"/>
     </association>
@@ -671,18 +664,15 @@
     <id>20</id>
     <action>Travel</action>
     <real>true</real>
-    <incriminatory>0</incriminatory>
+    <incriminatory>50</incriminatory>
     <association relation="Time">
       <entity id="20"/>
     </association>
     <association relation="Location">
-      <entity id="51"/>
+      <entity id="52"/>
     </association>
     <association relation="Agent">
       <entity id="22"/>
-    </association>
-    <association relation="Theme">
-      <entity id="52"/>
     </association>
   </event>
   <event>
@@ -700,7 +690,39 @@
       <entity id="22"/>
     </association>
   </event>
-
+  <event>
+    <id>22</id>
+    <action>Rest</action>
+    <real>false</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="11"/>
+    </association>
+    <association relation="Location">
+      <entity id="28"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+  </event>
+  <event>
+    <id>23</id>
+    <action>Watch</action>
+    <real>false</real>
+    <incriminatory>0</incriminatory>
+    <association relation="Time">
+      <entity id="7"/>
+    </association>
+    <association relation="Location">
+      <entity id="35"/>
+    </association>
+    <association relation="Agent">
+      <entity id="22"/>
+    </association>
+    <association relation="Reason">
+      <entity id="54"/>
+    </association>
+  </event>
 
 
   <goal>
@@ -874,8 +896,8 @@
         <condition>
           <dimension>Time</dimension>
           <operator>between</operator>
-          <begin>03/03/2016T10:00:00</begin>
-          <end>04/03/2016T22:00:00</end>
+          <begin>04/03/2016T07:30:00</begin>
+          <end>04/03/2016T14:00:00</end>
         </condition>
         <condition>
           <dimension>Agent</dimension>
@@ -901,33 +923,6 @@
           <dimension>Agent</dimension>
           <operator>equal</operator>
           <value>Peter Barker</value>
-        </condition>
-      </query>
-    </question>
-    <question>
-      <speech>There was a robbery at the Mall's Jewlery Shop on March 5th between 4.00 and 4.30. Where you involved?</speech>
-      <query>
-        <type>yes-no</type>
-        <condition>
-          <dimension>Time</dimension>
-          <operator>between</operator>
-          <begin>05/03/2016T04:00:00</begin>
-          <end>05/03/2016T04:30:00</end>
-        </condition>
-        <condition>
-          <dimension>Location</dimension>
-          <operator>equal</operator>
-          <value>Jewlery Shop</value>
-        </condition>
-        <condition>
-          <dimension>Agent</dimension>
-          <operator>equal</operator>
-          <value>Peter Barker</value>
-        </condition>
-        <condition>
-          <dimension>Action</dimension>
-          <operator>equal</operator>
-          <value>Steal</value>
         </condition>
       </query>
     </question>

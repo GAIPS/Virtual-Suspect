@@ -117,6 +117,11 @@ namespace TestEnvironment
             
         }
 
+        internal bool isCurrentGoalTheLast() {
+
+            return goals.IndexOf(CurrentGoal) == goals.Count - 1;
+
+        }
     }
 
     public class Goal {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using VirtualSuspect.KnowledgeBase;
 using VirtualSuspect.Query;
@@ -42,7 +43,9 @@ namespace VirtualSuspectNaturalLanguage
                 //Is there any entity with dimension Time
                 if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Time)) {
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Time);
+                    bool hasAction;
+
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Time, out hasAction);
 
                     //Ignore Cardinality(the same time period only appears once)
 
@@ -68,31 +71,44 @@ namespace VirtualSuspectNaturalLanguage
                     
                 }else if(resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Location)) {
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Location);
+                    bool hasAction;
+
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Location, out hasAction);
 
                     answer += LocationNaturalLanguageGenerator.Generate(result, resultsByDimension);
                                       
                 }else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Agent)) {
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Agent);
+                    bool hasAction;
+
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Agent, out hasAction);
 
                     answer += AgentNaturalLanguageGenerator.Generate(result, resultsByDimension);
                 }
                 else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Theme)) {
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Theme);
+                    bool hasAction;
+
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Theme, out hasAction);
 
                     answer += ThemeNaturalLanguageGenerator.Generate(result, resultsByDimension);
                 }
                 else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Manner)) {
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Manner);
+                    bool hasAction;
+
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Manner, out hasAction);
 
                     answer += MannerNaturalLanguageGenerator.Generate(result, resultsByDimension);
                 }
                 else if (resultsByDimension.ContainsKey(KnowledgeBaseManager.DimentionsEnum.Reason)) {
 
-                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Reason);
+                    bool hasAction;
+
+                    answer += GenerateAnswerBegin(result, KnowledgeBaseManager.DimentionsEnum.Reason, out hasAction);
+
+                    if( !hasAction )
+                        answer += "to";
 
                     answer += ReasonNaturalLanguageGenerator.Generate(result, resultsByDimension);
 
@@ -103,7 +119,17 @@ namespace VirtualSuspectNaturalLanguage
             //Capitalize the answer if needed
             answer = UppercaseFirst(answer);
 
+            //Remove double whitespace
+            answer = RemoveWhiteSpace(answer);
             return answer;
+
+        }
+
+        private static string RemoveWhiteSpace(string s) {
+
+            RegexOptions options = RegexOptions.None;
+            Regex regex = new Regex("[ ]{2,}", options);
+            return regex.Replace(s, " ");
 
         }
 
@@ -168,7 +194,7 @@ namespace VirtualSuspectNaturalLanguage
         /// Creates the begin for a answer according to the question asked and the agent's number
         /// </summary>
         /// <returns>begin of the answer</returns>
-        private static string GenerateAnswerBegin(QueryResult result, KnowledgeBaseManager.DimentionsEnum dimension) {
+        private static string GenerateAnswerBegin(QueryResult result, KnowledgeBaseManager.DimentionsEnum dimension, out bool hasAction) {
 
             string answerBegin = "";
 
@@ -179,11 +205,13 @@ namespace VirtualSuspectNaturalLanguage
 
             //Add verb
             if (result.Query.QueryConditions.Count(x=>x.GetSemanticRole() == KnowledgeBaseManager.DimentionsEnum.Action) == 0) {
-                //No action is asked about. Use verb to be
+                hasAction = false;
 
+                //No action is asked about. Use verb to be
                 answerBegin += (numberAgents == 1) ? "was " : "were ";
 
             } else {
+                hasAction = true;
 
                 //Add verb from action resource
                 NaturalLanguageResourceManager manager = NaturalLanguageResourceManager.Instance;

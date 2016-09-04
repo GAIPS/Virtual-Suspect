@@ -48,13 +48,7 @@ namespace TestEnvironment
             //Load First Goal
             Goal currentGoal = testSuspect.CurrentGoal;
 
-            foreach(Question question in currentGoal.questions ) {
-                addQuestion(question);
-            }
-
-            //Load Notes
-            notesWindow = new NotesWindow(currentGoal.notes);
-            notesWindow.Show();
+            ChangeGoal(currentGoal);
 
         }
 
@@ -143,5 +137,39 @@ namespace TestEnvironment
             Application.Current.Shutdown();
         }
 
+        private void ChangeGoal(Goal newGoal) {
+
+            tbGoal.Text = newGoal.description;
+
+            questionStackPanel.Children.Clear();
+            foreach( Question question in newGoal.questions ) {
+                addQuestion(question);
+            }
+
+            if(notesWindow != null ) {
+
+                foreach(Note noteToAdd in newGoal.notes ) {
+                    notesWindow.addNote(noteToAdd.ToString());
+                }
+                notesWindow.Focus();
+
+            }else {
+                notesWindow = new NotesWindow(newGoal.notes);
+                notesWindow.Show();
+            }
+            
+
+        }
+
+        private void NextGoal_Click(object sender, RoutedEventArgs e) {
+
+            Goal newGoal = testSuspect.CompleteCurrentGoal();
+            ChangeGoal(newGoal);
+
+            //if it is the last goal
+            if( testSuspect.isCurrentGoalTheLast() ) {
+                NextGoal.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }

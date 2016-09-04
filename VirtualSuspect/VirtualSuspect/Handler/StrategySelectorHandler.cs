@@ -64,8 +64,10 @@ namespace VirtualSuspect {
 
             //we need to return to a backupOriginalStory
             if( backupToOriginal ) {
+                
                 foreach( EventNode node in events ) {
-                    virtualSuspect.KnowledgeBase.ReturnEventToOriginal(node);
+                    if(node.OriginalStory)
+                        virtualSuspect.KnowledgeBase.ReturnEventToOriginal(node);
                 }                
             }
 

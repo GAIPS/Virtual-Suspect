@@ -26,6 +26,7 @@ namespace VirtualSuspectNaturalLanguage.Component {
 
                 answer += mergedLocations.ElementAt(i).Key.Speech + " ";
 
+                if(mergedLocations.Count > 1)
                 answer += NaturalLanguageGetFrequency(mergedLocations.ElementAt(i).Value);
 
 
