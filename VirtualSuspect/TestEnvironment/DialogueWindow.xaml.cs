@@ -28,6 +28,8 @@ namespace TestEnvironment
 
         private NotesWindow notesWindow;
 
+        private Logger loggerManager;
+
         public DialogueWindow(int id, TestSuspect testSuspect) {
 
             this.id = id;
@@ -35,6 +37,7 @@ namespace TestEnvironment
 
             InitializeComponent();
 
+            loggerManager = new Logger(logger);
             //Update UI
             BitmapImage avatar = new BitmapImage();
             avatar.BeginInit();
@@ -70,9 +73,11 @@ namespace TestEnvironment
             Button button = (Button) sender;
 
             QueryDto questionQuery = null;
+            String questionSpeech = "";
 
             foreach(Question question in testSuspect.CurrentGoal.questions ) {
                 if(question.Speech == ((TextBlock)button.Content).Text ) {
+                    questionSpeech = question.Speech;
                     questionQuery = question.Query;
                 }
             }
@@ -89,7 +94,9 @@ namespace TestEnvironment
             } else {
                 tbAnswer.Text = AnswerSpeech;
             }
-            
+
+            loggerManager.addLog(questionSpeech, tbAnswer.Text);
+
         } 
 
         #region Utility Methods
