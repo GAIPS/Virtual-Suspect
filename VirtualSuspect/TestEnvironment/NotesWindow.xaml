@@ -11,8 +11,8 @@
             <Label x:Name="label" Content="Police Notebook" Margin="0" FontFamily="Segoe UI Black" FontSize="20" Foreground="White"/>
             <Label x:Name="label1" Content="These notes are the information available during the interview." Margin="0" Grid.Row="1" FontFamily="Segoe UI Light" FontSize="14" Foreground="White"/>
             <Label x:Name="label_Copy" Content="Notes:" FontFamily="Segoe UI Semibold" FontSize="16" Foreground="White" Background="#FF2980B9"/>
-            <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Height="363" Background="#FF2980B9">
-                <StackPanel x:Name="spNotes" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+            <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0" Grid.Row="3" Background="#FF2980B9">
+                <StackPanel x:Name="spNotes" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </ScrollViewer>
         </StackPanel>
 

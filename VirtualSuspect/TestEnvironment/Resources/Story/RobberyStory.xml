@@ -745,7 +745,7 @@
     <note>
       <info>Our informant found the stolen necklace in John Frey's office. John Frey is a know smugler from SilverMoon City.</info>
       <source>John Frey's gang informant</source>
-      <state>Not Verified</state>
+      <state>Verified</state>
     </note>
     <question>
       <speech>Do you know what was stolen from the jewelry shop?</speech>
@@ -862,7 +862,7 @@
     <note>
       <info>The Jewlery Shop Owner remembers that he saw Peter Barker near his store.</info>
       <source>Shop Owner</source>
-      <state>Not Verified</state>
+      <state>Verified</state>
     </note>
     <question>
       <speech>Did you went to the jewlery store on March 3rd and 4th?</speech>
@@ -937,7 +937,7 @@
     <note>
       <info>Peter Barker was seen with Jaime near CastleTown's Church. Jaime is an associate of John Frey's gang.</info>
       <source>Anonymous Tip</source>
-      <state>Not Verified</state>
+      <state>Verified</state>
     </note>
     <question>
       <speech>Do you know the delivery boy that delivered the stolen necklace?</speech>

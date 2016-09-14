@@ -24,7 +24,11 @@ namespace TestEnvironment
 
         public static void LoadTestSuspects() {
 
-            testSuspects.Add(0, new TestSuspect("C:\\Users\\ratuspro\\Documents\\Virtual Suspect\\Repos\\Virtual-Suspect\\VirtualSuspect\\TestEnvironment\\Resources\\Story\\RobberyStory.xml", "John Doe","Coworker", "Some Text to chill", "C:\\Users\\ratuspro\\Documents\\Virtual Suspect\\Repos\\Virtual-Suspect\\VirtualSuspect\\TestEnvironment\\Resources\\profileDefaultPlaceholder.jpg"));
+            testSuspects.Add(0, new TestSuspect("C:\\Users\\ratuspro\\Documents\\Virtual Suspect\\Repos\\Virtual-Suspect\\VirtualSuspect\\TestEnvironment\\Resources\\Story\\RobberyStory.xml", 
+                "Peter Barker",
+                "Suspect of Jewlery Shop Robbery", 
+                "Peter Barker was seen near the Jewelry Shop days before it was robbed. He is the main suspect of the crime and some facts need to be clarified. He was brought by the police to be interviewed and now its your job to discover more about the case and the suspect.", 
+                "C:\\Users\\ratuspro\\Documents\\Virtual Suspect\\Repos\\Virtual-Suspect\\VirtualSuspect\\TestEnvironment\\Resources\\profileDefaultPlaceholder.jpg"));
 
         }
 
@@ -39,16 +43,30 @@ namespace TestEnvironment
 
         private List<Goal> goals;
 
-        private int currentGoalId = 0;
-
-        public Goal CurrentGoal {
-
+        public List<Question> Questions {
             get {
-                return goals[currentGoalId];
+                List<Question> questions = new List<Question>();
+
+                foreach(Goal goal in goals ) {
+                    questions.AddRange(goal.questions);
+                }
+
+                return questions;
+            }
+        }
+
+        public List<Note> Notes {
+            get {
+                List<Note> notes = new List<Note>();
+
+                foreach( Goal goal in goals ) {
+                    notes.AddRange(goal.notes);
+                }
+
+                return notes;
             }
 
         }
-
         private VirtualSuspectQuestionAnswer virtualSuspect;
 
         public VirtualSuspectQuestionAnswer VirtualSuspect { get { return virtualSuspect; } }
@@ -100,33 +118,9 @@ namespace TestEnvironment
 
         }
 
-        /// <summary>
-        /// Advances the goal state and returns the new goal
-        /// </summary>
-        /// <returns></returns>
-        public Goal CompleteCurrentGoal() {
-
-            int totalNumGoal = goals.Count;
-
-            if( currentGoalId < totalNumGoal ) {
-                currentGoalId++;
-                return CurrentGoal;
-            } else {
-                return null;
-            }
-            
-        }
-
-        internal bool isCurrentGoalTheLast() {
-
-            return goals.IndexOf(CurrentGoal) == goals.Count - 1;
-
-        }
     }
 
     public class Goal {
-
-        public string description;
 
         public List<Note> notes;
 
@@ -137,7 +131,7 @@ namespace TestEnvironment
             questions = new List<Question>();
 
             XmlNode descriptionNode = goalNode.SelectSingleNode("description");
-            description = descriptionNode.InnerText;
+            notes.Add(new Note(descriptionNode.InnerText, "To Discover", "Not Verified"));
 
             XmlNodeList notesNodeList = goalNode.SelectNodes("note");
             foreach(XmlNode noteNode in notesNodeList ) {
@@ -178,7 +172,7 @@ namespace TestEnvironment
         }
 
         public override string ToString() {
-            return info + " (source: " + source + ") [ " + state + " ]" ;
+            return info + " (source: " + source + ")" ;
         }
 
     }

@@ -48,11 +48,12 @@ namespace TestEnvironment
             lname.Content = testSuspect.Name + " (" + testSuspect.Connection + ")";
             tbSummary.Text = testSuspect.Summary;
 
-            //Load First Goal
-            Goal currentGoal = testSuspect.CurrentGoal;
+            foreach(Question q in testSuspect.Questions ) {
+                addQuestion(q);
+            }
 
-            ChangeGoal(currentGoal);
-
+            notesWindow = new NotesWindow(testSuspect.Notes);
+            notesWindow.Show();
         }
 
         private void addQuestion(Question question) {
@@ -75,7 +76,7 @@ namespace TestEnvironment
             QueryDto questionQuery = null;
             String questionSpeech = "";
 
-            foreach(Question question in testSuspect.CurrentGoal.questions ) {
+            foreach(Question question in testSuspect.Questions) {
                 if(question.Speech == ((TextBlock)button.Content).Text ) {
                     questionSpeech = question.Speech;
                     questionQuery = question.Query;
@@ -96,6 +97,7 @@ namespace TestEnvironment
             }
 
             loggerManager.addLog(questionSpeech, tbAnswer.Text);
+            scrollerLogger.ScrollToTop();
 
         } 
 
@@ -144,39 +146,5 @@ namespace TestEnvironment
             Application.Current.Shutdown();
         }
 
-        private void ChangeGoal(Goal newGoal) {
-
-            tbGoal.Text = newGoal.description;
-
-            questionStackPanel.Children.Clear();
-            foreach( Question question in newGoal.questions ) {
-                addQuestion(question);
-            }
-
-            if(notesWindow != null ) {
-
-                foreach(Note noteToAdd in newGoal.notes ) {
-                    notesWindow.addNote(noteToAdd.ToString());
-                }
-                notesWindow.Focus();
-
-            }else {
-                notesWindow = new NotesWindow(newGoal.notes);
-                notesWindow.Show();
-            }
-            
-
-        }
-
-        private void NextGoal_Click(object sender, RoutedEventArgs e) {
-
-            Goal newGoal = testSuspect.CompleteCurrentGoal();
-            ChangeGoal(newGoal);
-
-            //if it is the last goal
-            if( testSuspect.isCurrentGoalTheLast() ) {
-                NextGoal.Visibility = Visibility.Hidden;
-            }
-        }
     }
 }

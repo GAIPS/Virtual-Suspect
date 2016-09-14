@@ -175,7 +175,8 @@ namespace VirtualSuspect.KnowledgeBase {
         public void AddAgent(EntityNode agent) {
 
             this.agent.Add(agent);
-            ToMTable.Add(agent, false);
+            if( CanAddToToM(agent) )
+                ToMTable.Add(agent, false);
 
         }
 
@@ -183,7 +184,8 @@ namespace VirtualSuspect.KnowledgeBase {
 
             this.agent.AddRange(agents);
             foreach(EntityNode agent in agents) {
-                ToMTable.Add(agent, false);
+                if(CanAddToToM(agent))
+                    ToMTable.Add(agent, false);
             }
         }
 
@@ -191,21 +193,24 @@ namespace VirtualSuspect.KnowledgeBase {
 
             this.agent.AddRange(agents);
             foreach (EntityNode agent in agents) {
-                ToMTable.Add(agent, false);
+                if( CanAddToToM(agent) )
+                    ToMTable.Add(agent, false);
             }
         }
 
         public void AddTheme(EntityNode theme) {
 
             this.theme.Add(theme);
-            ToMTable.Add(theme, false);
+            if( CanAddToToM(theme) )
+                ToMTable.Add(theme, false);
         }
 
         public void AddTheme(params EntityNode[] themes) {
 
             this.theme.AddRange(themes);
             foreach (EntityNode theme in themes) {
-                ToMTable.Add(theme, false);
+                if( CanAddToToM(theme) )
+                    ToMTable.Add(theme, false);
             }
         }
 
@@ -213,21 +218,24 @@ namespace VirtualSuspect.KnowledgeBase {
 
             this.theme.AddRange(themes);
             foreach (EntityNode theme in themes) {
-                ToMTable.Add(theme, false);
+                if( CanAddToToM(theme) )
+                    ToMTable.Add(theme, false);
             }
         }
 
         public void AddManner(EntityNode manner) {
 
             this.manner.Add(manner);
-            ToMTable.Add(manner, false);
+            if( CanAddToToM(manner) )
+                ToMTable.Add(manner, false);
         }
 
         public void AddManner(params EntityNode[] manners) {
 
             this.manner.AddRange(manners);
             foreach (EntityNode manner in manners) {
-                ToMTable.Add(manner, false);
+                if( CanAddToToM(manner) )
+                    ToMTable.Add(manner, false);
             }
         }
 
@@ -235,21 +243,24 @@ namespace VirtualSuspect.KnowledgeBase {
 
             this.manner.AddRange(manners);
             foreach (EntityNode manner in manners) {
-                ToMTable.Add(manner, false);
+                if( CanAddToToM(manner) )
+                    ToMTable.Add(manner, false);
             }
         }
 
         public void AddReason(EntityNode reason) {
 
             this.reason.Add(reason);
-            ToMTable.Add(reason, false);
+            if( CanAddToToM(reason) )
+                ToMTable.Add(reason, false);
         }
 
         public void AddReason(params EntityNode[] reasons) {
 
             this.reason.AddRange(reasons);
             foreach (EntityNode reason in reasons) {
-                ToMTable.Add(reason, false);
+                if( CanAddToToM(reason) )
+                    ToMTable.Add(reason, false);
             }
         }
 
@@ -257,7 +268,8 @@ namespace VirtualSuspect.KnowledgeBase {
 
             this.reason.AddRange(reasons);
             foreach (EntityNode reason in reasons) {
-                ToMTable.Add(reason, false);
+                if( CanAddToToM(reason) )
+                    ToMTable.Add(reason, false);
             }
         }
 
@@ -346,6 +358,12 @@ namespace VirtualSuspect.KnowledgeBase {
                     Agent.Contains(node) ||
                     Reason.Contains(node) ||
                     Manner.Contains(node);
+
+        }
+
+        private bool CanAddToToM(EntityNode node) {
+
+            return ToMTable.Keys.Count(x => x == node) == 0;
 
         }
     }
