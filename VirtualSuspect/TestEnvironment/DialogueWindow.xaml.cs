@@ -48,7 +48,10 @@ namespace TestEnvironment
             lname.Content = testSuspect.Name + " (" + testSuspect.Connection + ")";
             tbSummary.Text = testSuspect.Summary;
 
-            foreach(Question q in testSuspect.Questions ) {
+            List<Question> unorderedQuestions = testSuspect.Questions;
+            var rnd = new Random();
+
+            foreach(Question q in unorderedQuestions.OrderBy(item => rnd.Next()) ) {
                 addQuestion(q);
             }
 
@@ -146,5 +149,8 @@ namespace TestEnvironment
             Application.Current.Shutdown();
         }
 
+        private void FillReport_Click(object sender, RoutedEventArgs e) {
+            System.Windows.MessageBox.Show("Please call the researcher.", "Virtual Suspect",MessageBoxButton.OK, MessageBoxImage.Information); 
+        }
     }
 }

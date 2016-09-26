@@ -109,22 +109,6 @@ namespace TestEnvironment.CustomItems
             }
         }
 
-        private string suspectSummary;
-
-        public string SuspectSummary
-        {
-            get
-            {
-                return suspectSummary;
-            }
-
-            set
-            {
-                suspectSummary = value;
-                lSummary.Content = suspectSummary;
-            }
-        }
-
         public SuspectInfo( int id, TestSuspect testSuspect) {
 
             InitializeComponent();
@@ -135,7 +119,6 @@ namespace TestEnvironment.CustomItems
             SuspectImageFilePath = testSuspect.ProfileImagePath;
             SuspectName = testSuspect.Name;
             SuspectConnection = testSuspect.Connection;
-            SuspectSummary = testSuspect.Summary;
 
         }
 
