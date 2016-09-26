@@ -76,6 +76,7 @@ namespace TestEnvironment
 
             Button button = (Button) sender;
 
+            button.Background = new SolidColorBrush(Color.FromRgb(190, 190, 190));
             QueryDto questionQuery = null;
             String questionSpeech = "";
 

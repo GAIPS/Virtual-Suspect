@@ -297,6 +297,12 @@
     <value>Look for a Watch to buy</value>
     <speech>look for a watch to buy</speech>
   </entity>
+  <entity>
+    <id>55</id>
+    <type>Person</type>
+    <value>Shop Owner</value>
+    <speech>Shop Owner</speech>
+  </entity>
 
 
 
@@ -726,7 +732,7 @@
 
 
   <goal>
-    <description>Validate that Peter sold the silver Necklace to John Frey.</description>
+    <description>Verify that Peter sold the silver Necklace to John Frey.</description>
     <note>
       <info>A silver necklace was stolen. It was delivered on March the 4th at 14.00 by a delivery boy to the shop owner.</info>
       <source>Delivery Report</source>
@@ -858,7 +864,7 @@
     </question>
   </goal>
   <goal>
-    <description>Validate that Peter stole the silver necklace from the jewlery shop.</description>
+    <description>Verify that Peter stole the silver necklace from the jewlery shop.</description>
     <note>
       <info>The Jewlery Shop Owner remembers that he saw Peter Barker near his store.</info>
       <source>Shop Owner</source>
@@ -988,7 +994,7 @@
       </query>
     </question>
     <question>
-      <speech>We know that you were with Jaime. Did Jaime gave you John Frey's contact?</speech>
+      <speech>Did Jaime gave you John Frey's contact?</speech>
       <query>
         <type>yes-no</type>
         <condition>
